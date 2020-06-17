@@ -3,6 +3,7 @@
 :root {
     --color-green: #80fa7b;
     --color-roxo: rgb(113, 89, 193); 
+    --color-rocket: #7159c1;
 }
 
 * {
@@ -19,6 +20,7 @@ body {
 
 header {
     background: var(--color-roxo);
+    font-family: 'Roboto', sans-serif;
     padding: 30px;
 }
 
@@ -79,4 +81,23 @@ header {
 
 #links-footer a{
     border-bottom: 1px solid var(--color-roxo);
+}
+
+/* #### PAGINA - SOBRE  #### */
+
+.header-sobre {
+    background: var(--color-rocket);    
+}
+
+.header-sobre .menu-sobre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
+
+.header-sobre img {    
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
 }
