@@ -101,3 +101,35 @@ header {
     margin-right: 10px;
     border-radius: 50%;
 }
+
+.section_content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.section_content img {
+    margin-top: 20px;
+}
+
+.section_part_content h2 {    
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    line-height: 42px;
+    width: 200px;    
+    border-bottom: 2px solid var(--color-rocket);
+}
+
+.section_part_content p {
+    margin-bottom: 20px;    
+    color: var(--color-rocket);
+}
+
+.section_part_content li {    
+    list-style: none;
+    padding: 5px;
+}
