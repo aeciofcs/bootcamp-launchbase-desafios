@@ -4,6 +4,7 @@
     --color-green: #80fa7b;
     --color-roxo: rgb(113, 89, 193); 
     --color-rocket: #7159c1;
+    --color-card: #164e4e;
 }
 
 * {
@@ -132,4 +133,30 @@ header {
 .section_part_content li {    
     list-style: none;
     padding: 5px;
+}
+
+
+/* === CARDS === */
+
+.courses {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.course {
+    background-color: var(--color-card);
+}
+
+.course_img-content img {
+    margin-top: 20px;    
+    width: 100%;
+    height: 100px;    
+}
+
+.course_content p {
+    padding: 10px;
+}
+
+.course_content p strong {
+    color: var(--color-rocket)
 }
