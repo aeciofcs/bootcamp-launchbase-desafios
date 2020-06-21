@@ -1,68 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 
+:root {
+    --color-backgroud: #ffffff;
+    --color-font: #ffffff;
+    --color-rocket: #7159c1;
+    --color-font-hover: #464157;
+    --color-border: #282a36;
+}
+
 * {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-body {
-    background: #282a36;
+body {    
+    background: var(--color-backgroud);
     font-family: Roboto, sans-serif;
-    color: #ffffff;
-    /*color: #7159c1;*/
+    color: var(--color-font);
 }
 
 header {
-    /*background: #7159c1;*/
+    background: var(--color-rocket);
     padding: 30px;
-    border-bottom: 2px solid #7159c1;
+    border-bottom: 2px solid var(--color-border);
+    display: flex;
 }
 
 .links {
+    flex: 1;
     text-align: center;
 }
 
 .links a {
     margin: 0 30px;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--color-font);
     font-weight: bold;
 }
 
-.links a:hover {  
-    color: #7f6eb9;
+.links a:hover,
+.socials a:hover {  
+    color: var(--color-font-hover);
     transition: color 300ms;
+}
+
+.socials {
+    flex: 1;
+    max-width: 360px;
+    text-align: right;
+}
+
+.socials a {
+    margin: 0 30px;
+    text-decoration: none;
+    color: var(--color-font);
+    font-weight: bold;
 }
 
 .wrapper {
     text-align: center;
-    margin: 30px 50px;    
-    display: flex;
+    margin: 2px 50px;    
+    /*display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;*/
 }
 
 .company {
-    margin-right: 20px;    
+    margin-right: 20px;
+    color: var(--color-rocket);
 }
 
 .company img {
-    height: 300px;
+    margin-top: 10px;
+    height: 180px;
     border-radius: 50%;
-    border: 5px solid #ffffff9f;
+    border: 2px solid var(--color-border);
     margin-bottom: 10px;
 }
 
 .company h1 {
     /*text-decoration: underline double #7159c1;*/
-    display: inline-block;
-    font-size: 35px;    
-    border-bottom: 5px solid #7159c1;    
+    color: var(--color-rocket);
+    /*display: inline-block;*/
+    font-size: 25px;    
+    margin-bottom: 10px;
+    /*border-bottom: 5px solid var(--color-rocket);    */
 }
 
-.about p {
-    max-width: 755px;
-    font-size: 24px;
-    line-height: 34px;
+.company p {
+    color: rgb(75, 75, 75);    
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 12px;
+    font-weight: bold;
 }
+
+.company h3 {
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+.company ul{   
+    max-width: 190px; 
+    margin: 0 auto;
+    list-style: none;
+    text-align: left;
+    color: rgb(75, 75, 75);
+    font-weight: bold;
+}
+/*
+.about h2, p {
+    color: var(--color-rocket);
+}
+
+
+.about p {    
+    max-width: 755px;
+    font-size: 15px;
+    line-height: 25px;
+}*/
