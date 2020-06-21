@@ -8,7 +8,9 @@ const btnMinimizeModal = document.querySelector('.minimize-modal');
 /* Abrir/Fechar o Modal -> */
 for (const card of cards) {
     card.addEventListener('click', function(){
+        const pageId = card.getAttribute('id');
         modalOverlay.classList.toggle('active');
+        modalOverlay.querySelector('iframe').src = `https://rocketseat.com.br/${pageId}`;
     });
 }
 
@@ -19,6 +21,7 @@ document.querySelector('.close-modal').addEventListiner('click', ()=>{} ) */
 
 btnCloseModal.addEventListener('click',function(){
     modalOverlay.classList.toggle('active');
+    modalOverlay.querySelector('iframe').src = "";
 });
 
 /* <- Abrir/Fechar o Modal */

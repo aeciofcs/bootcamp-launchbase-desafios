@@ -261,3 +261,11 @@ header {
     opacity: 0;
     visibility: hidden;
 }
+
+iframe {
+    width: 98%;
+    height: 92%;
+    position: absolute;
+    top: 6%;
+    left: 1%;    
+}
