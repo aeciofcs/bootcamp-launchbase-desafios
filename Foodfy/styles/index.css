@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
+:root {
+    --color-font: #111111;
+    --color-back-wrapper: #FBDFDB;
+}
+
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+main {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+.menu {    
+    max-width: 940px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.menu-img {
+    margin-top: 36.1px;
+    margin-right: 122.4px;
+}
+.menu-img img{
+    width: 90.6px;
+    height: 26.9px;
+}
+
+.menu-links {
+    margin-top: 38px;
+}
+
+.menu-links a {
+    color: var(--color-font);
+    margin-right: 30px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.menu-links .sobre {
+    width: 42px;    
+}
+
+.menu-links .receitas {
+    width: 62px;    
+}
+
+.wrapper {
+    background-color: var(--color-back-wrapper);
+    width: 940px;
+    height: 366px;
+    margin: 0 auto;
+    border-radius: 30px;
+    margin-top: 36px;
+    position: relative;
+}
+
+.content h2 {
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 32px;
+    color: var(--color-font);
+    position: absolute;
+    margin-top: 117px;
+    margin-left: 60px;
+    /*width: 322px;*/
+    margin-bottom: 10px;
+}
+
+.content p {
+    width: 316px;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    opacity: 0.7;
+    position: absolute;
+    margin-top: 165px;
+    margin-left: 60px;
+}
+
+.wrapper img {
+    position: absolute;
+    top: 66px;
+    right: 100px;
+    bottom: 0;    
+}
+
+.wrapper-recipes {
+    max-width: 940px;
+    margin: 0 auto;
+    margin-top: 50px;    
+}
+
+.wrapper-recipes img {
+    margin-top: 20px;
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+}
+
+.wrapper-recipes h3 {
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 18px;
+    color: var(--color-font);
+    margin-top: 20px;
+}
+
+.wrapper-recipes h4 {
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 14px;
+    color: #777777;
+    margin-top: 5px;
+}
+
+.recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+footer {
+    max-width: 100%;
+    height: 62px;
+    margin-top: 50px;
+    background-color: #EEEEEE;    
+}
+
+footer h3 {
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 14px;
+    color: #999999;    
+    text-align: center;
+    padding: 23px 0px;
+}
