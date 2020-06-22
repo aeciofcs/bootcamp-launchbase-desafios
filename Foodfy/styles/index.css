@@ -146,3 +146,31 @@ footer h3 {
     text-align: center;
     padding: 23px 0px;
 }
+
+/* ### STYLES ABOUT.HTML ### */
+
+.wrapper-about {
+    max-width: 940px;
+    margin: 0 auto;        
+}
+
+.wrapper-about h2, 
+.wrapper-about h3 {
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 24px;
+    color: var(--color-font);
+    margin-top: 56px;
+}
+
+.wrapper-about h3 {    
+    font-size: 20px;    
+    margin-top: 30px;
+}
+
+.wrapper-about p {
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-top: 20px;
+}
