@@ -180,7 +180,7 @@ header {
     background-color: var(--color-border);
     filter: brightness(90%);
     padding: 5px 20px;
-    border-radius: 20%;
+    border-radius: 20px;
     text-align: center;
 }
 
