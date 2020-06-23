@@ -23,6 +23,8 @@ Server.get('/courses', (request, response)=>{
     return response.render('courses', {Courses});
 });
 
+// => Rota para pagina do Curso com redirect em QUERY STRING
+/*
 Server.get('/course', (request, response)=>{
     const id = request.query.id;
 
@@ -37,7 +39,17 @@ Server.get('/course', (request, response)=>{
     }
 
     return response.render('course', {course});
-});
+});*/
+// <= Rota para pagina do Curso com redirect em QUERY STRING
+
+Server.get('/course/:id', (request, response)=>{
+    const id = request.params.id;
+    const course = Courses.find( (course) => {return course.id === id} )
+    if (!course){
+        return response.send(`O id fornecido na rota é: ${id}`)
+    }    
+    return response.render('course', {course});
+})
 
 Server.get('/about', (request, response)=>{
     const data = {

@@ -9,7 +9,8 @@ const btnMinimizeModal = document.querySelector('.minimize-modal');
 for (const card of cards) {
     card.addEventListener('click', function(){
         const pageId = card.getAttribute('id');
-        window.location.href = `/course?id=${pageId}`
+        // window.location.href = `/course?id=${pageId}`
+        window.location.href = `/course/${pageId}`
         //modalOverlay.classList.toggle('active');
         //modalOverlay.querySelector('iframe').src = `https://rocketseat.com.br/${pageId}`;
     });
