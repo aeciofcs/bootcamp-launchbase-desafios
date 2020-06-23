@@ -1,5 +1,6 @@
-const express  = require('express')
-const nunjucks = require('nunjucks') 
+const express     = require('express')
+const nunjucks    = require('nunjucks')
+const dataRecipes = require('./data') 
 
 //Instanciando o Servidor..
 const server   = express()
@@ -17,11 +18,12 @@ nunjucks.configure('views', {
 })
 
 server.get('/', (req, res)=>{
-    return res.render('index')
+    return res.render('index', {dataRecipes})
 })
 
 server.get('/recipes', (req,res) => {
-    return res.render('recipes')
+    //console.log(dataRecipes.findIndex( (recipe)=>{ return recipe.title === 'Asinhas de frango ao barbecue'} ))
+    return res.render('recipes', {dataRecipes})
 })
 
 server.get('/about', (req,res) => {
