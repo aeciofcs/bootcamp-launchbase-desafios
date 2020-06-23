@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio 2 -- Primeiro HTML</title>    
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/index.css">
-</head>
-<body>
+{% extends "layout.njk" %}
+
+{% block title %}
+    <title>PRIMEIRO HTML</title>
+{% endblock %}
+
+{% block header %}
     <header>
         <div class="links">
             <a href="https://discordapp.com/invite/gCRAFhc" target="_blank">COMUNIDADE</a>
@@ -17,7 +14,9 @@
             <a href="about">SOBRE</a>        
         </div>
     </header>
-    <!-- 
+{% endblock %}
+
+{% block content %}  
     <div id="wrapper">
         <img src="https://avatars2.githubusercontent.com/u/358839?s=400&u=9132ae8e5de481ee7a5f60bec152918e0c2b22fb&v=4" alt="Aecio-Silva">
         <h1>Aécio Silva</h1>
@@ -30,6 +29,4 @@
         <a href="https://www.linkedin.com/in/aecioflavio/" target="_blank">Linkedin</a>
         <a href="https://twitter.com/aeciofcs" target="_blank">Twitter</a>
     </div>
-    -->
-</body>
-</html>
+{% endblock %}

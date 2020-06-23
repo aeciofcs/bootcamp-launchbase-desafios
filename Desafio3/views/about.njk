@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SOBRE </title>  
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/index.css">
-</head>
-<body>
+{% extends "layout.njk" %}
+
+{% block title %}
+    <title>SOBRE</title>  
+{% endblock %}
+
+{% block header %}
     <header>
         <div class="links">            
             <a href="/">HOME</a>
@@ -17,8 +14,10 @@
             <a href="https://facebook.com/rocketseat" target="_blank">Facebook</a>
             <a href="https://twitter.com/rocketseat" target="_blank">Twitter</a>
         </div>
-    </header> 
-    
+    </header>
+{% endblock %}
+
+{% block content %}
     <div class="wrapper">
         <div class="company">
             <img src="https://pbs.twimg.com/profile_images/1271517147349626881/Mf1UjRa0.jpg" alt="logo">
@@ -41,6 +40,4 @@
             </ul>
         </div>
     </div>    
-    
-</body>
-</html>
+{% endblock %}

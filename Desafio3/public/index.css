@@ -269,3 +269,9 @@ iframe {
     top: 6%;
     left: 1%;    
 }
+
+/* ### ERROR ### */
+.error img {
+    width: 1349px;
+    height: 621px;
+}

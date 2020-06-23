@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CONTEÚDOS </title>  
+{% extends "layout.njk" %}
+
+{% block title %}
+    <title>CONTEÚDOS</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/index.css">
-</head>
-<body>
+{% endblock %}
+
+{% block header %}
     <header>
         <div class="links">            
             <a href="/">HOME</a>
@@ -19,7 +16,9 @@
             <a href="https://twitter.com/rocketseat" target="_blank">Twitter</a>
         </div>
     </header> 
-    
+{% endblock %}
+
+{% block content %}
     <div class="content">
         <h1>CURSOS</h1>        
     </div>
@@ -87,6 +86,5 @@
         </div>
     </div>
 
-    <script src="scripts.js"></script>    
-</body>
-</html>
+    <script src="scripts.js"></script>
+{% endblock %}
