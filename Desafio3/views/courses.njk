@@ -27,8 +27,11 @@
 
         {% for course in Courses %}
         <div class="card" id="{{course.id}}">
-            <div class="card-img">
+            <div class="card-img {{ 'featured-card' if course.featured }}">
                 <img src="{{course.course_url}}" alt="Imagem do curso {{course.id}}">
+                {% if course.featured %}
+                    <div class="featured">Featured</div>
+                {% endif %}
             </div>
             <div class="card-content-title">
                 <p><strong>{{course.title}}</strong></p>

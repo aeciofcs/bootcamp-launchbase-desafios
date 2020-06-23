@@ -11,7 +11,8 @@ module.exports = [
         course_url: "https://skylab.rocketseat.com.br/static/0828532024cb46921a6b5e941f8d788d.svg",
         title: "LaunchBase",
         qtdModules: 16,
-        price: "PAGO"
+        price: "PAGO",
+        featured: true
     },
     {
         id: "gostack",
