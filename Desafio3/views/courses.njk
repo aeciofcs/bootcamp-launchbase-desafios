@@ -25,45 +25,21 @@
 
     <section class="cards">
 
-        <div class="card" id="starter">
+        {% for course in Courses %}
+        <div class="card" id="{{course.id}}">
             <div class="card-img">
-                <img src="https://skylab.rocketseat.com.br/static/64c237ccff807c054339a62d53b4b402.svg" alt="starter">
+                <img src="{{course.course_url}}" alt="Imagem do curso {{course.id}}">
             </div>
             <div class="card-content-title">
-                <p><strong>Starter</strong></p>
+                <p><strong>{{course.title}}</strong></p>
             </div>
             <div class="card-content-info">
-                <p class="card-content-subtitle">5 Módulos</p>
-                <p class="card-content-price card-price-starter">FREE</p>
+                <p class="card-content-subtitle">{{course.qtdModules}} Módulos</p>
+                <p class="card-content-price card-price-starter">{{course.price}}</p>
             </div>
-        </div>
+        </div>        
+        {% endfor %} 
 
-        <div class="card" id="launchbase">
-            <div class="card-img">
-                <img src="https://skylab.rocketseat.com.br/static/0828532024cb46921a6b5e941f8d788d.svg" alt="launchbase">
-            </div>
-            <div class="card-content-title">
-                <p><strong class="launchbase">LaunchBase</strong></p>
-            </div>
-            <div class="card-content-info">
-                <p class="card-content-subtitle">16 Módulos</p>
-                <p class="card-content-price card-price-launchbase">PAGO</p>
-            </div>
-        </div>
-
-        <div class="card" id="gostack">
-            <div class="card-img">
-                <img src="https://skylab.rocketseat.com.br/static/83a178a0653dab1d55e2ed7946465975.svg" alt="gostack">
-            </div>
-            <div class="card-content-title">
-                <p><strong class="gostack">GoStack</strong></p>
-            </div>
-            <div class="card-content-info">
-                <p class="card-content-subtitle">10 Módulos</p>
-                <p class="card-content-price card-price-gostack">PAGO</p>
-            </div>
-        </div>
-        
     </section>
     
     <div class="modal-overlay">

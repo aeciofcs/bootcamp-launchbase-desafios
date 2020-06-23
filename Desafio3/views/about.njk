@@ -10,9 +10,9 @@
             <a href="/">HOME</a>
         </div>
         <div class="socials">
-            <a href="https://github.com/rocketseat" target="_blank">GitHub</a> 
-            <a href="https://facebook.com/rocketseat" target="_blank">Facebook</a>
-            <a href="https://twitter.com/rocketseat" target="_blank">Twitter</a>
+            {% for network in data.networks %}
+                <a href="{{network.url}}" target="_blank">{{network.name}}</a> 
+            {% endfor %}
         </div>
     </header>
 {% endblock %}
@@ -21,22 +21,14 @@
     <div class="wrapper">
         <div class="company">
             <img src="https://pbs.twimg.com/profile_images/1271517147349626881/Mf1UjRa0.jpg" alt="logo">
-            <h1>Rocketseat</h1>            
-            <p>Somos uma comunidade incrível de programadores em busca do próximo nível. </br>
-                Por isso a Rocketseat oferece através de uma plataforma inteligente e metodologia prática, além de comunidade, 
-                eventos, conteúdo e conexão com o mercado de trabalho, todas as ferramentas que você precisa para masterizar 
-                no menor tempo possível as tecnologias mais modernas de desenvolvimento web e mobile, e dessa forma avançar 
-                para o próximo nível como programador.
+            <h1>{{data.title}}</h1>            
+            <p>{{data.description}}
             </p>
             <h3>Tecnologias utilizadas:</h3>
             <ul>
-                <li>HTML5</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>JavaScript ES6</li>
-                <li>NodeJS</li>
-                <li>ReactJS</li>
-                <li>React Native</li>
+                {% for tecnologia in data.tecnologies %}                
+                <li>{{tecnologia}}</li>
+                {% endfor %}
             </ul>
         </div>
     </div>    
