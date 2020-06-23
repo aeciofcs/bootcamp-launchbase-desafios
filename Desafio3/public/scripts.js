@@ -9,25 +9,27 @@ const btnMinimizeModal = document.querySelector('.minimize-modal');
 for (const card of cards) {
     card.addEventListener('click', function(){
         const pageId = card.getAttribute('id');
-        modalOverlay.classList.toggle('active');
-        modalOverlay.querySelector('iframe').src = `https://rocketseat.com.br/${pageId}`;
+        window.location.href = `/course?id=${pageId}`
+        //modalOverlay.classList.toggle('active');
+        //modalOverlay.querySelector('iframe').src = `https://rocketseat.com.br/${pageId}`;
     });
 }
 
-/* Posso também, não declarar uma variavel para o close do Modal,
-pois não vamos utilizar para nada. Somente para clicar no botão.
-Então podemos colocar direto: 
-document.querySelector('.close-modal').addEventListiner('click', ()=>{} ) */
+/*
+// Posso também, não declarar uma variavel para o close do Modal,
+//pois não vamos utilizar para nada. Somente para clicar no botão.
+//Então podemos colocar direto: 
+//document.querySelector('.close-modal').addEventListiner('click', ()=>{} ) 
 
 btnCloseModal.addEventListener('click',function(){
     modalOverlay.classList.toggle('active');
     modalOverlay.querySelector('iframe').src = "";
 });
 
-/* <- Abrir/Fechar o Modal */
+// <- Abrir/Fechar o Modal 
 
 
-/* Maximizar e Minimizar o Modal -> */
+// Maximizar e Minimizar o Modal -> 
 btnMaximizeModal.addEventListener('click', function(){
     modal.classList.toggle('maximized');
     btnMinimizeModal.classList.toggle('active');
@@ -39,4 +41,5 @@ btnMinimizeModal.addEventListener('click', function(){
     btnMinimizeModal.classList.toggle('active');    
     modal.classList.toggle('maximized');
 });
-/* <- Maximizar e Minimizar o Modal */
+// <- Maximizar e Minimizar o Modal 
+*/

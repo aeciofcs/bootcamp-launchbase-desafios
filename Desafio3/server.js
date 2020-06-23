@@ -23,6 +23,22 @@ Server.get('/courses', (request, response)=>{
     return response.render('courses', {Courses});
 });
 
+Server.get('/course', (request, response)=>{
+    const id = request.query.id;
+
+    // Procurando o curso no array de Cursos..
+    const course = Courses.find( (course)=>{
+        return course.id === id
+    })
+
+    //Se não achar o curso...
+    if(!course){
+        return response.send('Curso não localizado.');
+    }
+
+    return response.render('course', {course});
+});
+
 Server.get('/about', (request, response)=>{
     const data = {
         title: "Rocketseat",
