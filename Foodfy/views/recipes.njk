@@ -12,70 +12,17 @@
     <main>
         <div class="wrapper-recipes">
             <div class="recipes">
-                <div class="recipe" id="burger">
-                    <img src="/assets/burger.png" alt="">
-                    <h3>Triplo bacon burger</h3>
-                    <h4>por Jorge Relato</h4>
+                {% for recipe in dataRecipes %}
+                <div class="recipe" id="{{ recipe.title }}">
+                    <img src="{{recipe.image}}" alt="Imagem {{receipe.title}}">
+                    <h3>{{recipe.title}}</h3>
+                    <h4>por {{recipe.author}}</h4>
                 </div>
-                <div class="recipe" id="pizza">
-                    <img src="/assets/pizza.png" alt="">
-                    <h3>Pizza 4 estações</h3>
-                    <h4>por Fabiana Melo</h4>
-                </div>
-                <div class="recipe" id="espaguete">
-                    <img src="/assets/espaguete.png" alt="">
-                    <h3>Espaguete ao alho</h3>
-                    <h4>por Júlia Kinoto</h4>
-                </div>
-                <div class="recipe" id="lasanha">
-                    <img src="/assets/lasanha.png" alt="">
-                    <h3>Lasanha mac n' cheese</h3>
-                    <h4>por Juliano Vieira</h4>
-                </div>
-                <div class="recipe" id="doce">
-                    <img src="/assets/doce.png" alt="">
-                    <h3>Docinhos pão-do-céu</h3>
-                    <h4>por Ricardo Golvea</h4>
-                </div>
-                <div class="recipe" id="asinhas">
-                    <img src="/assets/asinhas.png" alt="">
-                    <h3>Asinhas de frango ao barbecue</h3>
-                    <h4>por Vania Steroski</h4>
-                </div>
-                <div class="recipe" id="burger">
-                    <img src="/assets/burger.png" alt="">
-                    <h3>Triplo bacon burger</h3>
-                    <h4>por Jorge Relato</h4>
-                </div>
-                <div class="recipe" id="pizza">
-                    <img src="/assets/pizza.png" alt="">
-                    <h3>Pizza 4 estações</h3>
-                    <h4>por Fabiana Melo</h4>
-                </div>
-                <div class="recipe" id="espaguete">
-                    <img src="/assets/espaguete.png" alt="">
-                    <h3>Espaguete ao alho</h3>
-                    <h4>por Júlia Kinoto</h4>
-                </div>
-                <div class="recipe" id="lasanha">
-                    <img src="/assets/lasanha.png" alt="">
-                    <h3>Lasanha mac n' cheese</h3>
-                    <h4>por Juliano Vieira</h4>
-                </div>
-                <div class="recipe" id="doce">
-                    <img src="/assets/doce.png" alt="">
-                    <h3>Docinhos pão-do-céu</h3>
-                    <h4>por Ricardo Golvea</h4>
-                </div>
-                <div class="recipe" id="asinhas">
-                    <img src="/assets/asinhas.png" alt="">
-                    <h3>Asinhas de frango ao barbecue</h3>
-                    <h4>por Vania Steroski</h4>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>
-    
+    <!-- 
     <div class="modal-overlay">
         <div class="modal">            
             <img src="" alt="">
@@ -83,7 +30,7 @@
             <h4></h4>
             <h4 class="close-modal">Fechar Modal</h4>            
         </div>
-    </div>
+    </div> -->
 {% endblock %}
 
 {% block scripts %}

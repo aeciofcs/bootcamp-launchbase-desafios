@@ -132,6 +132,10 @@ main {
     gap: 20px;
 }
 
+.recipe {
+    cursor: pointer;
+}
+
 footer {
     max-width: 100%;
     height: 62px;
