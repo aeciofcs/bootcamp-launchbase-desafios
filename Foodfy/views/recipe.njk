@@ -9,5 +9,9 @@
 {% endblock %}
 
 {% block main %}
-    <img src="" alt="">
+    <div class="wrapper-recipe">
+        <img src="{{recipe.image}}" alt="">
+        <h2>{{recipe.title}}</h2>
+        <h4>{{recipe.author}}</h4>
+    </div>    
 {% endblock %}
