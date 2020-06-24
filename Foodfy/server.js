@@ -24,7 +24,7 @@ server.get('/', (req, res)=>{
 server.get('/recipes/:index', (req,res) => {    
     const recipeIndex = req.params.index
     const recipe = dataRecipes[recipeIndex]
-    return res.send(recipe) //res.render('recipe', {recipe} )
+    return res.render('recipe', {recipe} ) //res.send(recipe) //
 })
 
 server.get('/recipes', (req,res) => {
