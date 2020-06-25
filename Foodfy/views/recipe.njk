@@ -8,6 +8,10 @@
     <a href="/"><img src="/assets/logo.png" alt="logo-foody"></a> 
 {% endblock %}
 
+{% block menulink %}
+<a href="/recipes" class="receitas">Receitas</a>
+{% endblock %}
+
 {% block main %}
 <main>
     <div class="wrapper-receita">
@@ -50,7 +54,11 @@
             <span>ESCONDER</span>
         </div>
         <div class="lista-ingredientes">
-            <p>{{ recipe.information }}</p>               
+            {% if recipe.information %}
+                <p>{{ recipe.information }}</p>
+            {% else %}
+                <p>{{ 'Não há informações adicionais para essa receita.' }}</p>                                
+            {% endif %}
         </div>       
     </div>
 

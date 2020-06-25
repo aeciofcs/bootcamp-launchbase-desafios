@@ -35,6 +35,7 @@ main {
     margin-top: 36.1px;
     margin-right: 122.4px;
 }
+
 .menu-img img{
     width: 90.6px;
     height: 26.9px;
@@ -102,7 +103,7 @@ main {
 .wrapper-recipes {
     max-width: 940px;
     margin: 0 auto;
-    margin-top: 50px;    
+    margin-top: 50px;
 }
 
 .wrapper-recipes img {
