@@ -2,7 +2,6 @@ const express     = require('express')
 const nunjucks    = require('nunjucks')
 const dataRecipes = require('./data') 
 
-//Instanciando o Servidor..
 const server   = express()
 
 //Informando ao servidor a pasta dos arquivos
@@ -10,7 +9,6 @@ const server   = express()
 //app.use('/static', express.static())
 server.use(express.static('public'))
 
-// Configurando Nunjucks.
 server.set('view engine', 'njk');
 nunjucks.configure('views', {
     express: server,

@@ -9,9 +9,50 @@
 {% endblock %}
 
 {% block main %}
-    <div class="wrapper-recipe">
+<main>
+    <div class="wrapper-receita">
         <img src="{{recipe.image}}" alt="">
         <h2>{{recipe.title}}</h2>
         <h4>{{recipe.author}}</h4>
-    </div>    
+    </div>
+
+    <div class="wrapper-ingredientes">
+        <div class="w-span">
+            <h2>Ingredientes</h2>
+            <span>ESCONDER</span>
+        </div>
+        <div class="lista-ingredientes">
+            <ul>
+                {% for ingrediente in recipe.ingredients %}
+                    <li>{{ingrediente}}</li>
+                {% endfor %}
+            </ul>
+        </div>       
+    </div>
+
+    <div class="wrapper-preparo">
+        <div class="w-span">
+            <h2>Modo de preparo</h2>
+            <span>ESCONDER</span>
+        </div>
+        <div class="lista-ingredientes">
+            <ul>
+                {% for preparo in recipe.preparation %}
+                    <li>{{preparo}}</li>
+                {% endfor %}
+            </ul>
+        </div>       
+    </div>
+
+    <div class="wrapper-informa">
+        <div class="w-span">
+            <h2>Informações adicionais</h2>
+            <span>ESCONDER</span>
+        </div>
+        <div class="lista-ingredientes">
+            <p>{{ recipe.information }}</p>               
+        </div>       
+    </div>
+
+</main>    
 {% endblock %}
