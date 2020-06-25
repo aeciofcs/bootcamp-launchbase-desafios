@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    {% block title %} PADRAO  {% endblock %}   
+    {% block head %} 
+        <title>Gym Manager</title>    
+    {% endblock %}
     
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-
-    {% block header  %}  {% endblock %}    
-    {% block content %}  {% endblock %}
+    <header>
+        <div class="links">
+            <a href="/">Instrutores</a>
+            <a href="/membros">Membros</a>
+        </div>
+    </header>    
+    
+    {% block content %}{% endblock content %}
 
 </body>
 </html>
