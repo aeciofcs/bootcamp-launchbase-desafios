@@ -315,3 +315,11 @@ footer h3 {
     margin-top: 20px;
     padding: 0;
 }
+
+/* deixando a listagem invisivel */
+.lista-ingredientes.invisible  {
+    opacity: 0;
+    visibility: hidden;
+    height: 1px;
+    width: 1px;
+}

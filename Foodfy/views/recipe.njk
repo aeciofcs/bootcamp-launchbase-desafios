@@ -20,10 +20,10 @@
         <h4>{{recipe.author}}</h4>
     </div>
 
-    <div class="wrapper-ingredientes">
+    <div class="wrapper-ingredientes" id="1">
         <div class="w-span">
             <h2>Ingredientes</h2>
-            <span>ESCONDER</span>
+            <span id=1>ESCONDER</span>
         </div>
         <div class="lista-ingredientes">
             <ul>
@@ -34,10 +34,10 @@
         </div>       
     </div>
 
-    <div class="wrapper-preparo">
+    <div class="wrapper-preparo" id="2">
         <div class="w-span">
             <h2>Modo de preparo</h2>
-            <span>ESCONDER</span>
+            <span id=2>ESCONDER</span>
         </div>
         <div class="lista-ingredientes">
             <ul>
@@ -48,10 +48,10 @@
         </div>       
     </div>
 
-    <div class="wrapper-informa">
+    <div class="wrapper-informa" id="3">
         <div class="w-span">
             <h2>Informações adicionais</h2>
-            <span>ESCONDER</span>
+            <span id=3>ESCONDER</span>
         </div>
         <div class="lista-ingredientes">
             {% if recipe.information %}
@@ -63,4 +63,8 @@
     </div>
 
 </main>    
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/scripts.js"></script>
 {% endblock %}
