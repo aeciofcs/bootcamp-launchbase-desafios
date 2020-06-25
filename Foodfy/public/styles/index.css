@@ -244,11 +244,6 @@ footer h3 {
     /*height: 400px;*/
 }
 
-.wrapper-preparo,
-.wrapper-informa {
-    margin-top: 39px;
-}
-
 .wrapper-receita {    
     margin-top: 56px;
 }
@@ -274,39 +269,48 @@ footer h3 {
     margin-top: 4px;
 }
 
-.wrapper-ingredientes h2,
-.wrapper-preparo h2 {
+.wrapper-ingredientes {
     margin-top: 50px;
+}
+
+.wrapper-ingredientes .w-span,
+.wrapper-preparo .w-span,
+.wrapper-informa .w-span {
+    width: 350px;    
+    display: flex;
+}
+
+.wrapper-ingredientes h2,
+.wrapper-preparo h2,
+.wrapper-informa h2 {    
     font-family: Roboto-Bold, sans-serif;
     font-size: 24px;
     color: #111111;
 }
 
-.wrapper-ingredientes .w-span,
-.wrapper-preparo .w-span {
-    width: 210px;
-    height: 30px;
-    display: flex;
-}
-
 .wrapper-ingredientes span,
-.wrapper-preparo span {
+.wrapper-preparo span,
+.wrapper-informa span {
     font-family: Roboto-Bold, sans-serif;
     font-size: 12px;
     color: #999999;
-    margin-top: 60px;
+    margin-top: 10px;
     margin-left: 8px;
     cursor: pointer;
 }
 
 .wrapper-ingredientes .lista-ingredientes,
-.wrapper-preparo .lista-ingredientes {
-    width: 940px;
-    height: 196px;
-    margin-top: 40px;
+.wrapper-preparo .lista-ingredientes,
+.wrapper-informa .lista-ingredientes {
+    width: 940px;    
     font-family: Roboto-Regular, sans-serif;
     font-size: 18px;
     color: #444444;
     line-height: 28px;
     padding: 20px;
+}
+
+.wrapper-informa .lista-ingredientes {
+    margin-top: 20px;
+    padding: 0;
 }
