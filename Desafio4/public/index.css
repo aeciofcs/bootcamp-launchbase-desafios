@@ -64,3 +64,7 @@ header {
     transition: width 700ms ease-in-out;
     /*transition: width 700ms cubic-bezier(0, 0.04, 0.45,-0.19);*/
 }
+
+#wrapper {
+    font-size: 50px;
+}
