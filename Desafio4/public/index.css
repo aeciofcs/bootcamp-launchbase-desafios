@@ -65,6 +65,36 @@ header {
     /*transition: width 700ms cubic-bezier(0, 0.04, 0.45,-0.19);*/
 }
 
-#wrapper {
-    font-size: 50px;
+/* ### CARD ### */
+.card {
+    background-color: white;
+    
+    /* largura e altura. largura é obrigatorio para alinhar ao meio*/
+    width: 800px;
+    height: 400px;
+    
+    /* Espacamento e alinhamento ao centro*/
+    margin: 30px auto;
+    
+    /* Cartão dividido ao meio. */
+    display: grid;    
+    grid-template-columns: 40% 60%;
+
+    /* Sombra */
+    box-shadow: 0px 5px 10px -2px #7159c1;
+
+    /* Animação */    
+    animation: card-teachers 1200ms ease;
 }
+
+@keyframes card-teachers {
+    from {
+        opacity: 0;
+        transform: translateX(800px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
