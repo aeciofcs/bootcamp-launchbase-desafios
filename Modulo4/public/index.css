@@ -71,3 +71,81 @@ header {
     transition: width 700ms ease-in-out;
     /*transition: width 700ms cubic-bezier(0, 0.04, 0.45,-0.19);*/
 }
+
+.card{
+    background-color: white;
+    width: 800px;
+    min-height: 400px; /* Altura forçada, altura minima de 400px, pode ter ser travada devido ao padding do item no details */
+    margin: 45px auto;
+    
+    /* Dividir o cartão em 2*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* Sombra */
+    box-shadow: 0px 2px 6px -2px black;
+
+    /* Animação */
+    animation: up 1200ms ease-out;    
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Details - Detalhes do cartão */
+.details {
+    padding: 32px;
+}
+
+.details .item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+
+/* Retira a borda do ultimo elemento na div com classe details */
+.details .item:last-child {
+    border: none;
+}
+
+/* Pega a primeira div dentro da div de classe details e div classe item 
+   pegou a div do nome do campo. */
+.details h3,
+.details .item div:nth-child(1) {
+    font-size: 14px;
+    line-height: 24px;
+    color: #777;
+    letter-spacing: 0.7px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2) {
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.details h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-rocket);
+}
+
+.details .item div:nth-child(2) span {
+    padding: 8px 16px;
+    background-color: #f7df1e; /* com secundaria */
+    border-radius: 16px;
+    color: #777;
+    margin-right: 4px;
+    margin-top: 8px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}

@@ -10,9 +10,10 @@ server.use(routes)
 server.set('view engine', 'njk');
 nunjucks.configure('views', {
     express: server,
-    autoescape: false
+    autoescape: false,
+    noCache: true
 });
 
 server.listen(3000, ()=>{
-    console.log('Server is Running...')
+    console.log('Server is Running... Port 3000')
 });
