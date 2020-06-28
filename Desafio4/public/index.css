@@ -70,8 +70,9 @@ header {
     background-color: white;
     
     /* largura e altura. largura é obrigatorio para alinhar ao meio*/
-    width: 800px;
-    height: 400px;
+    width: 830px;
+    min-height: 300px; /* A altura terá que ser dinamica, por isso colocamos o minimo de 400px.
+    Há um padding no item e com altura estática, não respeita os limites do card.  */
     
     /* Espacamento e alinhamento ao centro*/
     margin: 30px auto;
@@ -98,3 +99,50 @@ header {
     }
 }
 
+.details {
+    padding: 25px;
+    /*
+    border: 2px solid var(--color-rocket);
+    border-radius: 15px;*/
+}
+
+.details .item {
+    border-top: 2px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+
+/*.details .item:first-of-type*/
+.details :first-child {
+    border: none;
+}
+
+.details .item div:nth-child(1) {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-rocket);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2) {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.details .item span {
+    padding: 8px 16px;
+    background-color: #e7e40e;
+    border-radius: 16px;
+    color: #777;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.details .item:nth-child(6) div:nth-child(2) {
+    border: 1px solid #66AFE9;
+	border-radius: 5px;
+    box-shadow: 1 1 8px rgba(102,175,233,.6);
+    width: max-content;
+}
