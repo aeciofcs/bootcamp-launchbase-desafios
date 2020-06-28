@@ -149,3 +149,36 @@ header {
     text-transform: uppercase;
     font-size: 12px;
 }
+
+
+/* ESTILIZAÇÃO DO FORMULARIO DE CADASTRO DO INSTRUTOR */
+form input {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+form input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+form button[type="submit"] {
+    padding: 8px 32px;
+    background-color: var(--color-rocket);
+    border-radius: 4px;
+    color: white;
+    margin-top: 32px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
