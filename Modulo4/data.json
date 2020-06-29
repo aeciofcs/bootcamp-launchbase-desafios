@@ -38,6 +38,15 @@
       "services": "ZUMBA,AEROBICA,MUSCULAÇÃO",
       "created_at": 1593370668388,
       "id": 5
+    },
+    {
+      "id": 6,
+      "avatar_url": "HTTP://GOOGLE.COM.BR",
+      "name": "Aecio Flavio Cruz da Silva",
+      "birth": 414979200000,
+      "gender": "M",
+      "services": "futebol,xadrez",
+      "created_at": 1593458830383
     }
   ]
 }
