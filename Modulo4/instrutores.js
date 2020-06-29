@@ -1,5 +1,7 @@
-const fs   = require('fs')
-const data = require('./data.json') 
+const fs      = require('fs')
+const data    = require('./data.json')
+const intl    = require('intl')
+const { age } = require('./Utils')
 
 exports.post = (request, response) => {
     
@@ -32,9 +34,6 @@ exports.post = (request, response) => {
         if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
         return response.redirect('/instrutores')
     })
-
-    //return response.send(keys)
-    //return response.send('Informações Recebidas')
 }
 
 exports.show = (request,response) => {
@@ -44,16 +43,13 @@ exports.show = (request,response) => {
     })
 
     if(!foundInstrutores) return response.send('Instrutor não encontrado.')
-
+        
     const instrutor = {
         ...foundInstrutores,
-        age: "",
-        /*gender: "",*/ //Feito no Front-End
-        services: foundInstrutores.services.split(","),
-        created_at: ""
+        age       : age(foundInstrutores.birth),        
+        services  : foundInstrutores.services.split(","),
+        created_at: intl.DateTimeFormat("pt-BR").format(foundInstrutores.created_at)
     }
-
-       
 
     return response.render('instrutores/show', {Instrutores: instrutor})
 }

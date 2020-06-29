@@ -22,7 +22,7 @@
 
             <div class="item">
                 <div>Sexo</div>
-                <div>{{Instrutores.gender}}</div>
+                <div>{{'Masculino' if Instrutores.gender == 'M' else 'Feminino'}}</div>
             </div>
 
             <div class="item">
@@ -38,6 +38,8 @@
                 <div>Cadastrado em:</div>
                 <div>{{Instrutores.created_at}}</div>
             </div>
+
+            <a href="#" class="button">Editar</a>
 
         </section>
 
