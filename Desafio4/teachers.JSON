@@ -1,0 +1,24 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "avatar_url": "HTTP://GOOGLE.COM.BR",
+      "name": "Aecio Flavio Cruz da Silva",
+      "birth": 414979200000,
+      "schooling": "higher",
+      "typeclass": "P",
+      "acting": "Cálculo I, Cálculo II, Algebra, Fisica",
+      "created_at": 1593454045006
+    },
+    {
+      "id": 2,
+      "avatar_url": "HTTPS://WWW.TRIBUNADONORTE.COM.BR",
+      "name": "Ana Cristina Bezerra da Cruz",
+      "birth": -184118400000,
+      "schooling": "medium",
+      "typeclass": "D",
+      "acting": "ESPORTES,ECONOMIA,POLITICA",
+      "created_at": 1593454070822
+    }
+  ]
+}

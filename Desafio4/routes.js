@@ -1,5 +1,6 @@
 const express = require('express')
 const router  = express.Router()
+const teachers = require('./teachers')
 
 router.get('/', (request, response) => {
     return response.render('index')
@@ -13,9 +14,7 @@ router.get('/teachers/create', (request, response) => {
     return response.render('teachers/create')
 })
 
-router.post('/teachers', (request, response) => {
-    return response.send('DADOS DO PROFESSOR RECEBIDO !')
-})
+router.post('/teachers', teachers.post)
 
 router.get('/students', (request, response) => {
     return response.render('students/index')

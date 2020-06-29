@@ -1,9 +1,11 @@
-const express  = require('express')
-const nunjucks = require('nunjucks')
-const routes   = require('./routes')
+const express         = require('express')
+const nunjucks        = require('nunjucks')
+const routes          = require('./routes')
 
-const server = express()
+const PORT_CONNECTION = 3000
+const server          = express()
 
+server.use(express.urlencoded( {extended: true} ));
 server.use(express.static('public'))
 server.use(routes)
 
@@ -18,6 +20,6 @@ server.use(function(req, res) {
     return res.status(404).render("not-found")
 })
 
-server.listen(3000, ()=>{
-    console.log('Server is Running... port 3000')
+server.listen(PORT_CONNECTION, ()=>{
+    console.log(`Server is Running! => Port ${PORT_CONNECTION}`)
 })

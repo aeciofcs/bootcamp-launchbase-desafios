@@ -100,7 +100,7 @@ header {
 }
 
 .details {
-    padding: 25px;
+    padding: 15px 25px;
     /*
     border: 2px solid var(--color-rocket);
     border-radius: 15px;*/
@@ -140,9 +140,48 @@ header {
     display: inline-block;
 }
 
+/*
 .details .item:nth-child(6) div:nth-child(2) {
     border: 1px solid #66AFE9;
 	border-radius: 5px;
     box-shadow: 1 1 8px rgba(102,175,233,.6);
     width: max-content;
+}*/
+
+/* ### FORM DO CADASTRO DE TEACHERS ### */
+
+form input,
+form select {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+form input[type="radio"]{
+    width: initial;
+    margin-right: 4px;
+}
+
+form :nth-child(3) input {
+    width: max-content;
+    padding: 2px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+    font-weight: bold; 
+}
+
+form button {
+    background-color: var(--color-rocket);
+    width: 100%;
+    padding: 8px 32px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }

@@ -3,22 +3,22 @@
 {% block header %}
     <header>
         <div class="links">            
-            <a href="teachers">Teachers</a>
-            <a href="students">Students</a>
+            <a href="/teachers">Teachers</a>
+            <a href="/students">Students</a>
             <a href="/">HOME</a>
         </div>
     </header>
 {% endblock %}
 
 {% block content %}  
-    <form class="card" method="POST" action="/teachers/create">
+    <form class="card" method="POST" action="/teachers">
         <section class="image" style="background: url(https://source.unsplash.com/collection/10553730/500x500) no-repeat center center / cover"></section>
         <section class="details">
                         
             <div class="item">
                 <div>Avatar URL</div>
                 <div> 
-                    <input type="url" name="avatar_url" placeholder="HTTPS://">
+                    <input type="url" name="avatar_url" placeholder="HTTPS://www.MeuAvatar.com.br">
                 </div>
             </div>
             
@@ -51,18 +51,18 @@
             <div class="item">
                 <div>Tipo de Aula</div>
                 <div>
-                    <span><input type="radio" name="presential" value="presential">Presencial</span>
-                    <span><input type="radio" name="distance" value="distance">À Distância</span>
+                    <span><input type="radio" name="typeclass" value="P" checked>Presencial</span>
+                    <span><input type="radio" name="typeclass" value="D">À Distância</span>
                 </div>
             </div>
 
             <div class="item">
                 <div>Área de atuação</div>
                 <div>
-                    <input type="text" name="subjects" placeholder="Digite as matérias entre vírgulas..">
+                    <input type="text" name="acting" placeholder="Digite as matérias entre vírgulas..">
                 </div>
             </div>
-            
+                        
             <button type="submit">Salvar</button>
 
         </section>
