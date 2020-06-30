@@ -1,5 +1,7 @@
-const fs   = require('fs')
-const data = require('./teachers.json')
+const fs                = require('fs')
+const data              = require('./teachers.json')
+const {age, graduation} = require('./Utils')
+const Intl              = require('intl')
 
 exports.post = (request, response) => {
 
@@ -33,4 +35,23 @@ exports.post = (request, response) => {
     })
 
     //return response.send(keys)
+}
+
+exports.show = (request, response) => {
+    const id            = request.params.id
+    const foundTeachers = data.teachers.find( (teacher) => {
+        return teacher.id == id
+    })
+
+    if (!foundTeachers) return response.send(`Teacher ${id} not found.`)
+
+    const teacher = {
+        ...foundTeachers,
+        age: age(foundTeachers.birth),
+        schooling: graduation(foundTeachers.schooling),
+        actings: foundTeachers.acting.split(","),
+        created_at: Intl.DateTimeFormat('pt-BR').format(foundTeachers.created_at)
+    }
+
+    return response.render('teachers/show', { teacher })
 }

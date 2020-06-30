@@ -14,6 +14,8 @@ router.get('/teachers/create', (request, response) => {
     return response.render('teachers/create')
 })
 
+router.get('/teachers/:id', teachers.show)
+
 router.post('/teachers', teachers.post)
 
 router.get('/students', (request, response) => {

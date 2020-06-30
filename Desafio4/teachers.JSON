@@ -5,7 +5,7 @@
       "avatar_url": "HTTP://GOOGLE.COM.BR",
       "name": "Aecio Flavio Cruz da Silva",
       "birth": 414979200000,
-      "schooling": "higher",
+      "schooling": "doctorate_degree",
       "typeclass": "P",
       "acting": "Cálculo I, Cálculo II, Algebra, Fisica",
       "created_at": 1593454045006
@@ -19,6 +19,16 @@
       "typeclass": "D",
       "acting": "ESPORTES,ECONOMIA,POLITICA",
       "created_at": 1593454070822
+    },
+    {
+      "id": 3,
+      "avatar_url": "https://www.annyvitoria.com.br",
+      "name": "Anny Vitoria Nunes da Cruz",
+      "birth": 1277856000000,
+      "schooling": "medium",
+      "typeclass": "P",
+      "acting": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "created_at": 1593538484645
     }
   ]
 }
