@@ -18,6 +18,8 @@ router.get('/instrutores/:id', instrutores.show)
 
 router.get('/instrutores/:id/edit', instrutores.edit)
 
+router.put('/instrutores', instrutores.put)
+
 router.post('/instrutores', instrutores.post)
 
 router.get('/membros', (request, response) => {

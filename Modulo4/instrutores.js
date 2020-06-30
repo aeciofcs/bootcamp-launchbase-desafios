@@ -69,3 +69,26 @@ exports.edit = (request, response) => {
 
     return response.render('instrutores/edit', { Instrutor })
 }
+
+exports.put = (request, response) => {
+    const { id } = request.body
+    let index    = 0
+    console.log(id)
+    const foundInstrutor = data.instrutores.find((instrutor, foundIndex)=>{
+        if ( instrutor.id == id ){
+            index = foundIndex
+            return true
+        }
+    })
+    if(!foundInstrutor) return response.send('Instrutor not found')
+    const Instrutor = {
+        ...foundInstrutor,
+        ...request.body,
+        birth: Date.parse(request.body.birth)
+    }
+    data.instrutores[index] = Instrutor
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
+        if(err) return response.send('Erro na gravação do DATA.JSON')
+        return response.redirect(`/instrutores/${id}`)
+    })
+}

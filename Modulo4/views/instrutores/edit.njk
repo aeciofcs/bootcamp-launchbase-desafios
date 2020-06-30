@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-    <form class="card" method="POST" action="/instrutores">
+    <form class="card" method="POST" action="/instrutores?_method=PUT">
         <section 
             class="avatar"
             style="background: url(https://source.unsplash.com/collection/3465564/500x500) no-repeat center center / cover">
@@ -11,6 +11,7 @@
             <h3>Editar Instrutor</h3>
 
             {% include 'instrutores/fields.njk' %}
+            <input type="hidden" name="id" value={{Instrutor.id}}>
 
         </section>
     </form>

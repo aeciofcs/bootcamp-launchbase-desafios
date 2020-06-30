@@ -1,12 +1,14 @@
-const express      = require('express');
-const nunjucks     = require('nunjucks');
-const routes       = require('./routes')
+const express         = require('express');
+const nunjucks        = require('nunjucks');
+const routes          = require('./routes')
+const methodOverrride = require('method-override') 
 
 const server       = express();
 const PORT_CONNECT = 3000;
 
 server.use(express.urlencoded( {extended: true} ));
 server.use(express.static('public'));
+server.use(methodOverrride('_method'))
 server.use(routes)
 
 server.set('view engine', 'njk');
