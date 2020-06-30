@@ -191,3 +191,7 @@ a.button {
     text-decoration: none;
 
 }
+
+form button[type="submit"] {
+    cursor: pointer;
+}
