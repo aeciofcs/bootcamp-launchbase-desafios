@@ -1,7 +1,7 @@
-const fs      = require('fs')
-const data    = require('./data.json')
-const intl    = require('intl')
-const { age } = require('./Utils')
+const fs                  = require('fs')
+const data                = require('./data.json')
+const intl                = require('intl')
+const { age, formatDate } = require('./Utils')
 
 exports.post = (request, response) => {
     
@@ -62,5 +62,10 @@ exports.edit = (request, response) => {
 
     if(!foundInstrutores) return response.send('Instrutor não encontrado.')
 
-    return response.render('instrutores/edit', { Instrutor: foundInstrutores })
+    const Instrutor = {
+        ...foundInstrutores,
+        birth: formatDate(foundInstrutores.birth)
+    }
+
+    return response.render('instrutores/edit', { Instrutor })
 }
