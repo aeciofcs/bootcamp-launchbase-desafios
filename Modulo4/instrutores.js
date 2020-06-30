@@ -53,3 +53,14 @@ exports.show = (request,response) => {
 
     return response.render('instrutores/show', {Instrutores: instrutor})
 }
+
+exports.edit = (request, response) => {
+    const { id } = request.params
+    const foundInstrutores = data.instrutores.find((instrutor)=>{
+        return instrutor.id == id 
+    })
+
+    if(!foundInstrutores) return response.send('Instrutor não encontrado.')
+
+    return response.render('instrutores/edit', { Instrutor: foundInstrutores })
+}
