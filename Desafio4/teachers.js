@@ -1,7 +1,7 @@
-const fs                = require('fs')
-const data              = require('./teachers.json')
-const {age, graduation} = require('./Utils')
-const Intl              = require('intl')
+const fs                      = require('fs')
+const data                    = require('./teachers.json')
+const {age, graduation, date} = require('./Utils')
+const Intl                    = require('intl')
 
 exports.post = (request, response) => {
 
@@ -54,4 +54,20 @@ exports.show = (request, response) => {
     }
 
     return response.render('teachers/show', { teacher })
+}
+
+exports.edit = (request, response) => {
+    const id            = request.params.id
+    const foundTeachers = data.teachers.find( (teacher) => {
+        return teacher.id == id
+    })
+
+    if (!foundTeachers) return response.send(`Teacher ${id} not found.`)
+
+    const teacher = {
+        ...foundTeachers,
+        birth: date(foundTeachers.birth)
+    }
+
+    return response.render('teachers/edit', { teacher })
 }

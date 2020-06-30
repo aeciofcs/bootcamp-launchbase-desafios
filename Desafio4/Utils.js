@@ -25,5 +25,12 @@ module.exports = {
             age = age - 1
         }
         return age
+    },
+    date: (timestamp) => {
+        const newDate = new Date(timestamp)
+        const month   = `0${newDate.getUTCMonth() + 1}`.slice(-2)
+        const day     = `0${newDate.getUTCDate()}`.slice(-2)
+        
+        return `${newDate.getUTCFullYear()}-${month}-${day}`
     }
 }

@@ -1,5 +1,5 @@
-const express = require('express')
-const router  = express.Router()
+const express  = require('express')
+const router   = express.Router()
 const teachers = require('./teachers')
 
 router.get('/', (request, response) => {
@@ -15,6 +15,8 @@ router.get('/teachers/create', (request, response) => {
 })
 
 router.get('/teachers/:id', teachers.show)
+
+router.get('/teachers/:id/edit', teachers.edit)
 
 router.post('/teachers', teachers.post)
 

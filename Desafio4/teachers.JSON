@@ -2,7 +2,7 @@
   "teachers": [
     {
       "id": 1,
-      "avatar_url": "HTTP://GOOGLE.COM.BR",
+      "avatar_url": "HTTP://WWW.AECIO-SILVA.COM.BR",
       "name": "Aecio Flavio Cruz da Silva",
       "birth": 414979200000,
       "schooling": "doctorate_degree",
@@ -12,10 +12,10 @@
     },
     {
       "id": 2,
-      "avatar_url": "HTTPS://WWW.TRIBUNADONORTE.COM.BR",
+      "avatar_url": "HTTPS://WWW.ANA-CRISTINA.COM.BR",
       "name": "Ana Cristina Bezerra da Cruz",
       "birth": -184118400000,
-      "schooling": "medium",
+      "schooling": "masters",
       "typeclass": "D",
       "acting": "ESPORTES,ECONOMIA,POLITICA",
       "created_at": 1593454070822
@@ -29,6 +29,16 @@
       "typeclass": "P",
       "acting": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "created_at": 1593538484645
+    },
+    {
+      "id": 4,
+      "avatar_url": "HTTP://WWW.AECIO-SILVA.COM.BR",
+      "name": "Aecio Flavio Cruz da Silva",
+      "birth": 414979200000,
+      "schooling": "masters",
+      "typeclass": "P",
+      "acting": "Cálculo I, Cálculo II, Algebra, Fisica, ALGEBRA",
+      "created_at": 1593541435633
     }
   ]
 }
