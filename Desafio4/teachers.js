@@ -103,7 +103,17 @@ exports.update = (request, response) => {
 }
 
 exports.delete = (request, response) => {
-    //Deletar o Teacher.
+    const {id} = request.body
 
-    return response.send('Teacher deleted !')
+    const teachersFiltered = data.teachers.filter( (teacher) => {
+        return teacher.id != id
+    } )
+
+    data.teachers = teachersFiltered
+
+    fs.writeFile("teachers.JSON", JSON.stringify(data, null, 2), (err) => {
+        if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
+    })
+
+    return response.redirect('/teachers')
 }

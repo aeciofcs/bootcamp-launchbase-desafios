@@ -203,3 +203,8 @@ form button[type="submit"] {
     margin-top: 5px; 
     background-color: red;
 }
+
+#form-delete button[type="submit"] {
+    margin-top: 5px;
+    background-color: #3d6d38ef;
+}
