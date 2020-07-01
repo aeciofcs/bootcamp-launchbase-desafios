@@ -22,6 +22,8 @@ router.post('/teachers', teachers.post)
 
 router.put('/teachers', teachers.update) //No arquivo de confg do Server, colocar a configuração do method override.
 
+router.delete('/teachers/:id', teachers.delete)
+
 router.get('/students', (request, response) => {
     return response.render('students/index')
 })

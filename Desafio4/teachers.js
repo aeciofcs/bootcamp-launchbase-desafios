@@ -101,3 +101,9 @@ exports.update = (request, response) => {
 
     return response.redirect(`teachers/${id}`)
 }
+
+exports.delete = (request, response) => {
+    //Deletar o Teacher.
+
+    return response.send('Teacher deleted !')
+}

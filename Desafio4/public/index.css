@@ -198,3 +198,8 @@ a.button {
 form button[type="submit"] {
     cursor: pointer;
 }
+
+.details a:nth-child(8) {
+    margin-top: 5px; 
+    background-color: red;
+}
