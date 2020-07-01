@@ -5,9 +5,9 @@
       "avatar_url": "HTTP://WWW.AECIO-SILVA.COM.BR",
       "name": "Aecio Flavio Cruz da Silva",
       "birth": 414979200000,
-      "schooling": "doctorate_degree",
+      "schooling": "masters",
       "typeclass": "P",
-      "acting": "Cálculo I, Cálculo II, Algebra, Fisica",
+      "acting": "Cálculo I, Cálculo II, Algebra, Fisica, ALGEBRA",
       "created_at": 1593454045006
     },
     {
@@ -29,16 +29,6 @@
       "typeclass": "P",
       "acting": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "created_at": 1593538484645
-    },
-    {
-      "id": 4,
-      "avatar_url": "HTTP://WWW.AECIO-SILVA.COM.BR",
-      "name": "Aecio Flavio Cruz da Silva",
-      "birth": 414979200000,
-      "schooling": "masters",
-      "typeclass": "P",
-      "acting": "Cálculo I, Cálculo II, Algebra, Fisica, ALGEBRA",
-      "created_at": 1593541435633
     }
   ]
 }

@@ -20,6 +20,8 @@ router.get('/teachers/:id/edit', teachers.edit)
 
 router.post('/teachers', teachers.post)
 
+router.put('/teachers', teachers.update) //No arquivo de confg do Server, colocar a configuração do method override.
+
 router.get('/students', (request, response) => {
     return response.render('students/index')
 })

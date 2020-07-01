@@ -71,3 +71,33 @@ exports.edit = (request, response) => {
 
     return response.render('teachers/edit', { teacher })
 }
+
+exports.update = (request, response) => {
+    const {id}     = request.body
+    let index      = 0
+
+    const foundTeacher = data.teachers.find((teacher, indexTeacher)=>{
+        if (teacher.id == id){
+            index = indexTeacher
+            return true
+        }
+    })
+    //console.log(index, request.body.id)
+    console.log(request.body.id)
+    if (!foundTeacher) return response.send('Teacher not found for edit')
+
+    const teacher = {
+        ...foundTeacher,
+        ...request.body,
+        id: Number(id),
+        birth: Date.parse(request.body.birth)
+    }
+    
+    data.teachers[index] = teacher
+
+    fs.writeFile("teachers.JSON", JSON.stringify(data, null, 2), (err)=>{
+        if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
+    })
+
+    return response.redirect(`teachers/${id}`)
+}

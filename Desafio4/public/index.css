@@ -175,7 +175,8 @@ form input::placeholder {
     font-weight: bold; 
 }
 
-form button {
+form button,
+a.button {
     background-color: var(--color-rocket);
     width: 100%;
     padding: 8px 32px;
@@ -185,4 +186,15 @@ form button {
     color: white;
     letter-spacing: 5px;
     text-transform: uppercase;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+form button[type="submit"] {
+    cursor: pointer;
 }
