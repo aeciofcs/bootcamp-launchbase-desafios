@@ -22,6 +22,8 @@ router.put('/instrutores', instrutores.put)
 
 router.post('/instrutores', instrutores.post)
 
+router.delete('/instrutores', instrutores.delete)
+
 router.get('/membros', (request, response) => {
     return response.send('membros')
 })

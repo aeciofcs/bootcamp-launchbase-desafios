@@ -17,24 +17,6 @@
       "gender": "F",
       "services": "ZUMBA",
       "created_at": 1593467612327
-    },
-    {
-      "id": 3,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "AECIO SILVA",
-      "birth": 414979200000,
-      "gender": "M",
-      "services": "MUSCULAÇÃO,CROSSFIT",
-      "created_at": 1593543592057
-    },
-    {
-      "id": 4,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "AECIO SILVA",
-      "birth": 414979200000,
-      "gender": "M",
-      "services": "MUSCULAÇÃO,CROSSFIT",
-      "created_at": 1593543827972
     }
   ]
 }

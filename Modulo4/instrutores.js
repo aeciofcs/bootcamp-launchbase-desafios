@@ -88,7 +88,19 @@ exports.put = (request, response) => {
     }
     data.instrutores[index] = Instrutor
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
-        if(err) return response.send('Erro na gravação do DATA.JSON')
+        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
         return response.redirect(`/instrutores/${id}`)
     })
+}
+
+exports.delete = (request,response) =>{
+    const {id}                 = request.body
+    const instrutoresFiltrados = data.instrutores.filter( (instrutor) => {
+        return instrutor.id != id
+    })
+    data.instrutores = instrutoresFiltrados
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
+        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
+    })
+    return response.redirect('/instrutores')
 }
