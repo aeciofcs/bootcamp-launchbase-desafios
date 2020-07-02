@@ -6,9 +6,7 @@ router.get('/', (request, response) => {
     return response.redirect('instrutores')
 })
 
-router.get('/instrutores', (request, response) => {
-    return response.render('instrutores/index')
-})
+router.get('/instrutores', instrutores.index)
 
 router.get('/instrutores/create', (request, response) => {
     return response.render('instrutores/create')

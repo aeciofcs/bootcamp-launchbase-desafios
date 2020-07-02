@@ -3,6 +3,10 @@ const data                = require('./data.json')
 const intl                = require('intl')
 const { age, formatDate } = require('./Utils')
 
+exports.index = (request, response) => {
+    return response.render('instrutores/index', {Instrutores: data.instrutores})
+}
+
 exports.post = (request, response) => {
     
     // Pega todas as keys do request.body
