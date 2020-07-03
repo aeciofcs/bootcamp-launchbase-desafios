@@ -13,7 +13,9 @@
             <tbody>
                 {% for Instrutor in Instrutores %}
                 <tr>
-                    <td>{{Instrutor.name}}</td>
+                    
+                    <td><span style="background-image: url({{Instrutor.avatar_url}})"></span>
+                        {{Instrutor.name}}</td>
                     <td>{{Instrutor.services}}</td>
                     <td><a href="/instrutores/{{Instrutor.id}}">Ver</a></td>
                 </tr>

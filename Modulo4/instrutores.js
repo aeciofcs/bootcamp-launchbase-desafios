@@ -88,12 +88,13 @@ exports.put = (request, response) => {
     const Instrutor = {
         ...foundInstrutor,
         ...request.body,
+        id: Number(request.body.id),
         birth: Date.parse(request.body.birth)
     }
     data.instrutores[index] = Instrutor
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
-        return response.redirect(`/instrutores/${id}`)
+        return response.redirect(`/instrutores`)
     })
 }
 
