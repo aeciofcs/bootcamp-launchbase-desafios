@@ -1,10 +1,14 @@
 const fs                  = require('fs')
-const data                = require('./data.json')
+const data                = require('../data.json')
 const intl                = require('intl')
-const { age, formatDate } = require('./Utils')
+const { age, formatDate } = require('../Utils')
 
 exports.index = (request, response) => {
-    return response.render('instrutores/index', {Instrutores: data.instrutores})
+    return response.render('members/index', {membros: data.members})
+}
+
+exports.create = (request, response) => {
+    return response.render('members/create')
 }
 
 exports.post = (request, response) => {
@@ -20,11 +24,11 @@ exports.post = (request, response) => {
     
     let {avatar_url, name, birth, gender, services} = request.body
 
-    const id         = Number(data.instrutores.length + 1)
+    const id         = Number(data.members.length + 1)
     const created_at = Date.now()
     birth            = Date.parse(birth)
     
-    data.instrutores.push({
+    data.members.push({
         id,
         avatar_url,
         name,
@@ -36,76 +40,73 @@ exports.post = (request, response) => {
 
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
-        return response.redirect('/instrutores')
+        return response.redirect('/members')
     })
 }
 
 exports.show = (request,response) => {
     const { id } = request.params
-    const foundInstrutores = data.instrutores.find((instrutor)=>{
-        return instrutor.id == id 
+    const foundMembros = data.members.find((membro)=>{
+        return membro.id == id 
     })
 
-    if(!foundInstrutores) return response.send('Instrutor não encontrado.')
+    if(!foundMembros) return response.send('Membro não encontrado.')
         
-    const instrutor = {
-        ...foundInstrutores,
-        age       : age(foundInstrutores.birth),        
-        services  : foundInstrutores.services.split(","),
-        created_at: intl.DateTimeFormat("pt-BR").format(foundInstrutores.created_at)
+    const membro = {
+        ...foundMembros,
+        age       : age(foundMembros.birth)
     }
 
-    return response.render('instrutores/show', {Instrutores: instrutor})
+    return response.render('members/show', {membros: membro})
 }
 
 exports.edit = (request, response) => {
     const { id } = request.params
-    const foundInstrutores = data.instrutores.find((instrutor)=>{
-        return instrutor.id == id 
+    const foundMembros = data.members.find((membro)=>{
+        return membro.id == id 
     })
 
-    if(!foundInstrutores) return response.send('Instrutor não encontrado.')
+    if(!foundMembros) return response.send('Membro não encontrado.')
 
-    const Instrutor = {
-        ...foundInstrutores,
-        birth: formatDate(foundInstrutores.birth)
+    const membro = {
+        ...foundMembros,
+        birth: formatDate(foundMembros.birth)
     }
 
-    return response.render('instrutores/edit', { Instrutor })
+    return response.render('members/edit', { membro })
 }
 
 exports.put = (request, response) => {
     const { id } = request.body
-    let index    = 0
-    console.log(id)
-    const foundInstrutor = data.instrutores.find((instrutor, foundIndex)=>{
-        if ( instrutor.id == id ){
+    let index    = 0    
+    const foundMembro = data.members.find((membro, foundIndex)=>{
+        if ( membro.id == id ){
             index = foundIndex
             return true
         }
     })
-    if(!foundInstrutor) return response.send('Instrutor not found')
-    const Instrutor = {
-        ...foundInstrutor,
+    if(!foundMembro) return response.send('Membro not found')
+    const membro = {
+        ...foundMembro,
         ...request.body,
         id: Number(request.body.id),
         birth: Date.parse(request.body.birth)
     }
-    data.instrutores[index] = Instrutor
+    data.members[index] = membro
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
-        return response.redirect(`/instrutores`)
+        return response.redirect(`/members`)
     })
 }
 
 exports.delete = (request,response) =>{
     const {id}                 = request.body
-    const instrutoresFiltrados = data.instrutores.filter( (instrutor) => {
-        return instrutor.id != id
+    const membersFiltrados = data.members.filter( (membro) => {
+        return membro.id != id
     })
-    data.instrutores = instrutoresFiltrados
+    data.members = membersFiltrados
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
-    return response.redirect('/instrutores')
+    return response.redirect('/members')
 }
