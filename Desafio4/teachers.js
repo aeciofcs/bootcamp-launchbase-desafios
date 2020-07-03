@@ -4,7 +4,15 @@ const {age, graduation, date} = require('./Utils')
 const Intl                    = require('intl')
 
 exports.index = (request, response) => {
-    return response.render('teachers/index')
+
+    const teachersList = data.teachers.map( (teacher)=>{
+        return {
+            ...teacher,
+            acting: teacher.acting.split(",")
+        }        
+    } )
+    console.log(teachersList[0].acting)
+    return response.render('teachers/index', {teachers: teachersList})
 }
 
 exports.create = (request, response) => {
@@ -41,8 +49,6 @@ exports.post = (request, response) => {
         if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
         return response.redirect('/teachers')
     })
-
-    //return response.send(keys)
 }
 
 exports.show = (request, response) => {
@@ -90,7 +96,7 @@ exports.update = (request, response) => {
             return true
         }
     })
-    //console.log(index, request.body.id)
+    
     console.log(request.body.id)
     if (!foundTeacher) return response.send('Teacher not found for edit')
 
@@ -107,7 +113,7 @@ exports.update = (request, response) => {
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
 
-    return response.redirect(`teachers/${id}`)
+    return response.redirect(`/teachers`)
 }
 
 exports.delete = (request, response) => {

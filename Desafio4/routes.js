@@ -7,7 +7,7 @@ router.get('/', (request, response) => {
 })
 
 
-/* ## ROUTES TEACHERS */
+/* ## ROUTES -> TEACHERS */
 router.get('/teachers', teachers.index)
 
 router.get('/teachers/create', teachers.create)
@@ -23,7 +23,7 @@ router.put('/teachers', teachers.update) //No arquivo de confg do Server, coloca
 router.delete('/teachers', teachers.delete)
 
 
-/* ## ROUTES STUDENTS */
+/* ## ROUTES -> STUDENTS */
 router.get('/students', (request, response) => {
     return response.render('students/index')
 })

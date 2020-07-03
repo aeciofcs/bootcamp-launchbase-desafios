@@ -2,17 +2,17 @@
   "teachers": [
     {
       "id": 1,
-      "avatar_url": "HTTP://WWW.AECIO-SILVA.COM.BR",
-      "name": "Aecio Flavio Cruz da Silva",
+      "avatar_url": "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+      "name": "Aecio Silva",
       "birth": 414979200000,
       "schooling": "masters",
       "typeclass": "P",
-      "acting": "Cálculo I, Cálculo II, Algebra, Fisica, ALGEBRA",
+      "acting": "Cálculo I, Cálculo II, Algebra, Fisica, Algebra",
       "created_at": 1593454045006
     },
     {
       "id": 2,
-      "avatar_url": "HTTPS://WWW.ANA-CRISTINA.COM.BR",
+      "avatar_url": "https://images.unsplash.com/photo-1516534775068-ba3e7458af70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
       "name": "Ana Cristina Bezerra da Cruz",
       "birth": -184118400000,
       "schooling": "masters",
