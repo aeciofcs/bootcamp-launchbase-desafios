@@ -11,7 +11,7 @@ exports.index = (request, response) => {
             acting: teacher.acting.split(",")
         }        
     } )
-    console.log(teachersList[0].acting)
+    
     return response.render('teachers/index', {teachers: teachersList})
 }
 
