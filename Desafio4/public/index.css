@@ -263,3 +263,14 @@ tbody tr td:last-child a {
 tbody tr td:last-child {
     text-align: center;
 }
+
+tbody tr td:nth-child(2) span {  
+    padding: 1px;
+    background-color: #f7df1e; /* com secundaria */
+    border-radius: 8px;
+    color: #777;
+    margin-right: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
