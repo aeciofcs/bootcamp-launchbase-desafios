@@ -6,24 +6,24 @@ router.get('/', (request, response) => {
     return response.render('index')
 })
 
-router.get('/teachers', (request, response) => {
-    return response.render('teachers/index')
-})
 
-router.get('/teachers/create', (request, response) => {
-    return response.render('teachers/create')
-})
+/* ## ROUTES TEACHERS */
+router.get('/teachers', teachers.index)
+
+router.get('/teachers/create', teachers.create)
+
+router.post('/teachers', teachers.post)
 
 router.get('/teachers/:id', teachers.show)
 
 router.get('/teachers/:id/edit', teachers.edit)
 
-router.post('/teachers', teachers.post)
-
 router.put('/teachers', teachers.update) //No arquivo de confg do Server, colocar a configuração do method override.
 
 router.delete('/teachers', teachers.delete)
 
+
+/* ## ROUTES STUDENTS */
 router.get('/students', (request, response) => {
     return response.render('students/index')
 })

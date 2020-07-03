@@ -3,6 +3,14 @@ const data                    = require('./teachers.json')
 const {age, graduation, date} = require('./Utils')
 const Intl                    = require('intl')
 
+exports.index = (request, response) => {
+    return response.render('teachers/index')
+}
+
+exports.create = (request, response) => {
+    return response.render('teachers/create')
+}
+
 exports.post = (request, response) => {
 
     // Validação: Verificar dados não preenchidos.
