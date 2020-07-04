@@ -4,44 +4,48 @@
     <div class="card">
         <section 
             class="avatar"
-            style="background: url({{Instrutores.avatar_url}}) no-repeat center center / cover">
+            style="background: url({{membro.avatar_url}}) no-repeat center center / cover">
         </section>
         
-        <section class="details">
-            <h3>Detalhes</h3>
+        <section class="details">            
 
             <div class="item">
-                <div>Instrutor</div>
-                <div>{{Instrutores.name}}</div>
+                <div>Membro</div>
+                <div>{{membro.name}}</div>
             </div>
 
             <div class="item">
-                <div>Idade</div>
-                <div>{{Instrutores.age}}</div>
+                <div>E-mail</div>
+                <div>{{membro.email}}</div>
+            </div>
+
+            <div class="item">
+                <div>Aniversário</div>
+                <div>{{membro.birth}}</div>
             </div>
 
             <div class="item">
                 <div>Sexo</div>
-                <div>{{'Masculino' if Instrutores.gender == 'M' else 'Feminino'}}</div>
+                <div>{{'Masculino' if membro.gender == 'M' else 'Feminino'}}</div>
             </div>
 
             <div class="item">
-                <div>Acompanhamento</div>
-                <div>
-                    {% for service in Instrutores.services %}
-                    <span>{{service}}</span>
-                    {% endfor %}
-                </div>
+                <div>Tipo Sanguíneo</div>
+                <div>{{membro.blood}}</div>
             </div>
 
             <div class="item">
-                <div>Cadastrado em:</div>
-                <div>{{Instrutores.created_at}}</div>
+                <div>Peso (KG)</div>
+                <div>{{membro.weight}}</div>
             </div>
 
-            <a href="/Instrutores/{{Instrutores.id}}/edit" class="button">Editar</a>
+            <div class="item">
+                <div>Altura (CM)</div>
+                <div>{{membro.height}}</div>
+            </div>            
+
+            <a href="/membros/{{membro.id}}/edit" class="button">Editar</a>
 
         </section>
-
     </div>
 {% endblock content %}

@@ -72,7 +72,7 @@ exports.edit = (request, response) => {
 
     const Instrutor = {
         ...foundInstrutores,
-        birth: formatDate(foundInstrutores.birth)
+        birth: formatDate(foundInstrutores.birth).iso
     }
 
     return response.render('instrutores/edit', { Instrutor })

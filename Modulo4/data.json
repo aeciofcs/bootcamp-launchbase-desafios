@@ -1,5 +1,18 @@
 {
-  "members": [],
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "HTTP://GOOGLE.COM.BR",
+      "name": "Aecio Flavio Silva",
+      "email": "aeciofcs@gmail.com",
+      "birth": 414979200000,
+      "gender": "M",
+      "blood": "O1",
+      "weight": "95.68",
+      "height": "1.69",
+      "created_at": 1593869839120
+    }
+  ],
   "instrutores": [
     {
       "id": 1,

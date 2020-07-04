@@ -8,16 +8,16 @@
         </section>
 
         <section class="details">
-            <form action="/instrutores?_method=PUT" method="POST" >
+            <form action="/membros?_method=PUT" method="POST" >
 
                 <h3>Editar Instrutor</h3>
-                {% include 'instrutores/fields.njk' %}
-                <input type="hidden" name="id" value={{Instrutor.id}}>
+                {% include 'members/fields.njk' %}
+                <input type="hidden" name="id" value={{membro.id}}>
         
             </form>
 
-            <form id="form-delete" action="/instrutores?_method=DELETE" method="POST">
-                <input type="hidden" name="id" value={{Instrutor.id}}>
+            <form id="form-delete" action="/membros?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value={{membro.id}}>
                 <button type="submit">Deletar</button>
             </form>
         </section>
