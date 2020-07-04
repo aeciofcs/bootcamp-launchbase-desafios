@@ -152,7 +152,7 @@ header {
 
 
 /* ESTILIZAÇÃO DO FORMULARIO DE CADASTRO DO INSTRUTOR */
-form input {
+form input, select {
     width: 100%;
     outline: none;
     color: #555;
