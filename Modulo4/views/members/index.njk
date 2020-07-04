@@ -12,13 +12,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for Instrutor in Instrutores %}
+                {% for membro in membros %}
                 <tr>
                     
-                    <td><span style="background-image: url({{Instrutor.avatar_url}})"></span>
-                        {{Instrutor.name}}</td>
-                    <td>{{Instrutor.services}}</td>
-                    <td><a href="/instrutores/{{Instrutor.id}}">Ver</a></td>
+                    <td><span style="background-image: url({{membro.avatar_url}})"></span>
+                        {{membro.name}}</td>
+                    <td>{{membro.services}}</td>
+                    <td><a href="/membros/{{membro.id}}">Ver</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

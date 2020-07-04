@@ -98,18 +98,18 @@ exports.put = (request, response) => {
     data.members[index] = membro
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
-        return response.redirect(`/members`)
+        return response.redirect(`/membros`)
     })
 }
 
 exports.delete = (request,response) =>{
-    const {id}                 = request.body
-    const membersFiltrados = data.members.filter( (membro) => {
+    const {id}           = request.body
+    const membroFiltrado = data.members.filter( (membro) => {
         return membro.id != id
     })
-    data.members = membersFiltrados
+    data.members = membroFiltrado
     fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
         if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
-    return response.redirect('/members')
+    return response.redirect('/membros')
 }
