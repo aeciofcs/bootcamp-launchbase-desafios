@@ -1,6 +1,6 @@
 const fs                      = require('fs')
-const data                    = require('./teachers.json')
-const {age, graduation, date} = require('./Utils')
+const data                    = require('../data.json')
+const {age, graduation, date} = require('../Utils')
 const Intl                    = require('intl')
 
 exports.index = (request, response) => {
@@ -45,7 +45,7 @@ exports.post = (request, response) => {
         created_at
     })
 
-    fs.writeFile("teachers.JSON", JSON.stringify(data, null, 2), (err)=>{
+    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
         if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
         return response.redirect('/teachers')
     })
@@ -109,7 +109,7 @@ exports.update = (request, response) => {
     
     data.teachers[index] = teacher
 
-    fs.writeFile("teachers.JSON", JSON.stringify(data, null, 2), (err)=>{
+    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
 
@@ -125,7 +125,7 @@ exports.delete = (request, response) => {
 
     data.teachers = teachersFiltered
 
-    fs.writeFile("teachers.JSON", JSON.stringify(data, null, 2), (err) => {
+    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err) => {
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
 

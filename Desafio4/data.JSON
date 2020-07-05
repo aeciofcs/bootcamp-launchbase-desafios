@@ -1,4 +1,5 @@
 {
+  "students": [],
   "teachers": [
     {
       "id": 1,
@@ -19,6 +20,16 @@
       "typeclass": "D",
       "acting": "ESPORTES,ECONOMIA",
       "created_at": 1593454070822
+    },
+    {
+      "id": 3,
+      "avatar_url": "http://www.annyvitoria.com.br",
+      "name": "Anny Vitoria Nunes da Cruz",
+      "birth": 1288656000000,
+      "schooling": "medium",
+      "typeclass": "D",
+      "acting": "Matemática, Ciências, Geografia",
+      "created_at": 1593908955327
     }
   ]
 }
