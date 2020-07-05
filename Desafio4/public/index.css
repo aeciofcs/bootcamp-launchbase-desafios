@@ -42,7 +42,7 @@ header {
 
 .links a.active {
     font-weight: bold;
-    color: var(--color-backgroud);
+    color: #f7df1e;
 }
 
 .links a:hover {
@@ -195,6 +195,10 @@ a.button {
     text-decoration: none;
 }
 
+#form-salvar button[type="submit"] {
+    width: 45%;
+}
+
 form button[type="submit"] {
     cursor: pointer;
 }
@@ -204,9 +208,17 @@ form button[type="submit"] {
     background-color: red;
 }
 
+#form-delete {
+    position: relative;
+}
+
 #form-delete button[type="submit"] {
     margin-top: 5px;
-    background-color: #3d6d38ef;
+    background-color: red;
+    width: 45%;
+    position: absolute;
+    bottom: 0;
+    right: 16px;
 }
 
 /* ### TABLE INDEX TEACHERS ### */
@@ -249,7 +261,8 @@ tbody tr td:first-child span {
     box-shadow: 3px 1px 6px -4px black;
 }
 
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-container > a {
     background-color: var(--color-rocket);
     padding: 8px 16px;
     text-decoration: none;
@@ -274,3 +287,9 @@ tbody tr td:nth-child(2) span {
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.table-container > a {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+

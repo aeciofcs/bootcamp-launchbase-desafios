@@ -14,18 +14,18 @@
     <div class="card">
         <section 
             class="image" 
-            style="background: url({{teacher.avatar_url}}) no-repeat center center / cover">
+            style="background: url({{student.avatar_url}}) no-repeat center center / cover">
         </section>
 
         <section class="details">
-            <form id="form-salvar" action="/teachers?_method=PUT" method="POST">
-                {% include 'teachers/fields.njk' %}
-                <input type="hidden" name="id" value={{teacher.id}}>
+            <form id="form-salvar" action="/students?_method=PUT" method="POST">
+                {% include 'students/fields.njk' %}
+                <input type="hidden" name="id" value={{student.id}}>
                 <button type="submit">Editar</button>
             </form>
 
-            <form id="form-delete" action="/teachers?_method=DELETE" method="POST">
-                <input type="hidden" name="id" value={{teacher.id}}>
+            <form id="form-delete" action="/students?_method=DELETE" method="POST">
+                <input type="hidden" name="id" value={{student.id}}>
                 <button type="submit">Deletar</button>
             </form> 
         </section>

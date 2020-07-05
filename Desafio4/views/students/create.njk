@@ -11,13 +11,12 @@
 {% endblock %}
 
 {% block content %}  
-    <form class="card" method="POST" action="/teachers">
+    <form class="card" method="POST" action="/students">
         <section class="image" style="background: url(https://source.unsplash.com/collection/10553730/500x500) no-repeat center center / cover"></section>
         <section class="details">
 
-            {% include 'teachers/fields.njk' %}
+            {% include 'students/fields.njk' %}
             <button type="submit">Salvar</button>
-            
         </section>
     </form>
 {% endblock %}

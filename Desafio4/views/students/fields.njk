@@ -1,0 +1,68 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <div> 
+        <input type="url" name="avatar_url" placeholder="https://www.meuavatar.com.br"
+               value="{{student.avatar_url}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome</div>
+    <div> 
+        <input type="text" name="name" placeholder="Digite seu nome completo"
+               value="{{student.name}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nascimento</div>
+    <div>
+        <input type="date" name="birth" value="{{student.birth}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>E-mail</div>
+    <div>
+        <input type="email" name="email" value="{{student.email}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Ano Escolar</div>
+    <div>
+        <select name="school_year">
+            <option value="5f" 
+                    {% if student.school_year == "5f" %}selected{% endif %}
+            >5° Ano do Ensino Fundamental</option>
+            <option value="6f"
+                    {% if student.school_year == "6f" %}selected{% endif %}
+            >6° Ano do Ensino Fundamental</option>
+            <option value="7f"
+                    {% if student.school_year == "7f" %}selected{% endif %}
+            >7° Ano do Ensino Fundamental</option>
+            <option value="8f"
+                    {% if student.school_year == "8f" %}selected{% endif %}
+            >8° Ano do Ensino Fundamental</option>
+            <option value="9f"
+                    {% if student.school_year == "9f" %}selected{% endif %}
+            >9° Ano do Ensino Fundamental</option>
+            <option value="1m"
+                    {% if student.school_year == "1m" %}selected{% endif %}
+            >1° Ano do Ensino Médio</option>
+            <option value="2m"
+                    {% if student.school_year == "2m" %}selected{% endif %}
+            >2° Ano do Ensino Médio</option>
+            <option value="3m"
+                    {% if student.school_year == "3m" %}selected{% endif %}
+            >3° Ano do Ensino Médio</option>
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Carga Horária Semanal (Horas)</div>
+    <div>
+        <input type="number" name="workload" value="{{student.workload}}">
+    </div>
+</div>

@@ -1,5 +1,26 @@
 {
-  "students": [],
+  "students": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1511629091441-ee46146481b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "AGAMENON BEZERRA",
+      "birth": 1292112000000,
+      "email": "agamenon@lojastalucia.com.br",
+      "school_year": "2m",
+      "workload": "12",
+      "created_at": 1593917736210
+    },
+    {
+      "id": 4,
+      "avatar_url": "https://images.unsplash.com/photo-1511629091441-ee46146481b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "AECIO FLAVIO CRUZ SILVA",
+      "birth": 414979200000,
+      "email": "aeciofcs@gmail.com",
+      "school_year": "3m",
+      "workload": "999",
+      "created_at": 1593920395566
+    }
+  ],
   "teachers": [
     {
       "id": 1,
