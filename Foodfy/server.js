@@ -1,49 +1,24 @@
-const express     = require('express')
-const nunjucks    = require('nunjucks')
-const dataRecipes = require('./data') 
+const express         = require('express')
+const nunjucks        = require('nunjucks')
+const routes          = require('./routes')
+const methodOverrride = require('method-override') 
 
-const server   = express()
+const server       = express()
+const PORT_CONNECT = 3000;
 
-//Informando ao servidor a pasta dos arquivos
-//estáticos
-//app.use('/static', express.static())
+//Informando ao servidor a pasta dos arquivos estáticos --> app.use('/static', express.static())
+server.use(express.urlencoded( {extended: true} ))
 server.use(express.static('public'))
+server.use(methodOverrride('_method'))
+server.use(routes)
 
-server.set('view engine', 'njk');
+server.set('view engine', 'njk')
 nunjucks.configure('views', {
     express: server,
-    autoescape: false
+    autoescape: false,
+    noCache: true
 })
 
-server.get('/', (req, res)=>{
-    return res.render('index', {dataRecipes})
-})
-
-server.get('/recipes/:index', (req,res) => {    
-    const recipeIndex = req.params.index
-    const recipe = dataRecipes[recipeIndex]
-    return res.render('recipe', {recipe} ) //res.send(recipe) //
-})
-
-server.get('/recipes', (req,res) => {
-    //console.log(dataRecipes.findIndex( (recipe)=>{ return recipe.title === 'Asinhas de frango ao barbecue'} ))
-    /*
-    function reducer(receita, index){
-        
-        return {...receita, id: index}
-    }
-    const receitasIndices = receita.map( reducer, [] )*/
-    
-    const receitasComIndices = dataRecipes.map( (receita, index) => {
-        return {...receita, id: index}
-    } )
-    return res.render('recipes', {dataRecipes: receitasComIndices})
-})
-
-server.get('/about', (req,res) => {
-    return res.render('about')
-})
-
-server.listen(3000, () => {
-    console.log(`Server is runnnig in port 3000... `)
+server.listen(PORT_CONNECT, () => {
+    console.log(`Server is runnnig in port ${PORT_CONNECT}... `)
 })
