@@ -1,1 +1,69 @@
-<H1>INDEX DA AREA DE ADMINISTRAÇÃO DAS RECEITAS</H1>
+{% extends "layout.njk" %}
+
+{% block title %}
+        <title>ADMINISTRAÇÃO - FOODFY</title>
+{% endblock %}
+
+{% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
+
+{% block header %}
+    
+    <header>
+        <div class="header">
+
+        {% block logo %}
+            <img src="/assets/Admin/logo.png" alt="logo-admin-foody">
+        {% endblock %}
+
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block main %}
+    <main>
+        <h2>Gerenciar receitas</h2>
+        <div class="wrapper-recipes">
+            <div class="recipes">                
+                <div class="recipe" id="1">
+                    <img src="../assets/burger.png" alt="image">
+                    <h3>titulo da receita</h3>
+                    <h4>por autor da receita</h4>
+                </div>  
+                <div class="recipe" id="2">
+                    <img src="../assets/pizza.png" alt="image">
+                    <h3>titulo da receita2</h3>
+                    <h4>por autor da receita2</h4>
+                </div>
+                <div class="recipe" id="3">
+                    <img src="../assets/lasanha.png" alt="image">
+                    <h3>titulo da receita3</h3>
+                    <h4>por autor da receita3</h4>
+                </div>
+                <div class="recipe" id="4">
+                    <img src="../assets/doce.png" alt="image">
+                    <h3>titulo da receita3</h3>
+                    <h4>por autor da receita3</h4>
+                </div>
+                <div class="recipe" id="5">
+                    <img src="../assets/asinhas.png" alt="image">
+                    <h3>titulo da receita3</h3>
+                    <h4>por autor da receita3</h4>
+                </div>
+                <div class="recipe" id="6">
+                    <img src="../assets/espaguete.png" alt="image">
+                    <h3>titulo da receita3</h3>
+                    <h4>por autor da receita3</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}    
+    <footer>
+        <h3>Todos direitos reservados, receitas Foodfy.</h3>
+    </footer>
+{% endblock %}

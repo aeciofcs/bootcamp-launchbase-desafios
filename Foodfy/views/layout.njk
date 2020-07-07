@@ -7,10 +7,14 @@
     {% block title %}
         <title>Foody</title>
     {% endblock %}
-
-    <link rel="stylesheet" href="/styles/index.css">
+    
+    {% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/index.css">
+    {% endblock %}
+    
 </head>
 <body>
+    {% block header %}
     <header>
         <div class="menu">
             <div class="menu-img">
@@ -28,6 +32,7 @@
             </div>
         </div>
     </header>
+    {% endblock %}
 {% block main %}  {% endblock %}
 
 {% block footer %}    
