@@ -5,7 +5,7 @@ exports.index = (request, response) => {
 }
 
 exports.create = (request, response) => {
-    return response.send('Mostrar formulário de nova receita')
+    return response.render('Admin/create')
 }
 
 exports.post = (request, response) => {

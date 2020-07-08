@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+
+{% block title %}
+        <title>FOODFY - CRIAR NOVA RECEITA</title>
+{% endblock %}
+
+{% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
+
+{% block header %}
+    
+    <header>
+        <div class="header">
+
+        {% block logo %}
+            <img src="/assets/Admin/logo.png" alt="logo-admin-foody">
+        {% endblock %}
+
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="create-title">
+            <h2>Criando receita</h2>
+            <div class="button-save"><a href="#">Salvar receita</a></div>
+        </div>
+        <div class="create-content">
+            <h4>Imagem da receita</h4>
+            <input type="url" name="imagem_url" value="">
+        </div>
+        <div class="create-content">
+            <h4>Ingredientes</h4>
+            <input type="text" name="ingrediente" value="">
+        </div>
+        <div class="create-content">
+            <h4>Modo de preparo</h4>
+            <input type="text" name="modo_preparo" value="">
+        </div>
+        <div class="create-content">
+            <h4>Informações adicionais</h4>
+            <textarea name="informacoes_adicionais">Informações adicionais</textarea>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}    
+    <footer>
+        <h3>Todos direitos reservados, receitas Foodfy.</h3>
+    </footer>
+{% endblock %}

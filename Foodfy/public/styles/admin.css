@@ -106,3 +106,32 @@ main > h2 {
     text-decoration: none;
     font-weight: bold;
 }
+
+.create-title {
+    width: 100%;
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-title h2 {
+    display: inline;
+}
+
+.create-title .button-save {
+    width: 145px;
+    height: 37px;
+    background-color: #6558C3;
+    border-radius: 4px;
+    text-align: center;    
+}
+
+.create-title .button-save a {
+    display: inline-block;
+    margin: 9px 20px;
+    text-decoration: none;    
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
