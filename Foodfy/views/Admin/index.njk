@@ -26,37 +26,19 @@
     <main>
         <h2>Gerenciar receitas</h2>
         <div class="wrapper-recipes">
-            <div class="recipes">                
+            <div class="recipes">
+                {% for recipe in recipes %}
                 <div class="recipe" id="1">
-                    <img src="../assets/burger.png" alt="image">
-                    <h3>titulo da receita</h3>
-                    <h4>por autor da receita</h4>
-                </div>  
-                <div class="recipe" id="2">
-                    <img src="../assets/pizza.png" alt="image">
-                    <h3>titulo da receita2</h3>
-                    <h4>por autor da receita2</h4>
+                    <section>
+                        <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                    </section>
+                    <section>
+                        <h3>{{recipe.title}}</h3>
+                        <h4>por {{recipe.author}}</h4>
+                        <a href="{{recipe.id}}">Visualizar</a>
+                    </section>
                 </div>
-                <div class="recipe" id="3">
-                    <img src="../assets/lasanha.png" alt="image">
-                    <h3>titulo da receita3</h3>
-                    <h4>por autor da receita3</h4>
-                </div>
-                <div class="recipe" id="4">
-                    <img src="../assets/doce.png" alt="image">
-                    <h3>titulo da receita3</h3>
-                    <h4>por autor da receita3</h4>
-                </div>
-                <div class="recipe" id="5">
-                    <img src="../assets/asinhas.png" alt="image">
-                    <h3>titulo da receita3</h3>
-                    <h4>por autor da receita3</h4>
-                </div>
-                <div class="recipe" id="6">
-                    <img src="../assets/espaguete.png" alt="image">
-                    <h3>titulo da receita3</h3>
-                    <h4>por autor da receita3</h4>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>

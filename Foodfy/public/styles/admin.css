@@ -73,11 +73,36 @@ main > h2 {
 .recipes {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /*gap: 20px;*/
+    row-gap: 20px;
 }
 
 .recipe {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 173px 1fr;
+}
+
+.recipe section h3 {
+    margin-left: 20px;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 18px;
+    color: #111111;
+}
+
+.recipe section h4 {
+    margin-top: 5px;
+    margin-left: 20px;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 14px;
+    color: #777777;
+}
+
+.recipe section a {
+    display: block;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 14px;
+    color: #6558C3;
+    text-decoration: none;
+    font-weight: bold;
 }

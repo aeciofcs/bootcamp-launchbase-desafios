@@ -1,7 +1,7 @@
 const data = require('../data.json')
 
 exports.index = (request, response) => {    
-    return response.render('Admin/index')
+    return response.render('Admin/index', { recipes: data.recipes })
 }
 
 exports.create = (request, response) => {
