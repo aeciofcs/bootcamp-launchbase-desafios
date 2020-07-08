@@ -1,6 +1,6 @@
 const data = require('../data.json')
 
-exports.index = (request, response) => {    
+exports.index = (request, response) => {
     return response.render('Admin/index', { recipes: data.recipes })
 }
 

@@ -35,7 +35,7 @@
                     <section>
                         <h3>{{recipe.title}}</h3>
                         <h4>por {{recipe.author}}</h4>
-                        <a href="{{recipe.id}}">Visualizar</a>
+                        <a href="/admin/recipes/{{ recipes.indexOf(recipe) }}">Visualizar</a>
                     </section>
                 </div>
                 {% endfor %}
