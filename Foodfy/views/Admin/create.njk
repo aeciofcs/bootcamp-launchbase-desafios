@@ -24,26 +24,29 @@
 
 {% block main %}
     <main>
-        <div class="create-title">
-            <h2>Criando receita</h2>
-            <div class="button-save"><a href="#">Salvar receita</a></div>
-        </div>
-        <div class="create-content">
-            <h4>Imagem da receita</h4>
-            <input type="url" name="imagem_url" value="">
-        </div>
-        <div class="create-content">
-            <h4>Ingredientes</h4>
-            <input type="text" name="ingrediente" value="">
-        </div>
-        <div class="create-content">
-            <h4>Modo de preparo</h4>
-            <input type="text" name="modo_preparo" value="">
-        </div>
-        <div class="create-content">
-            <h4>Informações adicionais</h4>
-            <textarea name="informacoes_adicionais">Informações adicionais</textarea>
-        </div>
+        <form action="/admin/recipes" method="POST">        
+            <div class="create-title">
+                <h2>Criando receita</h2>
+                <div class="button-save"><button type="submit">Salvar</button></div>
+
+            </div>
+            <div class="create-content">
+                <h4>Imagem da receita</h4>
+                <input type="url" name="imagem_url" value="">
+            </div>
+            <div class="create-content">
+                <h4>Ingredientes</h4>
+                <input type="text" name="ingrediente" value="">
+            </div>
+            <div class="create-content">
+                <h4>Modo de preparo</h4>
+                <input type="text" name="modo_preparo" value="">
+            </div>
+            <div class="create-content">
+                <h4>Informações adicionais</h4>
+                <textarea name="informacoes_adicionais"></textarea>
+            </div>
+        </form>
     </main>
 {% endblock %}
 

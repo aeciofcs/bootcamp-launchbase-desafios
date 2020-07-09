@@ -123,15 +123,52 @@ main > h2 {
     height: 37px;
     background-color: #6558C3;
     border-radius: 4px;
-    text-align: center;    
+    text-align: center; 
 }
 
-.create-title .button-save a {
+.create-title .button-save button {
     display: inline-block;
-    margin: 9px 20px;
-    text-decoration: none;    
+    background-color: #6558C3;
     font-family: Roboto-Bold, sans-serif;
+    margin: 9px 20px;
+    text-decoration: none;
     font-size: 16px;
     color: #FFFFFF;
     font-weight: bold;
+}
+
+form button[type="submit"] {
+    cursor: pointer;
+}
+
+form .create-content {
+    margin-top: 30px;
+}
+
+form div:nth-child(2).create-content {
+    margin-top: 26px;
+}
+
+form h4 {
+    margin-top: 30px;
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 16px;
+    color: #111111;
+}
+
+form input,
+form textarea {
+    margin-top: 10px;
+    width: 100%;
+    height: 49px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+form textarea {
+    width: 100%;
+    height: 140px;
+    margin-top: 10px;
 }
