@@ -24,7 +24,10 @@
 
 {% block main %}
     <main>
-        <h2>Gerenciar receitas</h2>
+        <div class="ger-recipe">
+            <h2>Gerenciar receitas</h2>
+            <a href="/admin/recipes/create">NOVA RECEITA</a>
+        </div>        
         <div class="wrapper-recipes">
             <div class="recipes">
                 {% for recipe in recipes %}

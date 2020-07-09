@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-        <title>FOODFY - CRIAR NOVA RECEITA</title>
+        <title>FOODFY - NOVA RECEITA</title>
 {% endblock %}
 
 {% block stylesheet  %}
@@ -27,20 +27,37 @@
         <form action="/admin/recipes" method="POST">        
             <div class="create-title">
                 <h2>Criando receita</h2>
-                <div class="button-save"><button type="submit">Salvar</button></div>
-
+                <button type="submit">Salvar</button>
             </div>
             <div class="create-content">
                 <h4>Imagem da receita</h4>
                 <input type="url" name="imagem_url" value="">
             </div>
             <div class="create-content">
+                <h4>Nome</h4>
+                <input type="text" name="nome_receita" value="">
+            </div>
+            <div class="create-content">
+                <h4>Autor</h4>
+                <input type="text" name="autor_receita" value="">
+            </div>
+            <div class="create-content">
                 <h4>Ingredientes</h4>
-                <input type="text" name="ingrediente" value="">
+                <div id="ingredientes">
+                    <div class="ingrediente">
+                        <input type="text" name="ingrediente[]" value="">
+                    </div>
+                </div>                
+                <a class="add-ingrediente">Adicionar um novo ingrediente</a>
             </div>
             <div class="create-content">
                 <h4>Modo de preparo</h4>
-                <input type="text" name="modo_preparo" value="">
+                <div id="preparos">
+                    <div class="preparo">
+                        <input type="text" name="modo_preparo[]" value="">
+                    </div>
+                </div>                
+                <a class="add-preparo">Adicionar um novo passo</a>
             </div>
             <div class="create-content">
                 <h4>Informações adicionais</h4>
@@ -54,4 +71,8 @@
     <footer>
         <h3>Todos direitos reservados, receitas Foodfy.</h3>
     </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/scripts.js"></script>
 {% endblock %}

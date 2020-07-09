@@ -52,11 +52,23 @@ footer h3 {
     padding: 23px 0px;
 }
 
-main > h2 {
+.ger-recipe {
     margin-top: 50px;
+    display: flex;
+    text-align: center;    
+}
+.ger-recipe h2 {
     font-family: Roboto-Bold, sans-serif;
     font-size: 24px;
     color: #111111;
+    font-weight: bold;
+}
+
+.ger-recipe a {
+    margin-left: 50px;
+    text-decoration: none;
+    margin-top: 6px;
+    color: #6558C3;
     font-weight: bold;
 }
 
@@ -118,19 +130,14 @@ main > h2 {
     display: inline;
 }
 
-.create-title .button-save {
-    width: 145px;
+.create-title button {
+    background-color: #6558C3;
+    width: 139px;
     height: 37px;
-    background-color: #6558C3;
     border-radius: 4px;
-    text-align: center; 
-}
-
-.create-title .button-save button {
+    text-align: center;
     display: inline-block;
-    background-color: #6558C3;
     font-family: Roboto-Bold, sans-serif;
-    margin: 9px 20px;
     text-decoration: none;
     font-size: 16px;
     color: #FFFFFF;
@@ -171,4 +178,14 @@ form textarea {
     width: 100%;
     height: 140px;
     margin-top: 10px;
+}
+
+form div a {
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 16px;
+    color: #6558C3;
+    cursor: pointer;
 }
