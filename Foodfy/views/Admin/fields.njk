@@ -1,7 +1,3 @@
-<div class="create-title">
-    <h2>Criando receita</h2>
-    <button type="submit">Salvar</button>
-</div>
 <div class="create-content">
     <h4>Imagem da receita</h4>
     <input type="url" name="imagem_url" value="{{recipe.image}}">
@@ -17,29 +13,35 @@
 <div class="create-content">
     <h4>Ingredientes</h4>
     <div id="ingredientes">
+        {% if not recipe %}
         <div class="ingrediente">
-            {% if not recipe %}
-                <input type="text" name="ingrediente[]" value="">
-            {% endif %}
-            {% for ingredient in recipe.ingredients %}
-                <input type="text" name="ingrediente[]" value="{{ingredient}}">
-            {% endfor %}
+            <input type="text" name="ingrediente[]" value="{{ingredient}}">
         </div>
+        {% endif %}
+
+        {% for ingredient in recipe.ingredients %}
+        <div class="ingrediente">
+            <input type="text" name="ingrediente[]" value="{{ingredient}}">
+        </div>
+        {% endfor %}
     </div>                
     <a class="add-ingrediente">Adicionar um novo ingrediente</a>
 </div>
 <div class="create-content">
-    <h4>Modo de preparo</h4>
+    <h4>Modo de preparo</h4>    
     <div id="preparos">
+        {% if not recipe %}
         <div class="preparo">
-            {% if not recipe %}
-                <input type="text" name="modo_preparo[]" value="">
-            {% endif %}
-            {% for prepare in recipe.preparation %}
-                <input type="text" name="modo_preparo[]" value="{{prepare}}">
-            {% endfor %}
+            <input type="text" name="modo_preparo[]" value="{{prepare}}">
+        </div>        
+        {% endif %}
+
+        {% for prepare in recipe.preparation %}
+        <div class="preparo">
+            <input type="text" name="modo_preparo[]" value="{{prepare}}">
         </div>
-    </div>                
+        {% endfor %}
+    </div>
     <a class="add-preparo">Adicionar um novo passo</a>
 </div>
 <div class="create-content">

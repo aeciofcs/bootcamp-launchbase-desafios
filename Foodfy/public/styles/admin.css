@@ -123,14 +123,15 @@ footer h3 {
     width: 100%;
     margin-top: 55px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
 
 .create-title h2 {
     display: inline;
 }
 
-.create-title button {
+.create-title button,
+#form-delete button {
     background-color: #6558C3;
     width: 139px;
     height: 37px;
@@ -142,6 +143,19 @@ footer h3 {
     font-size: 16px;
     color: #FFFFFF;
     font-weight: bold;
+}
+
+#form-delete button {
+    background-color: #DC4747;
+    width: 92px;
+    height: 37px;
+}
+
+#form-delete {
+    position: absolute;
+    display: inline;
+    margin-right: 5px;
+    right: 415px;
 }
 
 form button[type="submit"] {
