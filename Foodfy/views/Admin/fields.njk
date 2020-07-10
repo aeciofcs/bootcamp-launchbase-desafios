@@ -1,0 +1,48 @@
+<div class="create-title">
+    <h2>Criando receita</h2>
+    <button type="submit">Salvar</button>
+</div>
+<div class="create-content">
+    <h4>Imagem da receita</h4>
+    <input type="url" name="imagem_url" value="{{recipe.image}}">
+</div>
+<div class="create-content">
+    <h4>Nome</h4>
+    <input type="text" name="nome_receita" value="{{recipe.title}}">
+</div>
+<div class="create-content">
+    <h4>Autor</h4>
+    <input type="text" name="autor_receita" value="{{recipe.author}}">
+</div>
+<div class="create-content">
+    <h4>Ingredientes</h4>
+    <div id="ingredientes">
+        <div class="ingrediente">
+            {% if not recipe %}
+                <input type="text" name="ingrediente[]" value="">
+            {% endif %}
+            {% for ingredient in recipe.ingredients %}
+                <input type="text" name="ingrediente[]" value="{{ingredient}}">
+            {% endfor %}
+        </div>
+    </div>                
+    <a class="add-ingrediente">Adicionar um novo ingrediente</a>
+</div>
+<div class="create-content">
+    <h4>Modo de preparo</h4>
+    <div id="preparos">
+        <div class="preparo">
+            {% if not recipe %}
+                <input type="text" name="modo_preparo[]" value="">
+            {% endif %}
+            {% for prepare in recipe.preparation %}
+                <input type="text" name="modo_preparo[]" value="{{prepare}}">
+            {% endfor %}
+        </div>
+    </div>                
+    <a class="add-preparo">Adicionar um novo passo</a>
+</div>
+<div class="create-content">
+    <h4>Informações adicionais</h4>
+    <textarea name="informacoes_adicionais">{{recipe.information}}</textarea>
+</div>

@@ -40,7 +40,10 @@ exports.show = (request, response) => {
 }
 
 exports.edit = (request, response) => {
-    return response.send('Mostrar formulário de edição de receita')
+    const index = request.params.id
+    const recipe = data.recipes[index]
+
+    return response.render('Admin/edit', {recipe, index})
 }
 
 exports.put = (request, response) => {
