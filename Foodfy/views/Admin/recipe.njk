@@ -1,0 +1,64 @@
+{% extends "layout.njk" %}
+
+{% block title %}
+    <title>Receita - {{recipe.title}} </title>
+{% endblock %}
+
+{% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
+
+{% block header %}    
+    <header>
+        <div class="header">
+
+        {% block logo %}
+            <img src="/assets/Admin/logo.png" alt="logo-admin-foody">
+        {% endblock %}
+
+        </div>
+    </header>
+{% endblock %}
+
+{% block main %}
+<main>
+    <div class="recipe-1">
+        <h2>Receita: Triplo bacon burger</h2>
+        <a href="/admin/recipes/0/edit">Editar receita</a>
+    </div>
+    <div class="recipe-2">
+        <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png" alt="Triplo bacon burger">
+    </div>
+    <div class="recipe-3">
+        <h2>Triplo bacon burger</h2>
+        <h4>por Jorge Relato</h4>
+    </div>
+    <div class="recipe-4">
+        <h2>Ingredientes</h2>
+        <ul>
+            <li>ing 1</li>
+            <li>ing 2</li>
+            <li>ing 3</li>
+            <li>ing 4</li>
+            <li>ing 5</li>
+            <li>ing 6</li>
+        </ul>
+    </div>
+    <div class="recipe-5">
+        <h2>Modo de Preparo</h2>
+        <ul>
+            <li>ing 1</li>
+            <li>ing 2</li>
+            <li>ing 3</li>
+            <li>ing 4</li>
+            <li>ing 5</li>
+            <li>ing 6</li>
+        </ul>
+    </div>
+    <div class="recipe-6">
+        <h2>Ingredientes</h2>
+        <p>bla bla bla vla bla bla bla bla </p>
+    </div>
+
+</main>    
+{% endblock %}

@@ -9,8 +9,8 @@ exports.create = (request, response) => {
     return response.render('Admin/create')
 }
 
-exports.post = (request, response) => {    
-    const keys = Object.keys(request.body)        
+exports.post = (request, response) => {
+    const keys = Object.keys(request.body)
     for (const key of keys) {
         if( request.body[key] == "")
             return response.send('Por favor, preencha todos os campos.')
@@ -33,7 +33,8 @@ exports.post = (request, response) => {
 }
 
 exports.show = (request, response) => {
-    return response.send('Exibir detalhes de uma receita')
+    
+    return response.render('Admin/recipe')
 }
 
 exports.edit = (request, response) => {
