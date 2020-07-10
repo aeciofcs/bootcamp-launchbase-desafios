@@ -47,11 +47,40 @@ exports.edit = (request, response) => {
 }
 
 exports.put = (request, response) => {
-    
+    const index       = request.body.id
+    const foundRecipe = data.recipes[index]
+    if (!foundRecipe) return response.send(`Receita não encontrada. index: ${index}`)
 
-    return response.send('GRAVAÇÃO da Edição uma receita')
+    let {imagem_url, nome_receita, autor_receita, ingrediente, modo_preparo, informacoes_adicionais} = request.body
+    
+    const newRecipe = {
+        ...foundRecipe,
+        image: imagem_url,
+        title: nome_receita,
+        author: autor_receita,
+        ingredients: ingrediente,
+        preparation: modo_preparo,
+        information: informacoes_adicionais
+    }
+
+    data.recipes[index] = newRecipe
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
+        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
+        return response.redirect('/admin/recipes')
+    })
 }
 
 exports.delete = (request, response) => {
-    return response.send('Deletar uma receita')
+    const recipeIndex  = request.body.id
+    const foundRecipes = data.recipes.filter( (membro, index) => {
+        return index != recipeIndex
+    })
+    
+    data.recipes = foundRecipes
+    
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
+        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
+    })
+    return response.redirect('/admin/recipes')
 }
