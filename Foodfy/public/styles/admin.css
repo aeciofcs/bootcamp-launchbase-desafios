@@ -189,3 +189,95 @@ form div a {
     color: #6558C3;
     cursor: pointer;
 }
+
+.recipe-1 {
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;    
+}
+
+.recipe-1 h2 {
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 24px;
+    color: #111111;
+}
+
+.recipe-1 button {
+    background-color: #6558C3;
+    border-radius: 4px;
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    width: 136px;
+    height: 37px;
+    cursor: pointer;
+}
+
+.recipe-2 {
+    margin-top: 20px;
+}
+
+.recipe-2 img {
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+}
+
+.recipe-3 {
+    margin-top: 50px;
+}
+
+.recipe-3 h2, h5 {
+    text-align: center;
+}
+
+.recipe-3 h2 {
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 36px;
+    color: #111111;
+}
+
+.recipe-3 h5 {
+    margin-top: 4px;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 20px;
+    color: #777777;
+}
+
+.recipe-4 {
+    margin-top: 31px;
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 24px;
+    color: #111111;
+}
+
+.recipe-4 ul,
+.recipe-5 ul {
+    margin-top: 19px;
+    font-family: Roboto-Regular, sans-serif;
+    width: 100%;
+    font-size: 18px;
+    color: #444444;
+    line-height: 28px;
+    /*padding: 17px;*/
+}
+
+.recipe-4 li,
+.recipe-5 li {
+    list-style: none;
+}
+
+.recipe-5,
+.recipe-6 {
+    margin-top: 41px;
+}
+
+.recipe-6 p {
+    margin-top: 19px;
+    font-family: Roboto-Regular, sans-serif;
+    font-size: 18px;
+    color: #444444;
+    line-height: 28px;
+}

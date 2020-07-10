@@ -33,8 +33,10 @@ exports.post = (request, response) => {
 }
 
 exports.show = (request, response) => {
+    const index = request.params.id
+    const recipe = data.recipes[index]
     
-    return response.render('Admin/recipe')
+    return response.render('Admin/recipe', {recipe, index})
 }
 
 exports.edit = (request, response) => {
