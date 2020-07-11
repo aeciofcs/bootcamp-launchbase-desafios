@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    /*
+    --color-backgroud: #ffffff;
+    --color-font: #ffffff;*/
+    --color-rocket: #7159c1;
+    /*
+    --color-font-hover: #464157;
+    --color-border: #282a36;*/
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {    
+    background: var(--color-rocket);
+    font-family: Roboto, sans-serif;
+}
+
+header {
+    background-color: white;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box; /* Vai levar todo o conteúdo até o limite da lagura. */
+    /*border-bottom: 2px solid var(--color-border);
+    display: flex;*/
+}
+
+.links {
+    font-size: 22px;
+    /*flex: 1;
+    text-align: center;*/
+}
+
+.links a + a {
+    margin-left: 32px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #777;
+    position: relative;
+}
+
+.links a.active {
+    font-weight: bold;
+    color: var(--color-rocket);
+}
+
+.links a:hover {  
+    color: var(--color-rocket);
+}
+
+.links a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--color-rocket);
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.links a:hover::after {
+    width: 100%;
+    transition: width 700ms ease-in-out;
+    /*transition: width 700ms cubic-bezier(0, 0.04, 0.45,-0.19);*/
+}
+
+.card{
+    background-color: white;
+    width: 800px;
+    min-height: 400px; /* Altura forçada, altura minima de 400px, pode ter ser travada devido ao padding do item no details */
+    margin: 45px auto;
+    
+    /* Dividir o cartão em 2*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* Sombra */
+    box-shadow: 0px 2px 6px -2px black;
+
+    /* Animação */
+    animation: up 1200ms ease-out;    
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Details - Detalhes do cartão */
+.details {
+    padding: 32px;
+}
+
+.details .item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+
+/* Retira a borda do ultimo elemento na div com classe details */
+.details .item:last-child {
+    border: none;
+}
+
+/* Pega a primeira div dentro da div de classe details e div classe item 
+   pegou a div do nome do campo. */
+.details h3,
+.details .item div:nth-child(1) {
+    font-size: 14px;
+    line-height: 24px;
+    color: #777;
+    letter-spacing: 0.7px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2) {
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.details h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-rocket);
+}
+
+.details .item div:nth-child(2) span {
+    padding: 8px 16px;
+    background-color: #f7df1e; /* com secundaria */
+    border-radius: 16px;
+    color: #777;
+    margin-right: 4px;
+    margin-top: 8px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+
+/* ESTILIZAÇÃO DO FORMULARIO DE CADASTRO DO INSTRUTOR */
+form input, select {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+form input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+form button[type="submit"],
+a.button {
+    padding: 8px 32px;
+    background-color: var(--color-rocket);
+    border-radius: 4px;
+    color: white;
+    margin-top: 22px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+form button[type="submit"] {
+    cursor: pointer;
+}
+
+#form-delete button[type="submit"] {
+    margin-top: 5px;
+    background-color: lightcoral;
+}
+
+/* ### INDEX DOS INSTRUTORES ### */
+
+.table-container {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.table-container table {
+    border-spacing: 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+    text-transform: uppercase;
+    color: #777;
+    font-size: 14px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+}
+
+tbody tr td:first-child span {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 1px solid white;
+}
+
+tbody tr td:last-child a,
+.table-container > a {
+    background-color: var(--color-rocket);
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.table-container > a {
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.table-container thead tr th:last-child,
+td:last-child {
+    text-align: center;
+}
