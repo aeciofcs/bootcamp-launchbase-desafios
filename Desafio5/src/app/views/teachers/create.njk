@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+    <header>
+        <div class="links">            
+            <a href="/teachers">Teachers</a>
+            <a href="/students">Students</a>
+            <a href="/">HOME</a>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}  
+    <form class="card" method="POST" action="/teachers">
+        <section class="image" style="background: url(https://source.unsplash.com/collection/10553730/500x500) no-repeat center center / cover"></section>
+        <section class="details">
+
+            {% include 'teachers/fields.njk' %}
+            <button type="submit">Salvar</button>
+            
+        </section>
+    </form>
+{% endblock %}

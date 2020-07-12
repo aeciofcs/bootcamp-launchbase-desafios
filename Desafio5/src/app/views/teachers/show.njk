@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+    <header>
+        <div class="links">            
+            <a href="/teachers">Teachers</a>
+            <a href="/students">Students</a>
+            <a href="/">HOME</a>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}  
+    <div class="card">
+        <section class="image" style="background: url({{teacher.avatar_url}}) no-repeat center center / cover"></section>
+        <section class="details">
+                        
+            <div class="item">
+                <div>Nome completo</div>
+                <div>{{teacher.name}}</div>
+            </div>
+
+            <div class="item">
+                <div>Idade</div>
+                <div>{{teacher.age}}</div>
+            </div>
+
+            <div class="item">
+                <div>Grau de escolaridade</div>
+                <div>{{teacher.schooling}}</div>
+            </div>
+
+            <div class="item">
+                <div>Tipo de Aula</div>
+                <div>
+                    <span>{{'Presencial' if teacher.typeclass == 'P' else 'À Distancia'}}</span>                    
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Acompanhamento em</div>
+                <div>
+                    {% for acting in teacher.actings %}
+                        <span>{{acting}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="item">
+                <div>Cadastrado em</div>
+                <div>{{teacher.created_at}}</div>
+            </div>
+
+            <a href="/teachers/{{teacher.id}}/edit" class="button">Alterar</a>
+
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <div> 
+        <input type="url" name="avatar_url" placeholder="HTTPS://www.MeuAvatar.com.br"
+               value="{{teacher.avatar_url}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome completo</div>
+    <div> 
+        <input type="text" name="name" placeholder="Digite seu nome completo"
+               value="{{teacher.name}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nascimento</div>
+    <div>
+        <input type="date" name="birth" value="{{teacher.birth}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Escolaridade</div>
+    <div>
+        <select name="schooling">
+            <option value="medium" {{'selected' if teacher.schooling == "medium"}}>Ensino Médio Completo</option>
+            <option value="higher" {{'selected' if teacher.schooling == "higher"}}>Ensino Superior Completo</option>
+            <option value="masters" {{'selected' if teacher.schooling == "masters"}}>Mestrado</option>
+            <option value="doctorate_degree" {{'selected' if teacher.schooling == "doctorate_degree"}}>Doutorado</option>
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Tipo de Aula</div>
+    <div>
+        <span><input type="radio" name="typeclass" value="P" {{'checked' if teacher.typeclass == "P"}}>Presencial</span>
+        <span><input type="radio" name="typeclass" value="D" {{'checked' if teacher.typeclass == "D"}}>À Distância</span>
+    </div>
+</div>
+
+<div class="item">
+    <div>Área de atuação</div>
+    <div>
+        <input type="text" name="acting" placeholder="Digite as matérias entre vírgulas.."
+               value="{{teacher.acting}}">
+    </div>
+</div>

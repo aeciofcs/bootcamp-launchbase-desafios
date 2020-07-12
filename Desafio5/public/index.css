@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
+
+:root {
+    --color-backgroud: #d4c8c8;
+    --color-font: #ffffff;
+    --color-rocket: #7159c1;
+    --color-font-hover: #464157;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {    
+    background-color: var(--color-backgroud);
+    font-family: Roboto, sans-serif;
+}
+
+header {
+    background: var(--color-rocket);
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;    
+}
+
+.links {
+    font-size: 25px;
+}
+
+.links a + a {
+    margin-left: 30px;
+}
+
+.links a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+
+.links a.active {
+    font-weight: bold;
+    color: #f7df1e;
+}
+
+.links a:hover {
+    color: #639633;
+}
+
+.links a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #639633;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.links a:hover::after {
+    width: 100%;
+    transition: width 700ms ease-in-out;
+    /*transition: width 700ms cubic-bezier(0, 0.04, 0.45,-0.19);*/
+}
+
+/* ### CARD ### */
+.card {
+    background-color: white;
+    
+    /* largura e altura. largura é obrigatorio para alinhar ao meio*/
+    width: 830px;
+    min-height: 300px; /* A altura terá que ser dinamica, por isso colocamos o minimo de 400px.
+    Há um padding no item e com altura estática, não respeita os limites do card.  */
+    
+    /* Espacamento e alinhamento ao centro*/
+    margin: 30px auto;
+    
+    /* Cartão dividido ao meio. */
+    display: grid;    
+    grid-template-columns: 40% 60%;
+
+    /* Sombra */
+    box-shadow: 0px 5px 10px -2px #7159c1;
+
+    /* Animação */    
+    animation: card-teachers 1200ms ease;
+}
+
+@keyframes card-teachers {
+    from {
+        opacity: 0;
+        transform: translateX(800px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.details {
+    padding: 15px 25px;
+    /*
+    border: 2px solid var(--color-rocket);
+    border-radius: 15px;*/
+}
+
+.details .item {
+    border-top: 2px solid rgba(0,0,0,0.1);
+    padding: 16px 0;
+}
+
+/*.details .item:first-of-type*/
+.details :first-child {
+    border: none;
+}
+
+.details .item div:nth-child(1) {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-rocket);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2) {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.details .item span {
+    padding: 8px 16px;
+    background-color: #e7e40e;
+    border-radius: 16px;
+    color: #777;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/*
+.details .item:nth-child(6) div:nth-child(2) {
+    border: 1px solid #66AFE9;
+	border-radius: 5px;
+    box-shadow: 1 1 8px rgba(102,175,233,.6);
+    width: max-content;
+}*/
+
+/* ### FORM DO CADASTRO DE TEACHERS ### */
+
+form input,
+form select {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+form input[type="radio"]{
+    width: initial;
+    margin-right: 4px;
+}
+
+form :nth-child(3) input {
+    width: max-content;
+    font-size: 18px;
+    padding: 2px;
+}
+
+form input::placeholder {
+    font-size: 16px;
+    font-weight: bold; 
+}
+
+form button,
+a.button {
+    background-color: var(--color-rocket);
+    width: 100%;
+    padding: 8px 32px;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+#form-salvar button[type="submit"] {
+    width: 45%;
+}
+
+form button[type="submit"] {
+    cursor: pointer;
+}
+
+.details a:nth-child(8) {
+    margin-top: 5px; 
+    background-color: red;
+}
+
+#form-delete {
+    position: relative;
+}
+
+#form-delete button[type="submit"] {
+    margin-top: 5px;
+    background-color: red;
+    width: 45%;
+    position: absolute;
+    bottom: 0;
+    right: 16px;
+}
+
+/* ### TABLE INDEX TEACHERS ### */
+.table-container {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.table-container table {
+    border-spacing: 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+}
+
+tbody tr td:first-child span {
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid #7159c1;
+    box-shadow: 3px 1px 6px -4px black;
+}
+
+tbody tr td:last-child a,
+.table-container > a {
+    background-color: var(--color-rocket);
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.table-container thead tr th:last-child,
+tbody tr td:last-child {
+    text-align: center;
+}
+
+tbody tr td:nth-child(2) span {  
+    padding: 1px;
+    background-color: #f7df1e; /* com secundaria */
+    border-radius: 8px;
+    color: #777;
+    margin-right: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table-container > a {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
