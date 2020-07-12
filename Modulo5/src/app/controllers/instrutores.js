@@ -1,9 +1,11 @@
-const intl                = require('intl')
+const Instrutor           = require('../models/Instrutor')
 const { age, formatDate } = require('../../lib/Utils')
 
 module.exports = {
     index: (request, response) => {
-        return response.render('instrutores/index')
+        Instrutor.all( (Instrutores) => {
+            return response.render('instrutores/index', { Instrutores })
+        } )
     },
     create: (request, response) => {
         return response.render('instrutores/create')
@@ -17,13 +19,28 @@ module.exports = {
             if( request.body[key] == "")
                 return response.send('Por favor, preencha todos os campos.')
         }
-        return
+        Instrutor.create(request.body, (Instrutor) => {
+            return response.redirect(`/instrutores/${Instrutor.id}`)
+        })
+        
     },
     show: (request,response) => {
-        return        
+        Instrutor.find(request.params.id, (Instrutor) => {
+            if(!Instrutor) return response.send('Instrutor não encontrado.')
+            Instrutor.age        = age(Instrutor.birth)
+            Instrutor.services   = Instrutor.services.split(',')
+            Instrutor.created_at = formatDate(Instrutor.created_at).format
+            
+            return response.render('instrutores/show', { Instrutor })
+        })
     },
     edit: (request, response) => {
-        return
+        Instrutor.find(request.params.id, (Instrutor) => {
+            if(!Instrutor) return response.send('Instrutor não encontrado.')
+            Instrutor.birth      = formatDate(Instrutor.birth).iso
+            
+            return response.render('instrutores/edit', { Instrutor })
+        })
     },
     put: (request, response) => {
         // Pega todas as keys do request.body
@@ -34,9 +51,14 @@ module.exports = {
             if( request.body[key] == "")
                 return response.send('Por favor, preencha todos os campos.')
         }
-        return
+
+        Instrutor.update(request.body, () => {
+            return response.redirect(`/instrutores/${request.body.id}`)
+        })
     },
     delete: (request,response) =>{
-        return
+        Instrutor.delete(request.body.id, () => {
+            return response.redirect(`/instrutores`)
+        })
     }
 }

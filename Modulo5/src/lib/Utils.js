@@ -22,7 +22,8 @@ module.exports = {
             month,
             year: newDate.getUTCFullYear(),
             iso: `${newDate.getUTCFullYear()}-${month}-${day}`,
-            dateBirth: `${day}/${month}` 
+            dateBirth: `${day}/${month}`,
+            format: `${day}/${month}/${newDate.getUTCFullYear()}`
         }
     },
 

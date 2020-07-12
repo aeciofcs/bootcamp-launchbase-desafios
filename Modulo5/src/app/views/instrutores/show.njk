@@ -4,7 +4,7 @@
     <div class="card">
         <section 
             class="avatar"
-            style="background: url({{Instrutores.avatar_url}}) no-repeat center center / cover">
+            style="background: url({{Instrutor.avatar_url}}) no-repeat center center / cover">
         </section>
         
         <section class="details">
@@ -12,23 +12,23 @@
 
             <div class="item">
                 <div>Instrutor</div>
-                <div>{{Instrutores.name}}</div>
+                <div>{{Instrutor.name}}</div>
             </div>
 
             <div class="item">
                 <div>Idade</div>
-                <div>{{Instrutores.age}}</div>
+                <div>{{Instrutor.age}}</div>
             </div>
 
             <div class="item">
                 <div>Sexo</div>
-                <div>{{'Masculino' if Instrutores.gender == 'M' else 'Feminino'}}</div>
+                <div>{{'Masculino' if Instrutor.gender == 'M' else 'Feminino'}}</div>
             </div>
 
             <div class="item">
                 <div>Acompanhamento</div>
                 <div>
-                    {% for service in Instrutores.services %}
+                    {% for service in Instrutor.services %}
                     <span>{{service}}</span>
                     {% endfor %}
                 </div>
@@ -36,10 +36,10 @@
 
             <div class="item">
                 <div>Cadastrado em:</div>
-                <div>{{Instrutores.created_at}}</div>
+                <div>{{Instrutor.created_at}}</div>
             </div>
 
-            <a href="/instrutores/{{Instrutores.id}}/edit" class="button">Editar</a>
+            <a href="/instrutores/{{Instrutor.id}}/edit" class="button">Editar</a>
 
         </section>
 
