@@ -1,0 +1,87 @@
+<div class="item">
+    <div>Avatar URL</div>
+    <div>
+        <input type="url" name="avatar_url" placeholder="HTTP://" value="{{Membro.avatar_url}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome</div>
+    <div>
+        <input type="text" name="name" value="{{Membro.name}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>E-mail</div>
+    <div>
+        <input type="email" name="email" value="{{Membro.email}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Data de Nascimento</div>
+    <div>
+        <input type="date" name="birth" id="" value="{{Membro.birth}}">
+    </div>
+</div>
+
+<div class="item">
+    <div>Sexo</div>
+    <div>
+        <span>
+            <input type="radio" name="gender" value="M" 
+                {% if Membro.gender == "M" %}
+                    checked
+                {% endif %}
+            >Masculino
+        </span>
+        <span>
+            <input type="radio" name="gender" value="F" 
+                {% if Membro.gender == "F" %}
+                    checked
+                {% endif %}
+            >Feminino
+        </span>
+    </div>
+</div>
+
+<div class="item">
+    <div>Tipo Sanguíneo</div>
+    <div>
+        <select name="blood">
+            <option value="A1"  {% if Membro.blood == "A1"%}  Selected {% endif %}>A+</option>
+            <option value="A0"  {% if Membro.blood == "A0"%}  Selected {% endif %}>A-</option>
+            <option value="B1"  {% if Membro.blood == "B1"%}  Selected {% endif %}>B+</option>
+            <option value="B0"  {% if Membro.blood == "B0"%}  Selected {% endif %}>B-</option>
+            <option value="AB1" {% if Membro.blood == "AB1"%} Selected {% endif %}>AB+</option>
+            <option value="AB0" {% if Membro.blood == "AB0"%} Selected {% endif %}>AB-</option>
+            <option value="O1"  {% if Membro.blood == "O1"%}  Selected {% endif %}>O+</option>
+            <option value="O0"  {% if Membro.blood == "O0"%}  Selected {% endif %}>O-</option>
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Peso (KG)</div>
+    <div>
+        <input  
+            type="number" step="0.01" min="40" max="150"
+            name="weight" 
+            value="{{Membro.weight}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Altura (CM)</div>
+    <div>
+        <input  
+            type="number" step="0.01" min="0" max="3"
+            name="height" 
+            value="{{Membro.height}}"
+        >
+    </div>
+</div>
+
+<button type="submit">Salvar</button>

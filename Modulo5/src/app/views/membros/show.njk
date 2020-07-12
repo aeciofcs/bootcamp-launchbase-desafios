@@ -4,47 +4,47 @@
     <div class="card">
         <section 
             class="avatar"
-            style="background: url({{membro.avatar_url}}) no-repeat center center / cover">
+            style="background: url({{Membro.avatar_url}}) no-repeat center center / cover">
         </section>
         
         <section class="details">            
 
             <div class="item">
                 <div>Membro</div>
-                <div>{{membro.name}}</div>
+                <div>{{Membro.name}}</div>
             </div>
 
             <div class="item">
                 <div>E-mail</div>
-                <div>{{membro.email}}</div>
+                <div>{{Membro.email}}</div>
             </div>
 
             <div class="item">
                 <div>Aniversário</div>
-                <div>{{membro.birth}}</div>
+                <div>{{Membro.birth}}</div>
             </div>
 
             <div class="item">
                 <div>Sexo</div>
-                <div>{{'Masculino' if membro.gender == 'M' else 'Feminino'}}</div>
+                <div>{{'Masculino' if Membro.gender == 'M' else 'Feminino'}}</div>
             </div>
 
             <div class="item">
                 <div>Tipo Sanguíneo</div>
-                <div>{{membro.blood}}</div>
+                <div>{{Membro.blood}}</div>
             </div>
 
             <div class="item">
                 <div>Peso (KG)</div>
-                <div>{{membro.weight}}</div>
+                <div>{{Membro.weight}}</div>
             </div>
 
             <div class="item">
                 <div>Altura (CM)</div>
-                <div>{{membro.height}}</div>
+                <div>{{Membro.height}}</div>
             </div>            
 
-            <a href="/membros/{{membro.id}}/edit" class="button">Editar</a>
+            <a href="/membros/{{Membro.id}}/edit" class="button">Editar</a>
 
         </section>
     </div>

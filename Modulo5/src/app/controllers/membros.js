@@ -1,13 +1,18 @@
 const intl                  = require('intl')
 const { blood, formatDate } = require('../../lib/Utils')
+const Membro                = require('../models/Membro')
 
 module.exports = {
     index: (request, response) => {
-        return response.render('membros/index')
+        Membro.all( (Membros) => {
+            return response.render('membros/index', { Membros })
+        } )
     },
+
     create: (request, response) => {
         return response.render('membros/create')
     },
+
     post: (request, response) => {
         // Pega todas as keys do request.body
         const keys = Object.keys(request.body)
@@ -17,14 +22,30 @@ module.exports = {
             if( request.body[key] == "")
                 return response.send('Por favor, preencha todos os campos.')
         }
-        return
+        Membro.create(request.body, (Membro) => {
+            return response.redirect(`/membros/${Membro.id}`)
+        })
     },
+
     show: (request,response) => {
-        return        
+        Membro.find(request.params.id, (Membro) => {
+            if(!Membro) return response.send('Membro não localizado')
+            Membro.birth = formatDate(Membro.birth).dateBirth
+            Membro.blood = blood(Membro.blood)
+
+            return response.render('membros/show', { Membro })
+        })
     },
+
     edit: (request, response) => {
-        return
+        Membro.find(request.params.id, (Membro) => {
+            if(!Membro) return response.send('Membro não encontrado.')
+            Membro.birth = formatDate(Membro.birth).iso
+            
+            return response.render('membros/edit', { Membro })
+        })
     },
+
     put: (request, response) => {
         // Pega todas as keys do request.body
         const keys = Object.keys(request.body)
@@ -34,9 +55,15 @@ module.exports = {
             if( request.body[key] == "")
                 return response.send('Por favor, preencha todos os campos.')
         }
-        return
+        Membro.update(request.body, () => {
+            return response.redirect(`/membros/${request.body.id}`)
+        })
     },
+
     delete: (request,response) =>{
-        return
+        Membro.delete(request.body.id, () => {
+            return response.redirect(`/membros`)
+        })
     }
+
 }

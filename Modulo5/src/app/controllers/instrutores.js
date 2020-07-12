@@ -7,9 +7,11 @@ module.exports = {
             return response.render('instrutores/index', { Instrutores })
         } )
     },
+
     create: (request, response) => {
         return response.render('instrutores/create')
     },
+
     post: (request, response) => {
         // Pega todas as keys do request.body
         const keys = Object.keys(request.body)
@@ -24,6 +26,7 @@ module.exports = {
         })
         
     },
+
     show: (request,response) => {
         Instrutor.find(request.params.id, (Instrutor) => {
             if(!Instrutor) return response.send('Instrutor não encontrado.')
@@ -34,6 +37,7 @@ module.exports = {
             return response.render('instrutores/show', { Instrutor })
         })
     },
+
     edit: (request, response) => {
         Instrutor.find(request.params.id, (Instrutor) => {
             if(!Instrutor) return response.send('Instrutor não encontrado.')
@@ -42,6 +46,7 @@ module.exports = {
             return response.render('instrutores/edit', { Instrutor })
         })
     },
+
     put: (request, response) => {
         // Pega todas as keys do request.body
         const keys = Object.keys(request.body)
@@ -56,9 +61,11 @@ module.exports = {
             return response.redirect(`/instrutores/${request.body.id}`)
         })
     },
+
     delete: (request,response) =>{
         Instrutor.delete(request.body.id, () => {
             return response.redirect(`/instrutores`)
         })
     }
+    
 }
