@@ -3,7 +3,11 @@ const { formatDate } = require('../../lib/Utils')
 
 module.exports = {
     all(callback) {
-        db.query('SELECT * FROM instructors', (err, results) => {
+        db.query(`  Select instructors.*, Count(members.name) As total_students
+                    From instructors
+                    Left Join members On (members.instructor_id = instructors.id)
+                    Group By instructors.ID 
+                    Order by instructors.ID desc`, (err, results) => {
             if(err) throw `SELECT => Database Error! ${err}`
             return callback(results.rows)
         })
