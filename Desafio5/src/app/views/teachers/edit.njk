@@ -21,7 +21,7 @@
             <form id="form-salvar" action="/teachers?_method=PUT" method="POST">
                 {% include 'teachers/fields.njk' %}
                 <input type="hidden" name="id" value={{teacher.id}}>
-                <button type="submit">Editar</button>
+                <button type="submit">Salvar</button>
             </form>
 
             <form id="form-delete" action="/teachers?_method=DELETE" method="POST">

@@ -1,19 +1,17 @@
 const {age, graduation, date} = require('../../lib/Utils')
 const Intl                    = require('intl')
-const Teacher = require('../models/Teacher')
+const Teacher                 = require('../models/Teacher')
 
 exports.index = (request, response) => {
     Teacher.all( (Teachers) => {
-        
-        
-        
+        let dataTeachers = []
         for (const teacher of Teachers) {
-            teacher.subjects_taught =            
+            dataTeachers.push({
+                ...teacher,
+                subjects_taught: teacher.subjects_taught.split(',')
+            })
         }
-        console.log(Teachers[0].subjects_taught.split(','))
-        console.log(Teachers[1].subjects_taught.split(','))
-        
-        return response.render('teachers/index', { Teachers })
+        return response.render('teachers/index', { Teachers: dataTeachers })
     } )
 }
 
@@ -29,103 +27,80 @@ exports.post = (request, response) => {
             return response.send('Por favor, preencha todos os campos.')        
     }
     
-    let id = 1
-    Teacher.qtdRegisters( (Teachers) => {
-        id = Number(Teachers.rows[0] + 1)
-    } )
-    
-    request.body.id = id
-
-    Teacher.create(request.body, (Teacher) => {
-        return response.redirect('/teachers')
-    })
-
-    
-    
-    
-
+    let id = 0
+    Teacher.qtdRegisters('teachers', (lastID) => {
+        id = Number(lastID) + 1
         
+        const {avatar_url, name, birth, schooling, typeclass, acting} = request.body
+    
+        const data = {
+            id,
+            avatar_url,
+            name,
+            birth_date: birth,
+            education_level: schooling,
+            class_type: typeclass,
+            subjects_taught: acting
+        }
 
+        Teacher.create(data, (Teacher) => {
+            return response.redirect('/teachers')
+        })
+    })
 }
 
 exports.show = (request, response) => {
-    const id            = request.params.id
-    const foundTeachers = data.teachers.find( (teacher) => {
-        return teacher.id == id
+    Teacher.find(request.params.id, (Teacher) => {
+        if(!Teacher) return response.send(`Teacher not found.`)
+        const teacher = {
+            ...Teacher,
+            age: age(Teacher.birth_date),
+            schooling: graduation(Teacher.education_level),
+            actings: Teacher.subjects_taught.split(','),
+            created_at: Intl.DateTimeFormat('pt-BR').format(Teacher.created_at)
+        }
+        return response.render('teachers/show', { teacher })
     })
-
-    if (!foundTeachers) return response.send(`Teacher ${id} not found.`)
-
-    const teacher = {
-        ...foundTeachers,
-        age: age(foundTeachers.birth),
-        schooling: graduation(foundTeachers.schooling),
-        actings: foundTeachers.acting.split(","),
-        created_at: Intl.DateTimeFormat('pt-BR').format(foundTeachers.created_at)
-    }
-
-    return response.render('teachers/show', { teacher })
 }
 
 exports.edit = (request, response) => {
-    const id            = request.params.id
-    const foundTeachers = data.teachers.find( (teacher) => {
-        return teacher.id == id
+    Teacher.find(request.params.id, (Teacher) => {
+        if(!Teacher) return response.send(`Teacher not found.`)
+        const teacher = {
+            ...Teacher,
+            birth: date(Teacher.birth_date).iso,
+            schooling: Teacher.education_level,
+            typeclass: Teacher.class_type,
+            acting: Teacher.subjects_taught
+        }
+        return response.render('teachers/edit', { teacher })
     })
-
-    if (!foundTeachers) return response.send(`Teacher ${id} not found.`)
-
-    const teacher = {
-        ...foundTeachers,
-        birth: date(foundTeachers.birth).iso
-    }
-
-    return response.render('teachers/edit', { teacher })
 }
 
 exports.update = (request, response) => {
-    const {id}     = request.body
-    let index      = 0
-
-    const foundTeacher = data.teachers.find((teacher, indexTeacher)=>{
-        if (teacher.id == id){
-            index = indexTeacher
-            return true
-        }
-    })
-    
-    console.log(request.body.id)
-    if (!foundTeacher) return response.send('Teacher not found for edit')
-
-    const teacher = {
-        ...foundTeacher,
-        ...request.body,
-        id: Number(id),
-        birth: Date.parse(request.body.birth)
+    // Validação: Verificar dados não preenchidos.
+    const keys = Object.keys(request.body)
+    for (const key of keys) {
+        if(request.body[key] == "")
+            return response.send('Por favor, preencha todos os campos.')
     }
-    /*
-    data.teachers[index] = teacher
-
-    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
-        if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })*/
-
-    return response.redirect(`/teachers`)
+    const {avatar_url, name, birth, schooling, typeclass, acting, id} = request.body
+    const data = {
+        avatar_url,
+        name,
+        birth_date     : birth,
+        education_level: schooling,
+        class_type     : typeclass,
+        subjects_taught: acting,
+        id
+    }
+    Teacher.update(data, () => {
+        return response.redirect(`/teachers`)
+    })
 }
 
 exports.delete = (request, response) => {
-    const {id} = request.body
-
-    const teachersFiltered = data.teachers.filter( (teacher) => {
-        return teacher.id != id
-    } )
-
-    /*
-    data.teachers = teachersFiltered
-
-    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err) => {
-        if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })*/
-
-    return response.redirect('/teachers')
+    Teacher.delete(request.body.id, () => {
+        return response.redirect('/teachers')
+    })
 }
