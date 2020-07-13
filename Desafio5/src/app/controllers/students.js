@@ -1,16 +1,18 @@
 const fs                 = require('fs')
-const data               = require('../data.json')
+//const data               = require('../data.json')
 const {age, grade, date} = require('../../lib/Utils')
 const Intl               = require('intl')
 
 exports.index = (request, response) => {
+    /*
     const studentList = data.students.map( (student)=>{
         return {
             ...student,
             school_year: grade(student.school_year)
         }
-    } )
-    return response.render('students/index', {students: studentList})
+    } )*/
+    //return response.render('students/index', {students: studentList})
+    return
 }
 
 exports.create = (request, response) => {
@@ -30,12 +32,12 @@ exports.post = (request, response) => {
     birth            = Date.parse(birth)
     const created_at = Date.now()
     let id           = 1
-    const lastId     = data.students[data.students.length - 1]
+    const lastId     = 1//data.students[data.students.length - 1]
     
     if(lastId) {
         id = lastId.id + 1
     }
-    
+    /*
     data.students.push({
         id,
         avatar_url,
@@ -50,11 +52,12 @@ exports.post = (request, response) => {
     fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
         if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
         return response.redirect('/students')
-    })
+    })*/
 }
 
 exports.show = (request, response) => {
     const id           = request.params.id
+    /*
     const foundStudent = data.students.find( (student) => {
         return student.id == id
     })
@@ -65,12 +68,14 @@ exports.show = (request, response) => {
         ...foundStudent,
         birth: date(foundStudent.birth).birthDay,
         school_year: grade(foundStudent.school_year)
-    }
-    return response.render('students/show', { student })
+    }*/
+    //return response.render('students/show', { student })
+    return
 }
 
 exports.edit = (request, response) => {
     const id           = request.params.id
+    /*
     const foundStudent = data.students.find( (student) => {
         return student.id == id
     })
@@ -82,13 +87,14 @@ exports.edit = (request, response) => {
         birth: date(foundStudent.birth).iso
     }
 
-    return response.render('students/edit', { student })
+    return response.render('students/edit', { student })*/
+    return
 }
 
 exports.update = (request, response) => {
     const { id } = request.body
     let index    = 0
-
+    /*
     const foundStudent = data.students.find((student, indexStudent)=>{
         if (student.id == id){
             index = indexStudent
@@ -110,13 +116,13 @@ exports.update = (request, response) => {
     fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
     })
-
+    */
     return response.redirect(`/students`)
 }
 
 exports.delete = (request, response) => {
     const { id } = request.body
-
+    /*
     const studentsFiltered = data.students.filter( (student) => {
         return student.id != id
     } )
@@ -125,7 +131,7 @@ exports.delete = (request, response) => {
 
     fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err) => {
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })
+    })*/
 
     return response.redirect('/students')
 }

@@ -1,18 +1,20 @@
-const fs                      = require('fs')
-const data                    = require('../data.json')
 const {age, graduation, date} = require('../../lib/Utils')
 const Intl                    = require('intl')
+const Teacher = require('../models/Teacher')
 
 exports.index = (request, response) => {
-
-    const teachersList = data.teachers.map( (teacher)=>{
-        return {
-            ...teacher,
-            acting: teacher.acting.split(",")
-        }        
+    Teacher.all( (Teachers) => {
+        
+        
+        
+        for (const teacher of Teachers) {
+            teacher.subjects_taught =            
+        }
+        console.log(Teachers[0].subjects_taught.split(','))
+        console.log(Teachers[1].subjects_taught.split(','))
+        
+        return response.render('teachers/index', { Teachers })
     } )
-    
-    return response.render('teachers/index', {teachers: teachersList})
 }
 
 exports.create = (request, response) => {
@@ -20,35 +22,30 @@ exports.create = (request, response) => {
 }
 
 exports.post = (request, response) => {
-
     // Validação: Verificar dados não preenchidos.
     const keys = Object.keys(request.body)
     for (const key of keys) {
         if(request.body[key] == "")
             return response.send('Por favor, preencha todos os campos.')        
-    }   
+    }
+    
+    let id = 1
+    Teacher.qtdRegisters( (Teachers) => {
+        id = Number(Teachers.rows[0] + 1)
+    } )
+    
+    request.body.id = id
 
-    let {avatar_url, name, birth, schooling, typeclass, acting} = request.body
-
-    birth            = Date.parse(birth)
-    const id         = Number(data.teachers.length + 1)
-    const created_at = Date.now()
-
-    data.teachers.push({
-        id,
-        avatar_url,
-        name,
-        birth,
-        schooling,
-        typeclass,
-        acting,
-        created_at
-    })
-
-    fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
-        if (err) return request.send("Erro na gravação do arquivo DATA.JSON")
+    Teacher.create(request.body, (Teacher) => {
         return response.redirect('/teachers')
     })
+
+    
+    
+    
+
+        
+
 }
 
 exports.show = (request, response) => {
@@ -106,12 +103,12 @@ exports.update = (request, response) => {
         id: Number(id),
         birth: Date.parse(request.body.birth)
     }
-    
+    /*
     data.teachers[index] = teacher
 
     fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err)=>{
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })
+    })*/
 
     return response.redirect(`/teachers`)
 }
@@ -123,11 +120,12 @@ exports.delete = (request, response) => {
         return teacher.id != id
     } )
 
+    /*
     data.teachers = teachersFiltered
 
     fs.writeFile("data.JSON", JSON.stringify(data, null, 2), (err) => {
         if (err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })
+    })*/
 
     return response.redirect('/teachers')
 }
