@@ -20,8 +20,9 @@ module.exports = {
                 blood,
                 weight,
                 height,
-                created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                created_at,
+                instructor_id
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
             RETURNING id
         `
         const values = [
@@ -34,6 +35,7 @@ module.exports = {
             data.weight,
             data.height,
             formatDate(Date.now()).iso,
+            data.instructor
         ]
         
         db.query(query, values, (err, results) => {
@@ -43,7 +45,10 @@ module.exports = {
     },
 
     find(id, callback) {
-        db.query('SELECT * FROM members WHERE id = $1', [id], (err, results) => {
+        db.query(`  SELECT members.*, instructors.name As instructor_name
+                    FROM members
+                    LEFT JOIN instructors ON (instructors.id = members.instructor_id) 
+                    WHERE members.id = $1`, [id], (err, results) => {
             if(err) throw `FIND => Database Error! ${err}`
             return callback(results.rows[0])
         })
@@ -52,15 +57,16 @@ module.exports = {
     update(data, callback) {
         const query = `
             UPDATE members SET
-                name       = ($1),
-                avatar_url = ($2),
-                birth      = ($3),
-                gender     = ($4),
-                blood      = ($5),
-                weight     = ($6),
-                height     = ($7),
-                email      = ($8)
-            WHERE id = $9
+                name          = ($1),
+                avatar_url    = ($2),
+                birth         = ($3),
+                gender        = ($4),
+                blood         = ($5),
+                weight        = ($6),
+                height        = ($7),
+                email         = ($8),
+                instructor_id = ($9)
+            WHERE id = $10
         `
         const values = [
             data.name,
@@ -71,6 +77,7 @@ module.exports = {
             data.weight,
             data.height,
             data.email,
+            data.instructor,
             data.id
         ]
 
@@ -84,6 +91,13 @@ module.exports = {
         db.query('DELETE FROM members WHERE id = $1', [id], (err) => {
             if(err) throw `DELETE => Database Error! ${err}`
             return callback()
+        })
+    },
+
+    instructorsSelectOptions(callback){
+        db.query('SELECT name, id FROM instructors', (err, results) => {
+            if(err) throw 'SELECT INSTRUCTORS OPTIONS => Database Error!'
+            return callback(results.rows)
         })
     }
 }

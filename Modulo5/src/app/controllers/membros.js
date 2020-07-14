@@ -1,4 +1,3 @@
-const intl                  = require('intl')
 const { blood, formatDate } = require('../../lib/Utils')
 const Membro                = require('../models/Membro')
 
@@ -10,7 +9,9 @@ module.exports = {
     },
 
     create: (request, response) => {
-        return response.render('membros/create')
+        Membro.instructorsSelectOptions( (Options) => {            
+            return response.render('membros/create', { instructorOptions: Options })
+        } )
     },
 
     post: (request, response) => {
@@ -38,11 +39,13 @@ module.exports = {
     },
 
     edit: (request, response) => {
-        Membro.find(request.params.id, (Membro) => {
-            if(!Membro) return response.send('Membro não encontrado.')
-            Membro.birth = formatDate(Membro.birth).iso
+        Membro.find(request.params.id, (Member) => {
+            if(!Member) return response.send('Membro não encontrado.')
+            Member.birth = formatDate(Member.birth).iso
             
-            return response.render('membros/edit', { Membro })
+            Membro.instructorsSelectOptions( (Options) => {            
+                return response.render('membros/edit', {Membro: Member, instructorOptions: Options })
+            } )
         })
     },
 

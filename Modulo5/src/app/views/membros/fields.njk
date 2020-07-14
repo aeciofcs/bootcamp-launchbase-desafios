@@ -84,4 +84,15 @@
     </div>
 </div>
 
+<div class="item">
+    <div>Instrutor</div>
+    <div>
+        <select name="instructor">
+            {% for instructor in instructorOptions %}
+                <option value="{{instructor.id}}" {% if Membro.instructor_id == instructor.id %} Selected {% endif %}>{{instructor.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
 <button type="submit">Salvar</button>
