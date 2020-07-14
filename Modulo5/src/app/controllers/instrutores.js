@@ -3,9 +3,17 @@ const { age, formatDate } = require('../../lib/Utils')
 
 module.exports = {
     index: (request, response) => {
-        Instrutor.all( (Instrutores) => {
-            return response.render('instrutores/index', { Instrutores })
-        } )
+        const { filter } = request.query
+        
+        if(filter){
+            Instrutor.findBy(filter, (Instrutores) => {
+                return response.render('instrutores/index', { Instrutores })
+            } )
+        }else{
+            Instrutor.all( (Instrutores) => {
+                return response.render('instrutores/index', { Instrutores })
+            } )
+        }
     },
 
     create: (request, response) => {
