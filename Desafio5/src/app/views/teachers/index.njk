@@ -12,7 +12,14 @@
 
 {% block content %}  
     <div class="card table-container">
-        <a href="/teachers/create">NOVO</a>
+        <div class="header">
+            <a class="button" href="/teachers/create">NOVO</a>
+            <form action="/teachers" method="get">
+                <input value="{{filter}}" type="text" name="filter" placeholder="Nome e Disciplinas">
+                <button type="submit">Filtrar</button>
+            </form>
+        </div>
+
         <table width="100%">
             <thead>
                 <tr>

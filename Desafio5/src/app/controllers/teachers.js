@@ -3,16 +3,31 @@ const Intl                    = require('intl')
 const Teacher                 = require('../models/Teacher')
 
 exports.index = (request, response) => {
-    Teacher.all( (Teachers) => {
-        let dataTeachers = []
-        for (const teacher of Teachers) {
-            dataTeachers.push({
-                ...teacher,
-                subjects_taught: teacher.subjects_taught.split(',')
-            })
-        }
-        return response.render('teachers/index', { Teachers: dataTeachers })
-    } )
+    const {filter} = request.query
+
+    if(filter){
+        Teacher.findBy(filter, (Teachers) => {
+            let dataTeachers = []
+            for (const teacher of Teachers) {
+                dataTeachers.push({
+                    ...teacher,
+                    subjects_taught: teacher.subjects_taught.split(',')
+                })
+            }
+            return response.render('teachers/index', { Teachers: dataTeachers, filter })
+        } )
+    } else {
+        Teacher.all( (Teachers) => {
+            let dataTeachers = []
+            for (const teacher of Teachers) {
+                dataTeachers.push({
+                    ...teacher,
+                    subjects_taught: teacher.subjects_taught.split(',')
+                })
+            }
+            return response.render('teachers/index', { Teachers: dataTeachers })
+        } )
+    }
 }
 
 exports.create = (request, response) => {

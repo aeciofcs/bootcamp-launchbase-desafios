@@ -18,6 +18,24 @@ module.exports = {
         })
     },
 
+    findBy(filter, callback){
+        const query = `SELECT teachers.ID,
+                              teachers.avatar_url,
+                              teachers.name, 
+                              teachers.subjects_taught, 
+                              COUNT(students.id) AS total_students
+                       FROM teachers                       
+                       LEFT JOIN Students ON (students.teacher_id = teachers.id)
+                       WHERE teachers.name ILIKE '%${filter}%' OR
+                             teachers.subjects_taught ILIKE '%${filter}%'
+                       GROUP BY teachers.id 
+                       ORDER BY total_students DESC `
+        db.query(query, (err, results) => {
+            if(err) throw `SELECT => Database Error! ${err}`
+            return callback(results.rows)
+        })
+    },
+
     create(data, callback){
         const query = `
             INSERT INTO teachers(
