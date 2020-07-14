@@ -51,7 +51,8 @@ module.exports = {
         db.query(`  Select instructors.*, Count(members.name) As total_students
                     From instructors
                     Left Join members On (members.instructor_id = instructors.id)
-                    WHERE instructors.name ILIKE '%${filter}%'
+                    WHERE instructors.name ILIKE '%${filter}%' OR
+                          instructors.services ILIKE '%${filter}%'
                     Group By instructors.ID 
                     Order by instructors.ID desc`, (err, results) => {
             if(err) throw `FINDBY => Database Error! ${err}`

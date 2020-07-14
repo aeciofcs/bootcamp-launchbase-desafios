@@ -7,7 +7,7 @@ module.exports = {
         
         if(filter){
             Instrutor.findBy(filter, (Instrutores) => {
-                return response.render('instrutores/index', { Instrutores })
+                return response.render('instrutores/index', { Instrutores, filter })
             } )
         }else{
             Instrutor.all( (Instrutores) => {
