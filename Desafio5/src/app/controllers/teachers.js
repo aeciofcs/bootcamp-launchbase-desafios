@@ -26,10 +26,9 @@ exports.post = (request, response) => {
         if(request.body[key] == "")
             return response.send('Por favor, preencha todos os campos.')        
     }
-    
-    let id = 0
-    Teacher.qtdRegisters('teachers', (lastID) => {
-        id = Number(lastID) + 1
+
+    Teacher.qtdRegisters( (lastID) => {
+        let id = Number(lastID) + 1
         
         const {avatar_url, name, birth, schooling, typeclass, acting} = request.body
     

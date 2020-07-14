@@ -13,19 +13,12 @@ exports.index = (request, response) => {
         }
         return response.render('students/index', {students: dataStudents})        
     })
-    /*
-    const studentList = data.students.map( (student)=>{
-        return {
-            ...student,
-            school_year: grade(student.school_year)
-        }
-    } )*/
-    //return response.render('students/index', {students: studentList})
-    return
 }
 
 exports.create = (request, response) => {
-    return response.render('students/create')
+    Student.teachersOptions( (Options) => {        
+        return response.render('students/create', { teachersOptions: Options })
+    })
 }
 
 exports.post = (request, response) => {
@@ -38,7 +31,7 @@ exports.post = (request, response) => {
 
     Student.qtdRegisters( (lastID) => {
         let id = Number(lastID) + 1
-        const {avatar_url, name, birth, email, school_year, workload} = request.body
+        const {avatar_url, name, birth, email, school_year, workload, teacher_id} = request.body
         const data = {
             id,
             avatar_url,
@@ -46,7 +39,8 @@ exports.post = (request, response) => {
             birth,
             email,
             school_year,
-            workload
+            workload, 
+            teacher_id
         }
         Student.create(data, (Students) => {
             return response.redirect('/students')
@@ -72,8 +66,10 @@ exports.edit = (request, response) => {
         const student = {
             ...Students,
             birth: date(Students.birth).iso
-        }  
-        return response.render('students/edit', { student })
+        }
+        Student.teachersOptions( (Options) => {        
+            return response.render('students/edit', { student, teachersOptions: Options })
+        })
     })
 }
 

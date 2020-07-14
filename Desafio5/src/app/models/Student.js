@@ -19,8 +19,9 @@ module.exports = {
                 email,
                 school_year,
                 workload,
-                created_at
-            ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8)
+                created_at,
+                teacher_id
+            ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9)
             RETURNING ID
         `
         const values = [
@@ -31,7 +32,8 @@ module.exports = {
             data.email,
             data.school_year,
             data.workload,
-            date(Date.now()).iso
+            date(Date.now()).iso,
+            date.teacher_id
         ]
         db.query(query, values, (err, results) => {
             if(err) throw `POST => Database Error! ${err}`
@@ -40,7 +42,10 @@ module.exports = {
     },
 
     find(id, callback){
-        db.query(`SELECT * FROM students WHERE ID = $1`, [id], (err, results) => {
+        db.query(`SELECT students.*, teachers.name AS teacher_name 
+                  FROM students 
+                  LEFT JOIN teachers ON (teachers.id = students.teacher_id)
+                  WHERE students.ID = $1`, [id], (err, results) => {
             if(err) throw `QTD Registros => Database Error! ${err}`
             return callback(results.rows[0])
         })
@@ -54,8 +59,9 @@ module.exports = {
                 BIRTH       = ($3),
                 EMAIL       = ($4),
                 SCHOOL_YEAR = ($5),
-                WORKLOAD    = ($6)
-            WHERE ID = $7
+                WORKLOAD    = ($6),
+                TEACHER_ID  = ($7)
+            WHERE ID = $8
         `
         const values = [
             data.avatar_url,
@@ -64,6 +70,7 @@ module.exports = {
             data.email,
             data.school_year,
             data.workload,
+            data.teacher_id,
             data.id
         ]
         db.query(query, values, (err, results) => {
@@ -83,9 +90,15 @@ module.exports = {
         const query = 'SELECT COALESCE((SELECT id FROM students ORDER BY id DESC LIMIT 1), 0) ID'
         db.query(query, (err, results) => {
             if(err) throw `QTD Registros => Database Error! ${err}`
-            console.log(results.rows)
             return callback(results.rows[0].id)
         })
+    },
+
+    teachersOptions(callback){
+        db.query('SELECT id, name FROM teachers', (err, results) => {
+            if(err) throw `TEACHERS OPTIONS => Database Error! ${err}`
+            return callback(results.rows)
+        })
     }
-    
+
 }

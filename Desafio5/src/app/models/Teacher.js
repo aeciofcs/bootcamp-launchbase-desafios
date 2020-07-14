@@ -3,7 +3,16 @@ const { date } = require('../../lib/Utils')
 
 module.exports = {
     all(callback){
-        db.query('SELECT * FROM teachers', (err, results) => {
+        const query = `SELECT teachers.ID,
+                              teachers.avatar_url,
+                              teachers.name, 
+                              teachers.subjects_taught, 
+                              COUNT(students.id) AS total_students
+                       FROM teachers
+                       LEFT JOIN Students ON (students.teacher_id = teachers.id)
+                       GROUP BY teachers.id 
+                       ORDER BY total_students DESC `
+        db.query(query, (err, results) => {
             if(err) throw `SELECT => Database Error! ${err}`
             return callback(results.rows)
         })
@@ -80,7 +89,8 @@ module.exports = {
     },
 
     qtdRegisters(callback){
-        db.query(`SELECT ID FROM teachers ORDER BY ID DESC Limit 1`, (err, results) => {
+        const query = 'SELECT COALESCE((SELECT id FROM teachers ORDER BY id DESC LIMIT 1), 0) ID'
+        db.query(query, (err, results) => {
             if(err) throw `QTD Registros => Database Error! ${err}`
             return callback(results.rows[0].id)
         })

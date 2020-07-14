@@ -18,6 +18,7 @@
                 <tr>
                     <th>Professor</th>
                     <th>Acompanhamento</th>
+                    <th>Alunos</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                             <span>{{subjects}}</span>
                         {% endfor %}
                     </td>
+                    <td>{{teacher.total_students}}</td>
                     <td><a href="teachers/{{teacher.id}}">Ver</a></td>
                 </tr>
                 {% endfor %}

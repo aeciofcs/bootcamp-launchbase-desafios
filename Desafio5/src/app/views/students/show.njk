@@ -40,6 +40,11 @@
                 <div>{{student.workload}}</div>
             </div>
 
+            <div class="item">
+                <div>Aluno de</div>
+                <div>{{ student.teacher_name if student.teacher_name else "Sem Professor" }}</div>
+            </div>
+
             <a href="/students/{{student.id}}/edit" class="button">Alterar</a>
 
         </section>
