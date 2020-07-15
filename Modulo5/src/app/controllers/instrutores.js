@@ -3,17 +3,34 @@ const { age, formatDate } = require('../../lib/Utils')
 
 module.exports = {
     index: (request, response) => {
-        const { filter } = request.query
+        let { filter, page, limit } = request.query
         
+        page  = page || 1
+        limit = limit || 3
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(Instrutores){
+                return response.render('instrutores/index', { Instrutores, filter })
+            }
+        }
+
+        Instrutor.paginate(params)
+
+        /*
         if(filter){
             Instrutor.findBy(filter, (Instrutores) => {
-                return response.render('instrutores/index', { Instrutores, filter })
+                
             } )
         }else{
             Instrutor.all( (Instrutores) => {
                 return response.render('instrutores/index', { Instrutores })
             } )
-        }
+        }*/
     },
 
     create: (request, response) => {
