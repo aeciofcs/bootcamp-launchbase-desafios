@@ -16,32 +16,50 @@ if(formDelete){
     })
 }
 
-/* LOGICA PARA PAGINAÇÃO */
-// totalPages = 20
-// selectedPage = 12
-// [1, ..., 10, 11, 12, 13, 14, ..., 20]
-let totalPages   = 20,
-    selectedPage = 12,
-    pages        = [],
-    oldPage
-
-for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
-    const firstAndLastPage        = currentPage == 1 || currentPage == totalPages
-    const pagesAfterSelectedPage  = currentPage <= selectedPage + 2
-    const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
-
-    if(firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage){
-        if(oldPage && currentPage - oldPage > 2){
-            pages.push('...')
+function paginate(selectedPage, totalPages){
+    /* LOGICA PARA PAGINAÇÃO */
+    // totalPages = 20
+    // selectedPage = 12
+    // [1, ..., 10, 11, 12, 13, 14, ..., 20]
+    let pages        = [],
+        oldPage
+    
+    for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+        const firstAndLastPage        = currentPage == 1 || currentPage == totalPages
+        const pagesAfterSelectedPage  = currentPage <= selectedPage + 2
+        const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
+    
+        if(firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage){
+            if(oldPage && currentPage - oldPage > 2){
+                pages.push('...')
+            }
+            if(oldPage && currentPage - oldPage == 2){
+                pages.push(oldPage + 1)
+            }
+            
+            pages.push(currentPage)
+            
+            oldPage = currentPage
         }
-        if(oldPage && currentPage - oldPage == 2){
-            pages.push(oldPage + 1)
-        }
-        
-        pages.push(currentPage)
-        
-        oldPage = currentPage
     }
+
+    return pages
 }
 
-console.log(pages)
+const pagination = document.querySelector(".pagination")
+const page       = +pagination.dataset.page
+const total      = +pagination.dataset.total
+const pages      = paginate(page, total)
+
+let elements = ""
+
+for (const page of pages) {
+    if(String(page).includes("...")){
+        elements += `<span>${page}</span>`
+    }else{
+        elements += `<a href="?page=${page}">${page}</a>`
+    }
+    
+}
+
+pagination.innerHTML = elements
