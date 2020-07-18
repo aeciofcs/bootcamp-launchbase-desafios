@@ -4,7 +4,26 @@ const Membro                = require('../models/Membro')
 module.exports = {
     index: (request, response) => {
         Membro.all( (Membros) => {
-            return response.render('membros/index', { Membros })
+            let { filter, page, limit } = request.query
+        
+            page  = page || 1
+            limit = limit || 3
+            let offset = limit * (page - 1)
+
+            const params = {
+                filter,
+                page,
+                limit,
+                offset,
+                callback(Membros){
+                    const pagination = {
+                        total: Membros.length == 0 ? 0 : Math.ceil( Membros[0].total / limit),
+                        page
+                    }
+                    return response.render('membros/index', { Membros, pagination, filter })
+                }
+            }
+            Membro.paginate(params)
         } )
     },
 

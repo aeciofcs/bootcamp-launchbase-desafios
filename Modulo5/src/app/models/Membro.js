@@ -99,5 +99,30 @@ module.exports = {
             if(err) throw 'SELECT INSTRUCTORS OPTIONS => Database Error!'
             return callback(results.rows)
         })
+    },
+
+    paginate(params){
+        const { filter, limit, offset, callback } = params
+
+        let query = "",
+            filterQuery = "",
+            totalQuery = `( SELECT COUNT(*) FROM members ) AS total`        
+                
+        if( filter ){
+            filterQuery = `WHERE members.name ILIKE '%${filter}%' OR
+                                 members.email ILIKE '%${filter}%' `
+            totalQuery = `( SELECT COUNT(*) FROM members
+                          ${filterQuery} ) AS total`
+        }
+        query = `Select members.*, ${totalQuery}
+                 From members
+                 ${filterQuery}
+                 Order by members.ID
+                 LIMIT $1 OFFSET $2 ` // PODEMOS COLOCAR ${limit} ${offset} NO LUGAR DE $1 e $2;
+        
+        db.query(query, [limit, offset], (err, results) => {
+            if (err) throw 'PAGINATE => Database Error!!'
+            callback(results.rows)
+        })
     }
 }
