@@ -112,6 +112,38 @@ module.exports = {
             if(err) throw `QTD Registros => Database Error! ${err}`
             return callback(results.rows[0].id)
         })
+    },
+
+    paginate(params){
+        const {filter, limit, offset, callback} = params
+
+        let mainQuery   = ``,
+            totalQuery  = `( SELECT COUNT(*) FROM teachers ) As Total`,
+            filterQuery = ``        
+        
+        if(filter){
+            filterQuery = `WHERE teachers.name ILIKE '%${filter}%' OR 
+                                 teachers.subjects_taught ILIKE '%${filter}%'`
+
+            totalQuery = `( SELECT COUNT(*) FROM teachers 
+                            ${filterQuery} ) As Total`
+        }
+
+        mainQuery = `SELECT teachers.ID,
+                            teachers.avatar_url,
+                            teachers.name, 
+                            teachers.subjects_taught, 
+                            COUNT(students.id) AS total_students,
+                            ${totalQuery}
+                     FROM teachers                       
+                     LEFT JOIN Students ON (students.teacher_id = teachers.id)
+                     ${filterQuery}
+                     GROUP BY teachers.id LIMIT ${limit} OFFSET ${offset}`        
+        
+        db.query(mainQuery, (err, results) => {
+            if(err) throw `PAGINATE => Database Error! ${err}`
+            return callback(results.rows)
+        })
     }
 
 }

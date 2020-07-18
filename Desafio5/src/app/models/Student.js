@@ -33,7 +33,7 @@ module.exports = {
             data.school_year,
             data.workload,
             date(Date.now()).iso,
-            date.teacher_id
+            data.teacher_id
         ]
         db.query(query, values, (err, results) => {
             if(err) throw `POST => Database Error! ${err}`

@@ -3,8 +3,35 @@ const Intl                    = require('intl')
 const Teacher                 = require('../models/Teacher')
 
 exports.index = (request, response) => {
-    const {filter} = request.query
+    let {filter, page, limit} = request.query
 
+    page       = page || 1
+    limit      = limit || 3
+    let offset = limit * (page - 1)
+    
+    const params = {
+        filter,
+        page,
+        limit,
+        offset,
+        callback(Teachers){
+            let dataTeachers = []
+            for (const teacher of Teachers) {
+                dataTeachers.push({
+                    ...teacher,
+                    subjects_taught: teacher.subjects_taught.split(',')
+                })
+            }
+            const pagination = {
+                total: Teachers.length == 0 ? 0 : Math.ceil( Teachers[0].total / limit),
+                page
+            }
+            return response.render('teachers/index', { Teachers: dataTeachers, filter, pagination })
+        }
+    }
+
+    Teacher.paginate(params)
+    /*
     if(filter){
         Teacher.findBy(filter, (Teachers) => {
             let dataTeachers = []
@@ -27,7 +54,7 @@ exports.index = (request, response) => {
             }
             return response.render('teachers/index', { Teachers: dataTeachers })
         } )
-    }
+    }*/
 }
 
 exports.create = (request, response) => {
