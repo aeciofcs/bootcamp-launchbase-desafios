@@ -1,0 +1,49 @@
+{% extends "layout.njk" %}
+
+{% block title %}
+        <title>FOODFY - NOVO CHEF</title>
+{% endblock %}
+
+{% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
+
+{% block header %}
+    
+    <header>
+        <div class="header">
+            <div class="menu-img">
+                {% block logo %}
+                    <img src="/assets/Admin/logo.png" alt="logo-admin-foody">
+                {% endblock %}
+            </div>
+            <div class="menu-links">
+                <a href="/admin/recipes" class="menu-recipes">Receitas</a>
+                <a href="/admin/chefs">Chefs</a>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block main %}
+    <main>
+        <form action="/admin/chefs" method="POST"> 
+            <div class="create-title">
+                <h2>Criando Chef</h2>
+                <button type="submit">Salvar Chef</button>
+            </div>       
+            {% include 'Admin/chefs/fields.njk' %}            
+        </form>
+    </main>
+{% endblock %}
+
+{% block footer %}    
+    <footer>
+        <h3>Todos direitos reservados, receitas Foodfy.</h3>
+    </footer>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/scripts.js"></script>
+{% endblock %}

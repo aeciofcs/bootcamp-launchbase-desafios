@@ -1,0 +1,58 @@
+{% extends "layout.njk" %}
+
+{% block title %}
+        <title>ADMINISTRAÇÃO - FOODFY</title>
+{% endblock %}
+
+{% block stylesheet  %}
+        <link rel="stylesheet" href="/styles/admin.css">
+{% endblock %}
+
+{% block header %}
+    
+    <header>
+        <div class="header">
+            <div class="menu-img">
+                {% block logo %}
+                    <a href="/admin"><img src="/assets/Admin/logo.png" alt="logo-admin-foody"></a>
+                {% endblock %}
+            </div>
+            <div class="menu-links">
+                <a href="/admin/recipes" class="menu-recipes">Receitas</a>
+                <a href="/admin/chefs">Chefs</a>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block main %}
+    <main>
+        <div class="ger-recipe">
+            <h2>Gerenciar Chefs</h2>
+            <a href="/admin/chefs/create">NOVO CHEF</a>
+        </div>        
+        <div class="wrapper-recipes">
+            <div class="recipes">
+                {% for chef in Chefs %}
+                <div class="recipe" id="1">
+                    <section>
+                        <img src="{{chef.avatar.url}}" alt="{{chef.name}}">
+                    </section>
+                    <section>
+                        <h3>{{chef.name}}</h3>
+                        <h4>por {{total_recipes}}</h4>
+                        <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
+                    </section>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}    
+    <footer>
+        <h3>Todos direitos reservados, receitas Foodfy.</h3>
+    </footer>
+{% endblock %}
