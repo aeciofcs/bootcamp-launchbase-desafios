@@ -99,6 +99,37 @@ module.exports = {
             if(err) throw `TEACHERS OPTIONS => Database Error! ${err}`
             return callback(results.rows)
         })
+    },
+
+    paginate(params){
+        const {filter, limit, offset, callback} = params
+
+        let mainQuery   = ``,
+            totalQuery  = `( SELECT COUNT(*) FROM students ) As Total`,
+            filterQuery = ``        
+        
+        if(filter){
+            filterQuery = `WHERE students.name ILIKE '%${filter}%' OR 
+                                 students.email ILIKE '%${filter}%'`
+
+            totalQuery = `( SELECT COUNT(*) FROM students 
+                            ${filterQuery} ) As Total`
+        }
+
+        mainQuery = `SELECT students.ID,
+                            students.avatar_url,
+                            students.name,
+                            students.email,
+                            students.school_year,
+                            ${totalQuery}
+                     FROM students                     
+                     ${filterQuery}
+                     GROUP BY students.id LIMIT ${limit} OFFSET ${offset}`
+        
+        db.query(mainQuery, (err, results) => {
+            if(err) throw `PAGINATE => Database Error! ${err}`
+            return callback(results.rows)
+        })
     }
 
 }

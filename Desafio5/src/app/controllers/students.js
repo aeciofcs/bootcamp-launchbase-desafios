@@ -3,16 +3,34 @@ const Intl               = require('intl')
 const Student            = require('../models/Student')
 
 exports.index = (request, response) => {
-    Student.all( (Students) => {
-        let dataStudents = []
-        for (const student of Students) {
-            dataStudents.push({
-                ...student,
-                school_year: grade(student.school_year)
-            })
+    let {filter, page, limit} = request.query
+
+    page       = page || 1
+    limit      = limit || 3
+    let offset = limit * (page - 1)
+    
+    const params = {
+        filter,
+        page,
+        limit,
+        offset,
+        callback(Students){
+            let dataStudents = []
+            for (const student of Students) {
+                dataStudents.push({
+                    ...student,
+                    school_year: grade(student.school_year)
+                })
+            }
+            const pagination = {
+                total: Students.length == 0 ? 0 : Math.ceil( Students[0].total / limit),
+                page
+            }
+            return response.render('students/index', {students: dataStudents, filter, pagination })
         }
-        return response.render('students/index', {students: dataStudents})        
-    })
+    }
+    
+    Student.paginate(params)
 }
 
 exports.create = (request, response) => {
