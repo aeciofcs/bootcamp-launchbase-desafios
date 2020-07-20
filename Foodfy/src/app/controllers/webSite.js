@@ -1,4 +1,4 @@
-const data = require('../data.json')
+const data = require('../../../data.json')
 
 exports.index = (request, response)=>{
     return response.render('Site/index', { Recipes: data.recipes })

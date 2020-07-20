@@ -1,5 +1,4 @@
-const data = require('../data.json')
-const fs   = require('fs')
+
 
 exports.index = (request, response) => {
     return response.send('TELA DE LISTAGEM DOS CHEFs')

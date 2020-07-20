@@ -1,8 +1,8 @@
 const express = require('express')
-const webSite = require('./controllers/webSite')
-const recipes = require('./controllers/recipes')
-const admin   = require('./controllers/admin')
-const chefs   = require('./controllers/chefs')
+const webSite = require('./app/controllers/webSite')
+const recipes = require('./app/controllers/recipes')
+const admin   = require('./app/controllers/admin')
+const chefs   = require('./app/controllers/chefs')
 
 const routes  = express.Router()
 // ### ROTAS DO WEBSITE ### //
