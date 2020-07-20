@@ -24,6 +24,7 @@ header {
     margin-left: 231px;
     max-width: 100%;
     height: 100%;
+    display: flex;
 }
 
 .header img {
@@ -294,4 +295,19 @@ form div a {
     font-size: 18px;
     color: #444444;
     line-height: 28px;
+}
+
+.menu-links {
+    margin-top: 31px;
+    margin-left: 50.4px;
+}
+
+.menu-links a {    
+    font-size: 15px;
+    color: #FFFFFF;    
+    text-decoration: none;
+}
+
+.menu-links .menu-recipes{
+    margin-right: 30px;
 }

@@ -4,7 +4,7 @@ const routes          = require('./routes')
 const methodOverrride = require('method-override') 
 
 const server       = express()
-const PORT_CONNECT = 3000;
+const PORT_CONNECT = 4000;
 
 //Informando ao servidor a pasta dos arquivos estáticos --> app.use('/static', express.static())
 server.use(express.urlencoded( {extended: true} ))
