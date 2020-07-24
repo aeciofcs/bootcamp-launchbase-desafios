@@ -29,7 +29,10 @@ exports.show = (request, response) => {
 }
 
 exports.edit = (request, response) => {
-    return response.send('ABRIR TELA DE EDIÇÃO DO CHEF')
+    const { id } = request.params
+    Chef.find(id, (Chef) => {
+        return response.render('Admin/Chefs/edit', { Chef })
+    })
 }
 
 exports.put = (request, response) => {

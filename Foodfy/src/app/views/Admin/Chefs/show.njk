@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-        <title>FOODFY - CHEF</title>
+        <title>CHEF - {{Chef.name}}</title>
 {% endblock %}
 
 {% block stylesheet  %}
@@ -30,14 +30,14 @@
     <main>
         <div class="recipe-1 chef-1">
             <h2>Chef: {{Chef.name}}</h2>
-            <a href="/admin/recipes/{{Chef.id}}/edit"><button>Editar Chef</button></a>
+            <a href="/admin/chefs/{{Chef.id}}/edit"><button>Editar Chef</button></a>
         </div>
         <div class="recipe-2 chef-2">
             <img src="{{Chef.avatar_url}}" alt="{{Chef.name}}">
         </div>
         <div class="recipe-3 chef-3">
             <h2>{{Chef.name}}</h2>
-            <h5>{{Chef.total_recipes}} receitas</h5>
+            <h5>{{Chef.total_recipes}} 0 receitas</h5>
         </div>
         <div class="recipe-4 chef-4">
             <h2>Receitas</h2>
