@@ -36,7 +36,26 @@ module.exports = {
         
         db.query(query, (err, results) => {
             if(err) throw `FIND => Database Error ${err}`
-            callback(results.rows[0])
+            return callback(results.rows[0])
+        })
+    },
+    
+    update(data, callback){
+        const query = `
+            UPDATE chefs SET
+                name       = $2,
+                avatar_url = $3
+            WHERE id = $1
+        `        
+        const values = [
+            data.id,
+            data.name,
+            data.avatar_url
+        ]
+
+        db.query(query, values, (err, results) => {
+            if (err) throw `UPDATE => Database Error. ${err}`
+            return callback(results.rows)
         })
     }
 }

@@ -35,8 +35,10 @@ exports.edit = (request, response) => {
     })
 }
 
-exports.put = (request, response) => {
-    return response.send('GRAVAR ALTERAÇÃO DE UM CHEF')
+exports.put = (request, response) => {    
+    Chef.update(request.body, (Chef) => {
+        return response.redirect('/admin/chefs')
+    })
 }
 
 exports.delete = (request, response) => {
