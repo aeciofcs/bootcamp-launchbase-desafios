@@ -42,5 +42,8 @@ exports.put = (request, response) => {
 }
 
 exports.delete = (request, response) => {
-    return response.send('DELETAR UM CHEF')
+    const { id } = request.body
+    Chef.delete(id, (Chefs) => {
+        return response.redirect('/admin/chefs')
+    })
 }
