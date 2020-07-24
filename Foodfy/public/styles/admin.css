@@ -311,3 +311,33 @@ form div a {
 .menu-links .menu-recipes{
     margin-right: 30px;
 }
+
+
+/* tela de visualização do chef */
+.chef-1{
+    margin-top: 50px;
+}
+
+.chef-2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.chef-2 img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.chef-3{
+    margin-top: 30px;
+}
+
+.chef-3 h5{
+    margin-top: 4px;
+}
+
+.chef-4 {
+    margin-top: 50px;    
+    font-size: 24px;
+}

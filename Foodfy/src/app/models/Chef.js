@@ -29,5 +29,14 @@ module.exports = {
             if(err) throw `CREATE => Database Error.`
             return callback(results.rows[0])
         })
+    },
+
+    find(id, callback){
+        const query = `SELECT id, name, avatar_url FROM chefs WHERE id = ${id}`
+        
+        db.query(query, (err, results) => {
+            if(err) throw `FIND => Database Error ${err}`
+            callback(results.rows[0])
+        })
     }
 }

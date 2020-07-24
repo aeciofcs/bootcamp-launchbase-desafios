@@ -1,4 +1,3 @@
-const Chefs = require('../models/Chef')
 const Chef = require('../models/Chef')
 
 exports.index = (request, response) => {
@@ -23,7 +22,10 @@ exports.post = (request, response) => {
 }
 
 exports.show = (request, response) => {
-    return response.send('TELA DE VISUALIZAR UM CHEF')
+    const { id } = request.params
+    Chef.find(id, (Chef) => {
+        return response.render('Admin/Chefs/show', { Chef })
+    })
 }
 
 exports.edit = (request, response) => {

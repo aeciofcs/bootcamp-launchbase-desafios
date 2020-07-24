@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-        <title>ADMINISTRAÇÃO - FOODFY</title>
+        <title>FOODFY - CHEF</title>
 {% endblock %}
 
 {% block stylesheet  %}
@@ -28,25 +28,20 @@
 
 {% block main %}
     <main>
-        <div class="ger-recipe">
-            <h2>Gerenciar Chefs</h2>
-            <a href="/admin/chefs/create">NOVO CHEF</a>
-        </div>        
-        <div class="wrapper-recipes">
-            <div class="recipes">
-                {% for chef in Chefs %}
-                <div class="recipe" id="1">
-                    <section>
-                        <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
-                    </section>
-                    <section>
-                        <h3>{{chef.name}}</h3>
-                        <h4>por {{total_recipes}}</h4>
-                        <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
-                    </section>
-                </div>
-                {% endfor %}
-            </div>
+        <div class="recipe-1 chef-1">
+            <h2>Chef: {{Chef.name}}</h2>
+            <a href="/admin/recipes/{{Chef.id}}/edit"><button>Editar Chef</button></a>
+        </div>
+        <div class="recipe-2 chef-2">
+            <img src="{{Chef.avatar_url}}" alt="{{Chef.name}}">
+        </div>
+        <div class="recipe-3 chef-3">
+            <h2>{{Chef.name}}</h2>
+            <h5>{{Chef.total_recipes}} receitas</h5>
+        </div>
+        <div class="recipe-4 chef-4">
+            <h2>Receitas</h2>
+            <!-- LISTAR AS RECEITAS DO CHEF -->
         </div>
     </main>
 {% endblock %}
