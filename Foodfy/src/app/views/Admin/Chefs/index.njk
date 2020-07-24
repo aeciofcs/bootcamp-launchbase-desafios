@@ -33,15 +33,14 @@
             <a href="/admin/chefs/create">NOVO CHEF</a>
         </div>        
         <div class="wrapper-recipes">
-            <div class="recipes">
+            <div class="recipes chefs">
                 {% for chef in Chefs %}
-                <div class="recipe" id="1">
+                <div class="recipe chef" id="1">
                     <section>
                         <img src="{{chef.avatar_url}}" alt="{{chef.name}}">
                     </section>
                     <section>
-                        <h3>{{chef.name}}</h3>
-                        <h4>por {{total_recipes}}</h4>
+                        <h3>{{chef.name}}</h3>                        
                         <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
                     </section>
                 </div>

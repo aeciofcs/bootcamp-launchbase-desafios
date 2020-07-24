@@ -345,4 +345,20 @@ form div a {
 #form-delete {
     right: 426px;
 }
-/*chef-delete*/
+
+.chefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+}
+
+.chef {
+    display: grid;
+    grid-template-columns: 65px 1fr;
+}
+
+.chef img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
