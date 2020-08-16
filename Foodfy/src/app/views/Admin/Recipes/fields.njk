@@ -22,10 +22,10 @@
     <div id="ingredientes">
         {% if not Recipe %}
         <div class="ingrediente">
-            <input type="text" name="ingredients[]" value="{{ingredient}}">
+            <input type="text" name="ingredients[]" value="">
         </div>
         {% endif %}
-
+      
         {% for ingredient in Recipe.ingredients %}
         <div class="ingrediente">
             <input type="text" name="ingredients[]" value="{{ingredient}}">
