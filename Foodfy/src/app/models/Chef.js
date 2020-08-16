@@ -3,8 +3,14 @@ const {formatDate} = require('../../lib/Utils')
 
 module.exports = {
     all(callback){
-        db.query('SELECT ID, Name, Avatar_URL FROM chefs', (err, results) => {
-            if(err) throw `ALL => Database Error.`
+        const query = ` SELECT chefs.ID, 
+                               chefs.Name, 
+                               chefs.Avatar_URL,
+                               (Select Count(recipes.id) From recipes Where chef_id = chefs.id) As total_recipes
+                        FROM chefs
+                    `
+        db.query(query, (err, results) => {
+            if(err) throw `ALL => Database Error.`            
             return callback(results.rows)
         })
 
@@ -32,8 +38,12 @@ module.exports = {
     },
 
     find(id, callback){
-        const query = `SELECT id, name, avatar_url FROM chefs WHERE id = ${id}`
-        
+        const query = `SELECT chefs.ID, 
+                              chefs.Name, 
+                              chefs.Avatar_URL,
+                              (Select Count(recipes.id) From recipes Where chef_id = chefs.id) As total_recipes
+                       FROM chefs WHERE id = ${id}
+                    `        
         db.query(query, (err, results) => {
             if(err) throw `FIND => Database Error ${err}`
             return callback(results.rows[0])
