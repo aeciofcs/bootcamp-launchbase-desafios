@@ -23,8 +23,10 @@ exports.post = (request, response) => {
 
 exports.show = (request, response) => {
     const { id } = request.params
-    Chef.find(id, (Chef) => {
-        return response.render('Admin/Chefs/show', { Chef })
+    Chef.findRecipesByChef(id, (Recipes) => {
+        Chef.find(id, (Chef) => {        
+            return response.render('Admin/Chefs/show', { Chef, Recipes })
+        })
     })
 }
 

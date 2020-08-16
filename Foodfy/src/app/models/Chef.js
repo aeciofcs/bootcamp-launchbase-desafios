@@ -49,6 +49,21 @@ module.exports = {
             return callback(results.rows[0])
         })
     },
+
+    findRecipesByChef(id, callback){
+        const query = `Select Recipes.ID,
+                              Recipes.title,
+                              Recipes.image,
+                              chefs.name As chef_name
+                        From Recipes
+                        inner join Chefs on (Chefs.id = Recipes.chef_id)
+                        Where Chefs.ID = ${id}
+                    `        
+        db.query(query, (err, results) => {
+            if(err) throw `FIND => Database Error ${err}`
+            return callback(results.rows)
+        })
+    },
     
     update(data, callback){
         const query = `

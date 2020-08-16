@@ -42,6 +42,22 @@
         <div class="recipe-4 chef-4">
             <h2>Receitas</h2>
             <!-- LISTAR AS RECEITAS DO CHEF -->
+            <div class="wrapper-recipes">
+                <div class="recipes">
+                    {% for recipe in Recipes %}
+                    <div class="recipe" id="1">
+                        <section>
+                            <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                        </section>
+                        <section>
+                            <h3>{{recipe.title}}</h3>
+                            <h4>por {{recipe.chef_name}}</h4>
+                            <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
+                        </section>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </main>
 {% endblock %}
