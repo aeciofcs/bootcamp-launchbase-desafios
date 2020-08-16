@@ -26,10 +26,10 @@ exports.post = (request, response) => {
 }
 
 exports.show = (request, response) => {
-    const index = request.params.id
-    const recipe = data.recipes[index]
-    
-    return response.render('Admin/Recipes/recipe', {recipe, index})
+    const { id } = request.params
+    Recipes.find(id, (Recipe) => {
+        return response.render('Admin/Recipes/recipe', {recipe: Recipe})
+    })
 }
 
 exports.edit = (request, response) => {
