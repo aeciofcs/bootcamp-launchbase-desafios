@@ -1,5 +1,3 @@
-const data = require('../../../data.json')
-const fs   = require('fs')
 const Recipes = require('../models/Recipes')
 
 exports.index = (request, response) => {
@@ -43,26 +41,7 @@ exports.edit = (request, response) => {
 }
 
 exports.put = (request, response) => {
-    const index       = request.body.id
-    const foundRecipe = data.recipes[index]
-    if (!foundRecipe) return response.send(`Receita não encontrada. index: ${index}`)
-
-    let {imagem_url, nome_receita, autor_receita, ingrediente, modo_preparo, informacoes_adicionais} = request.body
-    
-    const newRecipe = {
-        ...foundRecipe,
-        image: imagem_url,
-        title: nome_receita,
-        author: autor_receita,
-        ingredients: ingrediente,
-        preparation: modo_preparo,
-        information: informacoes_adicionais
-    }
-
-    data.recipes[index] = newRecipe
-
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
-        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
+    Recipes.update(request.body, () => {
         return response.redirect('/admin/recipes')
     })
 }

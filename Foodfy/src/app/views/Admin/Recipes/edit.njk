@@ -25,14 +25,14 @@
 {% block main %}
     <main>
         <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
-            <input type="hidden" name="id" value={{recipe.id}}>
+            <input type="hidden" name="id" value={{Recipe.id}}>
             <button type="submit">Deletar</button>
         </form>        
         <form action="/admin/recipes?_method=PUT" method="POST">        
             <div class="create-title">
                 <h2>Editando receita</h2>
                 <button type="submit">Salvar receita</button>
-                <input type="hidden" name="id" value={{recipe.id}}>
+                <input type="hidden" name="id" value={{Recipe.id}}>
             </div>
             {% include 'Admin/Recipes/fields.njk' %}
         </form>
