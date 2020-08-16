@@ -47,19 +47,20 @@ module.exports = {
     },
 
     find(id, callback){
-        const query = `SELECT recipes.id, 
+        const query = `SELECT recipes.chef_id,
+                              recipes.id, 
                               recipes.title, 
                               recipes.image, 
                               recipes.ingredients, 
                               recipes.preparation, 
                               recipes.information, 
-                              chefs.name As author 
+                              chefs.name As author
                         FROM recipes
                         inner join chefs on (chefs.id = recipes.chef_id)
                         WHERE recipes.id = ${id}`
         
         db.query(query, (err, results) => {
-            if(err) throw `FIND => Database Error ${err}`
+            if(err) throw `FIND => Database ${err}`
             return callback(results.rows[0])
         })
     },

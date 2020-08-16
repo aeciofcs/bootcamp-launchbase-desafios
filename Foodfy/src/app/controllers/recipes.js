@@ -33,10 +33,13 @@ exports.show = (request, response) => {
 }
 
 exports.edit = (request, response) => {
-    const index = request.params.id
-    const recipe = data.recipes[index]
+    Recipes.allChefs( (Chefs) => {
+        const { id } = request.params
+        Recipes.find(id, (Recipe) => {
+            return response.render('Admin/Recipes/edit', { Recipe, Chefs })
+        })
+    } )
 
-    return response.render('Admin/Recipes/edit', {recipe, index})
 }
 
 exports.put = (request, response) => {
