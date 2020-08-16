@@ -65,6 +65,14 @@ module.exports = {
         })
     },
 
+    delete(id, callback){
+        const query = `DELETE FROM recipes WHERE id = ${id}`
+        db.query(query, (err, results) => {
+            if(err) throw `DELETE => Database ${err}`
+            return callback()
+        } )
+    },
+
     allChefs(callback){
         const query = `SELECT id, name FROM chefs`
         db.query(query, (err, results) => {

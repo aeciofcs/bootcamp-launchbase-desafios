@@ -68,15 +68,8 @@ exports.put = (request, response) => {
 }
 
 exports.delete = (request, response) => {
-    const recipeIndex  = request.body.id
-    const foundRecipes = data.recipes.filter( (membro, index) => {
-        return index != recipeIndex
+    const { id } = request.body
+    Recipes.delete(id, () => {
+        return response.redirect('/admin/recipes')
     })
-    
-    data.recipes = foundRecipes
-    
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), (err)=>{
-        if(err) return response.send('Erro na gravação do arquivo DATA.JSON')
-    })
-    return response.redirect('/admin/recipes')
 }
