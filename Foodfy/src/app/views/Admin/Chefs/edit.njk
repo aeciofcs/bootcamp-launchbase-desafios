@@ -26,6 +26,7 @@
     <main>
         <form id="form-delete" action="/admin/chefs?_method=DELETE" method="POST">
             <input type="hidden" name="id" value={{Chef.id}}>
+            <input type="hidden" name="total_recipes" id="total_recipes" value={{Chef.total_recipes}}>
             <button type="submit">Deletar</button>
         </form>        
         <form action="/admin/chefs?_method=PUT" method="POST">        

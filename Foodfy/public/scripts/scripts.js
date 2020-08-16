@@ -1,6 +1,21 @@
 const recipes       = document.querySelectorAll('.recipe');
 const esconderSpans = document.querySelectorAll('span');
 const listagem      = document.querySelectorAll('.lista-ingredientes')
+const formDelete    = document.querySelector('#form-delete');
+const totalRecipes  = document.getElementById('total_recipes');
+
+/* TELINHA DE CONFIRMAÇÃO NO DELETE DOS FORMULARIOS */
+if(formDelete && totalRecipes){
+    formDelete.addEventListener('submit', (event) => {
+        const PodeExcluir = totalRecipes.value == 0 
+        const confirmation = confirm('Desaja realmente excluir?')
+        if(!confirmation) event.preventDefault()
+        if(!PodeExcluir) {
+            alert('Existem receitas cadastradas para esse Chef, portanto não será possível excluir.')
+            event.preventDefault()
+        }
+    })
+}  
 
 // => Ouvir o clique de todas as receitas da pagina
 
@@ -60,3 +75,6 @@ function addMododePreparo() {
 document
     .querySelector(".add-preparo")
     .addEventListener("click", addMododePreparo);
+
+
+  
