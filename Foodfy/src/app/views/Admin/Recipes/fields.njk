@@ -20,16 +20,14 @@
 <div class="create-content">
     <h4>Ingredientes</h4>
     <div id="ingredientes">
-        {% if not Recipe %}
-        <div class="ingrediente">
-            <input type="text" name="ingredients[]" value="">
-        </div>
-        {% endif %}
-      
         {% for ingredient in Recipe.ingredients %}
         <div class="ingrediente">
             <input type="text" name="ingredients[]" value="{{ingredient}}">
         </div>
+        {% else %}
+            <div class="ingrediente">
+                <input type="text" name="ingredients[]" value="">
+            </div>
         {% endfor %}
     </div>                
     <a class="add-ingrediente">Adicionar um novo ingrediente</a>
@@ -37,16 +35,14 @@
 <div class="create-content">
     <h4>Modo de preparo</h4>    
     <div id="preparos">
-        {% if not Recipe %}
-        <div class="preparo">
-            <input type="text" name="preparation[]" value="{{prepare}}">
-        </div>        
-        {% endif %}
-
         {% for prepare in Recipe.preparation %}
         <div class="preparo">
             <input type="text" name="preparation[]" value="{{prepare}}">
         </div>
+        {% else %}
+            <div class="preparo">
+                <input type="text" name="preparation[]" value="{{prepare}}">
+            </div>
         {% endfor %}
     </div>
     <a class="add-preparo">Adicionar um novo passo</a>
