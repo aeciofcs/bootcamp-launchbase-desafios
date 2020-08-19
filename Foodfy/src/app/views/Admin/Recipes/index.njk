@@ -30,11 +30,14 @@
     <main>
         <div class="ger-recipe">
             <h2>Gerenciar receitas</h2>
-            <a href="/admin/recipes/create">NOVA RECEITA</a>
-            <form action="/admin/search/recipes?filter=" method="GET">
-                <input type="text" name="filter" placeholder="Nome da Receita" value="{{filter}}">
-                <button type="submit">Filtrar</button>
-            </form>
+            <div class="filtro">
+                <a href="/admin/recipes/create">NOVA RECEITA</a>
+            
+                <form action="/admin/search/recipes?filter=" method="GET">
+                    <input type="text" name="filter" placeholder="Nome da Receita" value="{{filter}}">
+                    <button type="submit">Filtrar</button>
+                </form>
+            </div>
         </div>        
         <div class="wrapper-recipes">
             <div class="recipes">

@@ -65,12 +65,13 @@ footer h3 {
     font-weight: bold;
 }
 
-.ger-recipe a {
-    margin-left: 50px;
+.ger-recipe .filtro a {
+    /*margin-left: 20px;*/
     text-decoration: none;
     margin-top: 6px;
     color: #6558C3;
     font-weight: bold;
+    
 }
 
 .wrapper-recipes {
@@ -371,4 +372,30 @@ form select{
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     font-size: 20px;
+}
+
+/* CAMPO DE PESQUISA DA RECEITA */
+
+.ger-recipe .filtro {
+    display: grid;
+    grid-template-columns: 150px 1fr;    
+}
+
+.ger-recipe .filtro form {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.ger-recipe .filtro form input {
+    width: 250px;
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.ger-recipe .filtro form button {
+    margin: 0;
+    height: 50px;
 }
