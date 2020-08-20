@@ -65,6 +65,7 @@ footer h3 {
     font-weight: bold;
 }
 
+.ger-recipe a,
 .ger-recipe .filtro a {
     /*margin-left: 20px;*/
     text-decoration: none;
@@ -72,6 +73,10 @@ footer h3 {
     color: #6558C3;
     font-weight: bold;
     
+}
+
+.ger-recipe a {
+    margin-left: 20px;
 }
 
 .wrapper-recipes {
