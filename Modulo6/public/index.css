@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    /*
+    --color-backgroud: #ffffff;
+    --color-font: #ffffff;*/
+    --color-rocket: #7159c1;
+    /*
+    --color-font-hover: #464157;
+    --color-border: #282a36;*/
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
