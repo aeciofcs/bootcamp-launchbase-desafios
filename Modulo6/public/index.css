@@ -24,6 +24,12 @@ body {
     background-color: #f9f9f9;
 }
 
+.container {
+    width: 90%;
+    max-width: 940%;
+    margin: 0 auto;
+}
+
 /* Header */
 header, footer {
     background-color: black;
@@ -72,8 +78,18 @@ nav.primary ul {
     justify-content: space-between;
 }
 
-nav.primary ul li a{
+nav.primary ul li a {
     display: flex;
     align-items: center;
     color: white;
+
+    transition: 200ms;
+}
+
+nav.primary ul li a:hover {
+    color: var(--primary-color);
+}
+
+nav.primary ul li a i{
+    margin-right: 8px;
 }
