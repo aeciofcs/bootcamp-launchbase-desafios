@@ -119,3 +119,30 @@ section.form .header h3 {
     color: var(--primary-color);
     margin-bottom: 16px;
 }
+
+/* Estilizar os campos */
+
+form .item {
+    margin-bottom: 16px;
+}
+
+form .item > div:nth-child(1) {
+    color: #777;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+form .item input[type="text"],
+form .item input[type="number"],
+form .item textarea,
+form .item select {
+    width: 100%;
+    padding: 8px 16px;
+    box-shadow: 2px 2px 2px -2px rgba(63, 63, 63, 0.9);
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    font-size: 16px;
+}
