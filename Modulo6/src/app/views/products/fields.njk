@@ -1,0 +1,91 @@
+<div class="item">
+    <div>Categoria</div>
+    <div>
+        <select name="category_id">
+            {% for category in Categories %}
+                <option value="{{category.id}}"  
+                    {% if Product.category_id == category.id %} selected {% endif %}>
+                    {{category.name}}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Nome</div>
+    <div>
+        <input 
+            type="text"
+            name="name"
+            placeholder="Digite o Título do Anúncio"
+            value="{{Product.name}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Descrição</div>
+    <div>
+        <textarea name="description">
+            {{Product.description}}
+        </textarea>
+    </div>
+</div>
+
+{# Campo de Foto #}
+
+{# Faremos uma máscara de dinheiro em reais #}
+<div class="item">
+    <div>Valor</div>
+    <div>
+        <input
+            type="text"
+            name="price"
+            placeholder="Preço do Produto"
+            value="{{Product.price}}"
+        >
+    </div>
+    {% if Product.old_price %}
+        <input type="hidden" name="old_price" value="{{Product.old_price}}}">
+    {% endif %}
+</div>
+
+<div class="item">
+    <div>Quantidade</div>
+    <div>
+        <input 
+            type="number"
+            name="quantity" 
+            value="{{Product.quantity}}"
+        >
+    </div>
+</div>
+
+{% if Product.status %}
+<div class="item">
+    <div>Disponível ?</div>
+    <div>
+        <span>
+            <input 
+                type="radio" 
+                name="status" 
+                value="1" 
+                {% if Product.status == '1' %}
+                    checked
+                {% endif %}
+            > Sim
+        </span>
+        <span>
+            <input 
+                type="radio" 
+                name="status" 
+                value="0" 
+                {% if Product.status == '0' %}
+                    checked
+                {% endif %}
+            > Não
+        </span>
+    </div>
+</div>
+{% endif %}
