@@ -7,7 +7,10 @@ routes.get('/', (request, response) => {
 })
 
 routes.get('/products/create', ProductController.create)
+routes.post('/products', ProductController.post)
 
+
+// Alias
 routes.get('/ads/create', (request, response) => {
     return response.redirect('/products/create')
 })
