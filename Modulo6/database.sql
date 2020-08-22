@@ -2,8 +2,8 @@ CREATE DATABASE launchstoredb;
 
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
-  "category_id" int UNIQUE,
-  "user_id" int UNIQUE,
+  "category_id" int not null,
+  "user_id" int,
   "name" text NOT NULL,
   "description" text NOT NULL,
   "old_price" int,
@@ -23,7 +23,7 @@ CREATE TABLE "files" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
   "path" text NOT NULL,
-  "product_id" int UNIQUE
+  "product_id" int
 );
 
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
