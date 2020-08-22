@@ -1,13 +1,15 @@
-const input = document.querySelector('input[name="price"]')
-input.addEventListener( "keydown", (event) => {
-    setTimeout( () => {
-        let { value } = event.target
+const Mask = {
+    apply(input, func) {
+        setTimeout(() => {
+            input.value = Mask[func](input.value)
+        }, 1);
+    },
+    formatBRL(value) {
         value = value.replace(/\D/g, "")
-        value = new Intl.NumberFormat('pt-BR', {
+
+        return new Intl.NumberFormat('pt-BR', {
             style: 'currency', 
             currency: 'BRL'
         }).format(value/100)
-        event.target.value = value
-    }, 1 )
-
-} )
+    }
+}
