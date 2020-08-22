@@ -1,5 +1,6 @@
-const Category = require('../models/Category')
-const Product  = require('../models/Product')
+const { formatPrice } = require('../../lib/Utils')
+const Category        = require('../models/Category')
+const Product         = require('../models/Product')
 
 module.exports = {
     create (request, response) {
@@ -35,6 +36,9 @@ module.exports = {
         const product  = results.rows[0]
         
         if(!product) return response.send('Produto não encontrado.')
+
+        product.old_price = formatPrice(product.old_price)
+        product.price     = formatPrice(product.price)
 
         results          = await Category.all()
         const categories = results.rows
