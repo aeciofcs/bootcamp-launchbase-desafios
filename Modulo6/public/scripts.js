@@ -1,3 +1,5 @@
+const formDelete = document.querySelector("#form-delete")
+
 const Mask = {
     apply(input, func) {
         setTimeout(() => {
@@ -12,4 +14,11 @@ const Mask = {
             currency: 'BRL'
         }).format(value/100)
     }
+}
+
+if (formDelete){
+    formDelete.addEventListener("submit", (event) => {
+        const confirmation = confirm("Deseja realmente deletar?")
+        if(!confirmation) event.preventDefault()
+    })
 }

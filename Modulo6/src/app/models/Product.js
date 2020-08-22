@@ -28,5 +28,9 @@ module.exports = {
         ]
 
         return db.query(query, values)
-    }
+    },
+
+    find(productId){
+        return db.query(`SELECT * FROM products WHERE id = ${productId}`)
+    } 
 }

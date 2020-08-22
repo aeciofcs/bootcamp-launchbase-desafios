@@ -26,11 +26,20 @@ module.exports = {
 
         let results      = await Product.create(request.body)
         const productId  = results.rows[0].id
+
+        return response.redirect(`/products/${productId}`)
+    },
+
+    async edit(request, response){
+        let results    = await Product.find(request.params.id)
+        const product  = results.rows[0]
         
+        if(!product) return response.send('Produto não encontrado.')
+
         results          = await Category.all()
         const categories = results.rows
 
-        return response.render('products/create.njk', { productId, Categories: categories })
+        return response.render('products/edit.njk', { Product: product, Categories: categories })
     }
 
 }
