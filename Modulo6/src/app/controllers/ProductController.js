@@ -1,7 +1,6 @@
 const { formatPrice } = require('../../lib/Utils')
 const Category        = require('../models/Category')
 const Product         = require('../models/Product')
-const { put } = require('../../routes')
 
 module.exports = {
     create (request, response) {
@@ -29,7 +28,7 @@ module.exports = {
         let results      = await Product.create(request.body)
         const productId  = results.rows[0].id
 
-        return response.redirect(`/products/${productId}`)
+        return response.redirect(`/`)
     },
 
     async edit(request, response){
@@ -64,6 +63,14 @@ module.exports = {
         await Product.update(request.body)
 
         return response.redirect(`/products/${request.body.id}/edit`)
+    },
+
+    async delete(request, response) {
+        const { id } = request.body
+        
+        await Product.delete(id)
+
+        return response.redirect('/')
     }
 
 }
