@@ -1,6 +1,7 @@
 const { formatPrice } = require('../../lib/Utils')
 const Category        = require('../models/Category')
 const Product         = require('../models/Product')
+const { put } = require('../../routes')
 
 module.exports = {
     create (request, response) {
@@ -44,6 +45,25 @@ module.exports = {
         const categories = results.rows
 
         return response.render('products/edit.njk', { Product: product, Categories: categories })
+    },
+
+    async put(request, response) {
+        const keys = Object.keys(request.body)
+        for (key of keys) {
+            if(request.body[key] == ""){
+                return response.send('Todos os campos são Obrigatórios.')
+            }
+        }
+
+        request.body.price = request.body.price.replace(/\D/g,"")
+        if(request.body.old_price != request.body.price){
+            const oldProduct = await Product.find(request.body.id)
+            request.body.old_price = oldProduct.rows[0].price
+        }
+
+        await Product.update(request.body)
+
+        return response.redirect(`/products/${request.body.id}/edit`)
     }
 
 }
