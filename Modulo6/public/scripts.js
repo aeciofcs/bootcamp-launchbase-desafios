@@ -27,7 +27,8 @@ const PhotosUpload = {
     preview: document.querySelector('#photos-preview'),
     uploadLimit: 6,
     handleFileInput(event){
-                
+        const { files: fileList } = event.target
+
         if (PhotosUpload.hasLimit(event)) return
 
         Array.from(fileList).forEach( file => {
@@ -58,9 +59,23 @@ const PhotosUpload = {
         const div = document.createElement('div')
 
         div.classList.add('photo')
-        div.onclick = () => alert('remover foto')
+        div.onclick = PhotosUpload.removePhoto
         div.appendChild(image)
+        div.appendChild(PhotosUpload.getRemoveButton())
 
         return div
+    },
+    getRemoveButton() {
+        const button = document.createElement('i')
+        button.classList.add('material-icons')
+        button.innerHTML = 'close'
+        return button
+    },
+    removePhoto(event){
+        const photoDiv    = event.target.parentNode
+        const photosArray = Array.from(PhotosUpload.preview.children)
+        const index       = photosArray.indexOf(photoDiv)
+
+        photoDiv.remove()
     }
 }
