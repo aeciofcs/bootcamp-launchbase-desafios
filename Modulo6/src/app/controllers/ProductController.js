@@ -68,6 +68,11 @@ module.exports = {
             }
         }
 
+        if(request.files.length != 0 ){
+            const newFilesPromises = request.files.map(file => File.create({...file, product_id: request.body.id}))
+            await Promise.all(newFilesPromises)
+        }
+
         if(request.body.removed_files){
             // 1,2,3,
             const removedFiles = request.body.removed_files.split(",") // [1,2,3,]
