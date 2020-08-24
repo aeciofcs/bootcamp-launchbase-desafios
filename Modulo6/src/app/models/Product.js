@@ -1,4 +1,5 @@
 const db = require('../../config/db')
+const fs = require('fs')
 
 module.exports = {
     create(data) {
@@ -64,5 +65,18 @@ module.exports = {
 
     delete(productId) {
         return db.query(`DELETE FROM products WHERE id = ${productId}`)
+    },
+
+    files(productId){
+        return db.query(`SELECT * FROM files WHERE product_id = ${productId}`)
+    },
+
+    async delete(id){
+        const results = await db.query(`SELECT * FROM files WHERE id = ${id}`)
+        const file    = results.rows[0]
+        
+        fs.unlinkSync(file.path)
+
+        return db.query(`DELETE FROM files WHERE id = ${id}`)        
     }
 }

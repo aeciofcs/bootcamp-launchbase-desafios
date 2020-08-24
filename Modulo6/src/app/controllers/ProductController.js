@@ -49,15 +49,34 @@ module.exports = {
         results          = await Category.all()
         const categories = results.rows
 
-        return response.render('products/edit.njk', { Product: product, Categories: categories })
+        // Get Images
+        results   = await Product.files(product.id)
+        let files = results.rows
+        files = files.map(file => ({
+            ...file,
+            src: `${request.protocol}://${request.headers.host}${file.path.replace('public','')}`
+        }))
+
+        return response.render('products/edit.njk', { Product: product, Categories: categories, files })
     },
 
     async put(request, response) {
         const keys = Object.keys(request.body)
         for (key of keys) {
-            if(request.body[key] == ""){
+            if(request.body[key] == "" && key != "removed_files"){
                 return response.send('Todos os campos são Obrigatórios.')
             }
+        }
+
+        if(request.body.removed_files){
+            // 1,2,3,
+            const removedFiles = request.body.removed_files.split(",") // [1,2,3,]
+            const lastIndex    = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1) // [1,2,3]
+
+            const removedFilesPromises = removedFiles.map(id => File.delete(id))
+            await Promise.all(removedFilesPromises)
+            
         }
 
         request.body.price = request.body.price.replace(/\D/g,"")
