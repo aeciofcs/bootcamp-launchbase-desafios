@@ -49,7 +49,15 @@ module.exports = {
         results          = await Category.all()
         const categories = results.rows
 
-        return response.render('products/edit.njk', { Product: product, Categories: categories })
+        // Get Images
+        results   = await Product.files(product.id)
+        let files = results.rows
+        files = files.map(file => ({
+            ...file,
+            src: `${request.protocol}://${request.headers.host}${file.path.replace('public','')}`
+        }))
+
+        return response.render('products/edit.njk', { Product: product, Categories: categories, files })
     },
 
     async put(request, response) {

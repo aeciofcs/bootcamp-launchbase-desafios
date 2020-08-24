@@ -64,5 +64,10 @@ module.exports = {
 
     delete(productId) {
         return db.query(`DELETE FROM products WHERE id = ${productId}`)
+    },
+
+    files(productId){
+        const query = `SELECT * FROM files WHERE product_id = ${productId}`
+        db.query(query)
     }
 }
