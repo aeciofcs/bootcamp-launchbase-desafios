@@ -67,7 +67,6 @@ module.exports = {
     },
 
     files(productId){
-        const query = `SELECT * FROM files WHERE product_id = ${productId}`
-        db.query(query)
+        return db.query(`SELECT * FROM files WHERE product_id = ${productId}`)
     }
 }
