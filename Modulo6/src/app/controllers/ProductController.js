@@ -63,9 +63,20 @@ module.exports = {
     async put(request, response) {
         const keys = Object.keys(request.body)
         for (key of keys) {
-            if(request.body[key] == ""){
+            if(request.body[key] == "" && key != "removed_files"){
                 return response.send('Todos os campos são Obrigatórios.')
             }
+        }
+
+        if(request.body.removed_files){
+            // 1,2,3,
+            const removedFiles = request.body.removed_files.split(",") // [1,2,3,]
+            const lastIndex    = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1) // [1,2,3]
+
+            const removedFilesPromises = removedFiles.map(id => File.delete(id))
+            await Promise.all(removedFilesPromises)
+            
         }
 
         request.body.price = request.body.price.replace(/\D/g,"")
