@@ -1,6 +1,7 @@
 const { formatPrice } = require('../../lib/Utils')
 const Category        = require('../models/Category')
 const Product         = require('../models/Product')
+const File            = require('../models/File')
 
 module.exports = {
     create (request, response) {
@@ -25,8 +26,17 @@ module.exports = {
             }
         }
 
+        if (request.files.length == 0 ) return response.send('Por favor, envie pelo menos uma imagem.')
+
         let results      = await Product.create(request.body)
         const productId  = results.rows[0].id
+
+        request.files.forEach(file => {
+            await File.create({
+                ...file,
+                product_id: productId
+            })
+        })
 
         return response.redirect(`/`)
     },
