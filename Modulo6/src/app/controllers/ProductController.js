@@ -30,8 +30,8 @@ module.exports = {
 
         let results      = await Product.create(request.body)
         const productId  = results.rows[0].id
-
-        const filesPromises = request.files.map(file => File.create({...file, product_id: productId}))
+        
+        const filesPromises = request.files.map(file => File.create({ ...file, product_id: productId}))
         await Promise.all(filesPromises)
 
         return response.redirect(`/`)
