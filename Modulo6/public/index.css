@@ -354,3 +354,37 @@ form .item #photos-preview img {
     line-height: 22px;
     letter-spacing: 0.4px;
 }
+
+/*price-buy*/
+.product-single .price-buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+}
+
+.product-single .price-buy .price {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+}
+
+.product-single .price-buy .price .old {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.product-single .price-buy .buy button {
+    background-color: var(--secundary-color);
+
+    font-size: 14px;
+    letter-spacing: .4px;
+}
