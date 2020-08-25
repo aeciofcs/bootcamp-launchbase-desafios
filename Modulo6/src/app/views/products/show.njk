@@ -4,7 +4,24 @@
 <section class="product-single container">
 
     <div class="gallery">
-        <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" alt="" />
+        <div class="highlight">
+            {% if not Files[0] %}
+                <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" alt="" />
+            {% else %}
+                <img src="{{Files[0].src}}" alt="{{Files[0].name}}" />
+            {% endif %}
+        </div>
+        <div class="gallery-preview">
+            {% for image in Files %}
+                <img 
+                    src="{{image.src}}" 
+                    alt="{{image.name}}"
+                    {% if loop.index0 == 0 %}
+                        class="active"
+                    {%endif%}
+                >
+            {% endfor %}
+        </div>
     </div>
     <div class="info">
         <h1>{{Product.name}}</h1>
