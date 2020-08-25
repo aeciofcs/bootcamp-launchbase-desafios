@@ -1,7 +1,7 @@
-const { formatPrice } = require('../../lib/Utils')
-const Category        = require('../models/Category')
-const Product         = require('../models/Product')
-const File            = require('../models/File')
+const { formatPrice, formatDate } = require('../../lib/Utils')
+const Category                    = require('../models/Category')
+const Product                     = require('../models/Product')
+const File                        = require('../models/File')
 
 module.exports = {
     create (request, response) {
@@ -37,8 +37,24 @@ module.exports = {
         return response.redirect(`/`)
     },
 
-    show(request, response){
-        return response.render('products/show')
+    async show(request, response){
+        let results   = await Product.find(request.params.id)
+        const product = results.rows[0]
+
+        if (!product) return response.send('Produto não encontrado.')
+
+        const { day, hour, minutes, month } = formatDate(product.updated_at)
+        product.published = {
+            day: `${day}/${month}`,
+            hour: `${hour}h ${minutes}m`,
+            minutes,
+            month
+        }
+
+        product.old_price = formatPrice(product.old_price)
+        product.price     = formatPrice(product.price)
+
+        return response.render('products/show', { Product: product })
     },
 
     async edit(request, response){
@@ -96,7 +112,7 @@ module.exports = {
 
         await Product.update(request.body)
 
-        return response.redirect(`/products/${request.body.id}/edit`)
+        return response.redirect(`/products/${request.body.id}`)
     },
 
     async delete(request, response) {
