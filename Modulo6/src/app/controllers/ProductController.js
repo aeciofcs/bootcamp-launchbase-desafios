@@ -46,7 +46,7 @@ module.exports = {
         const { day, hour, minutes, month } = formatDate(product.updated_at)
         product.published = {
             day: `${day}/${month}`,
-            hour: `${hour}h ${minutes}m`,
+            hour: `${hour}h${minutes}m`,
             minutes,
             month
         }
