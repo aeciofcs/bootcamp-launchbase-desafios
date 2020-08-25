@@ -340,3 +340,17 @@ form .item #photos-preview img {
     display: grid;
     grid-template-rows: auto 40px 2fr 1fr;
 }
+
+.product-single .info h1 {
+    font-size: 32px;
+    line-height: 42px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.product-single .info .published {
+    color:#888;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 0.4px;
+}
