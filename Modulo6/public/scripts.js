@@ -128,6 +128,7 @@ const ImageGallery = {
         ImageGallery.previews.forEach( preview => preview.classList.remove('active'))
         target.classList.add('active')
         ImageGallery.highlight.src = target.src
+        Lightbox.image.src         = target.src
     }
 }
 
