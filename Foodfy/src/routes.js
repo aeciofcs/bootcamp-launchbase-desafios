@@ -1,38 +1,38 @@
-const express = require('express')
-const webSite = require('./app/controllers/webSite')
-const recipes = require('./app/controllers/recipes')
-const admin   = require('./app/controllers/admin')
-const chefs   = require('./app/controllers/chefs')
+const express           = require('express')
+const webSiteController = require('./app/controllers/webSite')
+const recipesController = require('./app/controllers/recipes')
+const adminController   = require('./app/controllers/admin')
+const chefsController   = require('./app/controllers/chefs')
 
 const routes  = express.Router()
 // ### ROTAS DO WEBSITE ### //
-routes.get('/', webSite.index)
-routes.get('/recipes/:index', webSite.recipe)
-routes.get('/recipes', webSite.recipes)
-routes.get('/about', webSite.about)
+routes.get('/', webSiteController.index)
+routes.get('/recipes/:index', webSiteController.recipe)
+routes.get('/recipes', webSiteController.recipes)
+routes.get('/about', webSiteController.about)
 
 /* ### => ROTAS DA ADMINISTRAÇÃO ### */
 
 /* # PAGINA INICIAL DA ADMINISTRAÇÃO */
-routes.get('/admin', admin.index)
+routes.get('/admin', adminController.index)
 
 /* # CRUD DE RECEITAS */
-routes.get('/admin/recipes', recipes.index)
-routes.get("/admin/recipes/create", recipes.create)
-routes.post("/admin/recipes", recipes.post)
-routes.get("/admin/recipes/:id", recipes.show)
-routes.get("/admin/recipes/:id/edit", recipes.edit)
-routes.put("/admin/recipes", recipes.put)
-routes.delete("/admin/recipes", recipes.delete)
+routes.get('/admin/recipes', recipesController.index)
+routes.get("/admin/recipes/create", recipesController.create)
+routes.post("/admin/recipes", recipesController.post)
+routes.get("/admin/recipes/:id", recipesController.show)
+routes.get("/admin/recipes/:id/edit", recipesController.edit)
+routes.put("/admin/recipes", recipesController.put)
+routes.delete("/admin/recipes", recipesController.delete)
 
 /* # CRUD DOS CHEFs */
-routes.get('/admin/chefs', chefs.index)
-routes.get("/admin/chefs/create", chefs.create)
-routes.post("/admin/chefs", chefs.post)
-routes.get("/admin/chefs/:id", chefs.show)
-routes.get("/admin/chefs/:id/edit", chefs.edit)
-routes.put("/admin/chefs", chefs.put)
-routes.delete("/admin/chefs", chefs.delete)
+routes.get('/admin/chefs', chefsController.index)
+routes.get("/admin/chefs/create", chefsController.create)
+routes.post("/admin/chefs", chefsController.post)
+routes.get("/admin/chefs/:id", chefsController.show)
+routes.get("/admin/chefs/:id/edit", chefsController.edit)
+routes.put("/admin/chefs", chefsController.put)
+routes.delete("/admin/chefs", chefsController.delete)
 
 /* ### <= ROTAS DA ADMINISTRAÇÃO ### */
 
