@@ -2,110 +2,120 @@ const db             = require('../../config/db')
 const { formatDate } = require('../../lib/Utils')
 
 module.exports = {
-    all(callback){
-        const query = `
-            SELECT  
-                rec.id,
-                rec.image,
-                rec.title,
-                chf.name As Chef_Name
-            FROM recipes rec
-            Inner Join chefs chf On (chf.id = rec.chef_id)
-        `
-        db.query(query, (err, results) => {
-            if(err) throw `SELECT = > Database Error!`
-            return callback(results.rows)
-        })
+    all(){
+        try {
+            const query = `
+                SELECT
+                    rec.id,
+                    rec.image,
+                    rec.title,
+                    chf.name As Chef_Name
+                FROM recipes rec
+                Inner Join chefs chf On (chf.id = rec.chef_id)
+            `
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`SELECT = > ${error}`)
+        }
     },
 
-    create(data, callback){
-        const query = `
-            INSERT INTO recipes (
-                image,
-                title,
-                ingredients,
-                preparation,
-                information,
-                created_at,
-                chef_id
-            ) values ($1,$2,$3,$4,$5,$6,$7)
-        `
-        const values = [
-            data.image,
-            data.title,
-            data.ingredients,
-            data.preparation,
-            data.information,
-            formatDate(Date.now()).iso,
-            data.chef_id
-        ]
+    create(data){
+        try {
+            const query = `
+                INSERT INTO recipes (
+                    image,
+                    title,
+                    ingredients,
+                    preparation,
+                    information,
+                    created_at,
+                    chef_id
+                ) values ($1,$2,$3,$4,$5,$6,$7)
+                RETURNING ID
+            `
+            const values = [
+                data.image,
+                data.title,
+                data.ingredients,
+                data.preparation,
+                data.information,
+                formatDate(Date.now()).iso,
+                data.chef_id
+            ]
 
-        db.query(query, values, (err, results) => {
-            if(err) throw `CREATE => Database Error. ${err}`
-            return callback(results.rows[0])
-        })
+            return db.query(query, values)
+        } catch (error) {
+            console.error(`CREATE => ${error}`)
+        }
     },
 
-    find(id, callback){
-        const query = `SELECT recipes.chef_id,
-                              recipes.id, 
-                              recipes.title, 
-                              recipes.image, 
-                              recipes.ingredients, 
-                              recipes.preparation, 
-                              recipes.information, 
-                              chefs.name As author
-                        FROM recipes
-                        inner join chefs on (chefs.id = recipes.chef_id)
-                        WHERE recipes.id = ${id}`
-        
-        db.query(query, (err, results) => {
-            if(err) throw `FIND => Database ${err}`
-            return callback(results.rows[0])
-        })
+    find(recipeId){
+        try {
+            const query = `SELECT recipes.chef_id,
+                                  recipes.id, 
+                                  recipes.title, 
+                                  recipes.image, 
+                                  recipes.ingredients, 
+                                  recipes.preparation, 
+                                  recipes.information, 
+                                  chefs.name As author
+                           FROM recipes
+                           INNER JOIN chefs ON (chefs.id = recipes.chef_id)
+                           WHERE recipes.id = ${recipeId} `
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`FIND => ${error}`)
+        }
     },
 
-    update(data, callback){
-        const query = `
-            UPDATE recipes SET
-                CHEF_ID     = $1,
-                IMAGE       = $2,
-                TITLE       = $3,
-                INGREDIENTS = $4,
-                PREPARATION = $5,
-                INFORMATION = $6
-            WHERE id = $7
-        `        
-        const values = [
-            data.chef_id,
-            data.image,
-            data.title,
-            data.ingredients,
-            data.preparation,
-            data.information,
-            data.id
-        ]
+    update(data){
+        try {
+            const query = `
+                UPDATE recipes SET
+                    CHEF_ID     = $1,
+                    IMAGE       = $2,
+                    TITLE       = $3,
+                    INGREDIENTS = $4,
+                    PREPARATION = $5,
+                    INFORMATION = $6
+                WHERE id = $7
+            `
+            const values = [
+                data.chef_id,
+                data.image,
+                data.title,
+                data.ingredients,
+                data.preparation,
+                data.information,
+                data.id
+            ]
 
-        db.query(query, values, (err, results) => {
-            if (err) throw `UPDATE => Database ${err}`
-            return callback()
-        })
+            return db.query(query, values)
+        } catch (error) {
+            console.error(`UPDATE => ${error}`)
+        }
     },
 
-    delete(id, callback){
-        const query = `DELETE FROM recipes WHERE id = ${id}`
-        db.query(query, (err, results) => {
-            if(err) throw `DELETE => Database ${err}`
-            return callback()
-        } )
+    delete(recipeId){
+        try {
+            const query = `DELETE FROM recipes WHERE id = ${recipeId}`
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`DELETE => ${err}`)
+        }
     },
 
-    allChefs(callback){
-        const query = `SELECT id, name FROM chefs`
-        db.query(query, (err, results) => {
-            if(err) throw `ALLCHEFS => Database Error. ${err}`
-            return callback(results.rows)
-        })
+    allChefs(){
+        try {
+            const query = `SELECT id, name FROM chefs`
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`ALLCHEFs => ${error}`)
+        }
     }
 
 }

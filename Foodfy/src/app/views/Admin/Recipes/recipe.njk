@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-    <title>Receita - {{recipe.title}} </title>
+    <title>Receita - {{Recipe.title}} </title>
 {% endblock %}
 
 {% block stylesheet  %}
@@ -23,20 +23,20 @@
 {% block main %}
 <main>
     <div class="recipe-1">
-        <h2>Receita: {{recipe.title}}</h2>
-        <a href="/admin/recipes/{{recipe.id}}/edit"><button>Editar receita</button></a>
+        <h2>Receita: {{Recipe.title}}</h2>
+        <a href="/admin/recipes/{{Recipe.id}}/edit"><button>Editar receita</button></a>
     </div>
     <div class="recipe-2">
-        <img src="{{recipe.image}}" alt="{{recipe.title}}">
+        <img src="{{Recipe.image}}" alt="{{Recipe.title}}">
     </div>
     <div class="recipe-3">
-        <h2>{{recipe.title}}</h2>
-        <h5>por {{recipe.author}}</h5>
+        <h2>{{Recipe.title}}</h2>
+        <h5>por {{Recipe.author}}</h5>
     </div>
     <div class="recipe-4">
         <h2>Ingredientes</h2>
         <ul>
-            {% for ingredient in recipe.ingredients %}            
+            {% for ingredient in Recipe.ingredients %}            
                 <li>{{ingredient}}</li>
             {% endfor %}
         </ul>
@@ -44,15 +44,15 @@
     <div class="recipe-5">
         <h2>Modo de Preparo</h2>
         <ul>
-            {% for prepare in recipe.preparation %}
+            {% for prepare in Recipe.preparation %}
                 <li>{{prepare}}</li>
             {% endfor %}
         </ul>
     </div>
     <div class="recipe-6">
         <h2>Informações Adicionais</h2>
-        {% if recipe.information %}
-            <p>{{recipe.information}}</p>
+        {% if Recipe.information %}
+            <p>{{Recipe.information}}</p>
         {% else %}
             <p>{{ 'Não há informações adicionais para essa receita.' }}</p>
         {% endif %}

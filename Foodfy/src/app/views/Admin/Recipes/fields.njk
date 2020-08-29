@@ -10,7 +10,7 @@
     <h4>Autor da receita</h4>
     <select name="chef_id">
         <option value="" disabled selected>Selecione um chef</option>
-        {% for chef in Chefs %}
+        {% for chef in Recipe.Chefs %}
             <option 
                 value="{{chef.id}}"
                 {% if Recipe.chef_id == chef.id %} Selected {% endif %} > {{chef.name}} </option>
