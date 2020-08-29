@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block title %}
-    <title>Receita - {{recipe.title}} </title>
+    <title>Receita - {{Recipe.title}} </title>
 {% endblock %}
 
 {% block logo %}    
@@ -15,9 +15,9 @@
 {% block main %}
 <main>
     <div class="wrapper-receita">
-        <img src="{{recipe.image}}" alt="">
-        <h2>{{recipe.title}}</h2>
-        <h4>{{recipe.author}}</h4>
+        <img src="{{Recipe.image}}" alt="">
+        <h2>{{Recipe.title}}</h2>
+        <h4>{{Recipe.author}}</h4>
     </div>
 
     <div class="wrapper-ingredientes" id="1">
@@ -27,7 +27,7 @@
         </div>
         <div class="lista-ingredientes">
             <ul>
-                {% for ingrediente in recipe.ingredients %}
+                {% for ingrediente in Recipe.ingredients %}
                     <li>{{ingrediente}}</li>
                 {% endfor %}
             </ul>
@@ -41,7 +41,7 @@
         </div>
         <div class="lista-ingredientes">
             <ul>
-                {% for preparo in recipe.preparation %}
+                {% for preparo in Recipe.preparation %}
                     <li>{{preparo}}</li>
                 {% endfor %}
             </ul>
@@ -54,8 +54,8 @@
             <span id=3>ESCONDER</span>
         </div>
         <div class="lista-ingredientes">
-            {% if recipe.information %}
-                <p>{{ recipe.information }}</p>
+            {% if Recipe.information %}
+                <p>{{ Recipe.information }}</p>
             {% else %}
                 <p>{{ 'Não há informações adicionais para essa receita.' }}</p>                                
             {% endif %}

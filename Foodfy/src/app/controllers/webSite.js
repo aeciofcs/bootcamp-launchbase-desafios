@@ -1,28 +1,35 @@
-const data = require('../../../data.json')
+const Website = require('../models/Website')
 
-exports.index = (request, response)=>{
-    return response.render('Site/index', { Recipes: data.recipes })
-}
+exports.index = async (request, response)=>{
+    try {
+        //Substituir pelas receitas mais acessadas.
+        const Recipes = ( await Website.all() ).rows
 
-exports.recipes = (request, response) => {
-    //console.log(dataRecipes.findIndex( (recipe)=>{ return recipe.title === 'Asinhas de frango ao barbecue'} ))
-    /*
-    function reducer(receita, index){
-        
-        return {...receita, id: index}
+        return response.render('Site/index', { Recipes })
+    } catch (error) {
+        console.error(`INDEX => ${error}`)
     }
-    const receitasIndices = receita.map( reducer, [] )*/
-    
-    const receitasComIndices = data.recipes.map( (receita, index) => {
-        return {...receita, id: index}
-    } )
-    return response.render('Site/recipes', { Recipes: receitasComIndices })
 }
 
-exports.recipe = (request, response) => {
-    const recipeIndex = request.params.index
-    const recipe = data.recipes[recipeIndex]
-    return response.render('Site/recipe', { recipe } ) //res.send(recipe) //
+exports.recipes = async (request, response) => {
+    try {
+        const Recipes = ( await Website.all() ).rows
+        
+        return response.render('Site/recipes', { Recipes })
+    } catch (error) {
+        console.error(`RECIPES => ${error}`)
+    }
+}
+
+exports.recipe = async (request, response) => {
+    try {
+        const { id } = request.params
+        const Recipe = ( await Website.find(id) ).rows[0]
+        
+        return response.render('Site/recipe', { Recipe } )
+    } catch (error) {
+        console.error(`Recipe => ${error}`)
+    }
 }
 
 exports.about = (request, response) => {

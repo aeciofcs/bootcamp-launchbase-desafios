@@ -7,9 +7,12 @@ const chefsController   = require('./app/controllers/chefs')
 const routes  = express.Router()
 // ### ROTAS DO WEBSITE ### //
 routes.get('/', webSiteController.index)
-routes.get('/recipes/:index', webSiteController.recipe)
+
+// ### ROTAS DO WEBSITE => RECIPES ## //
 routes.get('/recipes', webSiteController.recipes)
+routes.get('/recipes/:id', webSiteController.recipe)
 routes.get('/about', webSiteController.about)
+
 
 /* ### => ROTAS DA ADMINISTRAÇÃO ### */
 
