@@ -19,7 +19,7 @@ module.exports = {
         }
     }, 
 
-    find: (receipeId) => {
+    findRecipes: (receipeId) => {
         try {
             const query = `SELECT rec.id, 
                                   rec.title, 

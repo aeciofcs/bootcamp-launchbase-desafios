@@ -11,6 +11,7 @@ routes.get('/', webSiteController.index)
 // ### ROTAS DO WEBSITE => RECIPES ## //
 routes.get('/recipes', webSiteController.recipes)
 routes.get('/recipes/:id', webSiteController.recipe)
+routes.get('/chefs', webSiteController.chefs)
 routes.get('/about', webSiteController.about)
 
 

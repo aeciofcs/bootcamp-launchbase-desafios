@@ -45,6 +45,33 @@ main {
     margin-top: 38px;
 }
 
+.menu .search {
+    margin-top: 27px;
+    margin-left: 140px;
+}
+
+.menu .search form input {
+    width: 230px;
+    height: 20px;
+    padding: 8px;
+    background: #FFFFFF;
+    border: 2px solid #DDDDDD;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu .search form button {
+    width: 91px;
+    height: 38px;    
+    background: #6558C3;
+    border-radius: 4px;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .menu-links a {
     color: var(--color-font);
     margin-right: 30px;
