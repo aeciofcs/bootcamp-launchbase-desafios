@@ -38,6 +38,21 @@ module.exports = {
         }
     },
 
+    findAllChefs: () => {
+        try {
+            const query = ` SELECT chefs.ID, 
+                                   chefs.Name, 
+                                   chefs.Avatar_URL,
+                                   (Select Count(recipes.id) From recipes Where chef_id = chefs.id) As total_recipes
+                            FROM chefs
+                        `
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`WEBSITE ALL CHEFS => ${error}`)
+        }
+    },
+
     topRecipes: () => {
 
     },

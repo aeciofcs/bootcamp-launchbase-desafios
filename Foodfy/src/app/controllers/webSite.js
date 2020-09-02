@@ -32,13 +32,9 @@ exports.recipe = async (request, response) => {
     }
 }
 
-exports.chefs = (request, response) => {
+exports.chefs = async (request, response) => {
     try {
-        const Chefs = [{
-            avatar_url: '',
-            name: 'Aecio', 
-            total_recipes: 0,
-        }]
+        const Chefs = ( await Website.findAllChefs() ).rows
 
         return response.render('Site/Chefs/index', { Chefs })
     } catch (error) {
