@@ -57,4 +57,20 @@ module.exports = {
 
     },
 
+    searchRecipes: (filter) => {
+        try {
+            const query = `SELECT rec.id,
+                                  rec.image,
+                                  rec.title,
+                                  chf.name AS author
+                           FROM recipes rec
+                           INNER JOIN chefs chf ON (chf.id = rec.chef_id)
+                           WHERE rec.title ILIKE '%${filter}%'`
+
+            return db.query(query)
+        } catch (error) {
+            console.error(`WEBSITE SEARCH MODEL => ${error}`)
+        }
+    }
+
 }

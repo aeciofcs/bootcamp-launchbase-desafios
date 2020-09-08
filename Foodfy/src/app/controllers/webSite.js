@@ -44,4 +44,15 @@ exports.chefs = async (request, response) => {
 
 exports.about = (request, response) => {
     return response.render('Site/about')
+},
+
+exports.search = async (request, response) => {
+    try {
+        const { filter } = request.query
+        const Recipes    = ( await Website.searchRecipes(filter) ).rows
+
+        response.render(`Site/search`, { Recipes, filter })
+    } catch (error) {
+        console.error(`Search Controller => ${error}`)
+    }
 }
