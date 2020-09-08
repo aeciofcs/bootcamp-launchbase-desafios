@@ -350,3 +350,35 @@ footer h3 {
     height: 1px;
     width: 1px;
 }
+
+.search h3 {
+    margin-top: 58px;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.wrapper-recipes-search {
+    margin-top: 20px;
+}
+
+
+.wrapper-recipes .chefs {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    align-items: center;
+    justify-items: center;    
+}
+
+.wrapper-recipes .chefs .chef {
+    display: grid;
+    grid-template-columns: 80px 135px;
+    align-items: center;
+    justify-items: center;
+}
+
+.wrapper-recipes .chefs img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}

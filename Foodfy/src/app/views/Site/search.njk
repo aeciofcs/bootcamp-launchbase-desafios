@@ -4,14 +4,27 @@
     <title>Resultado da Busca: {{filter}}</title>
 {% endblock %}
 
-{% block logo %}    
-    <a href="/"><img src="/assets/logo.png" alt="logo-foody"></a> 
-{% endblock %}
-
 {% block main%}
     <main>
         <div class="search">
             <h3>Buscando por "{{filter}}"</h3>
-        </div>        
+        </div>       
+
+        <div class="wrapper-recipes wrapper-recipes-search">
+            <div class="recipes">
+                {% for recipe in Recipes %}
+                <div class="recipe" id="{{ recipe.id }}">
+                    <img src="{{recipe.image}}" alt="Imagem {{receipe.title}}">
+                    <h3>{{recipe.title}}</h3>
+                    <h4>por {{recipe.author}}</h4>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/scripts.js"></script>
 {% endblock %}

@@ -1,5 +1,14 @@
 {% extends "layout.njk" %}
 
+{% block search %}
+<div class="search">
+    <form action="/recipes/search/?filter=" method="GET">
+        <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+{% endblock search %}
+
 {% block main %}
     <main>
         <div class="wrapper">
