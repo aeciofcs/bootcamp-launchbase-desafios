@@ -20,6 +20,18 @@ CREATE TABLE CHEFS(
   CREATED_AT TIMESTAMP NOT NULL 
 );
 
+CREATE TABLE files (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  path TEXT NOT NULL
+);
+
+CREATE TABLE recipe_files (
+  id SERIAL PRIMARY KEY,
+  recipe_id INTEGER REFERENCES recipes(id),
+  file_id INTEGER REFERENCES files(id)
+);
+
 
 insert into recipes (CHEF_ID, IMAGE, TITLE, 
                      INGREDIENTS, PREPARATION, 
